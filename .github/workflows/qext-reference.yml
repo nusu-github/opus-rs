@@ -1,0 +1,175 @@
+name: QEXT scalar numerical compatibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+env:
+  CARGO_INCREMENTAL: "0"
+  CARGO_PROFILE_TEST_OPT_LEVEL: "2"
+  CARGO_PROFILE_TEST_DEBUG: "0"
+jobs:
+  components:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: qext
+            features: enable_qext
+            generator_args: ""
+          - profile: fixed-qext
+            features: enable_qext,fixed_point
+            generator_args: --fixed
+          - profile: fixed-res24-qext
+            features: enable_qext,enable_res24
+            generator_args: --res24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - run: bash tools/reference/build.sh ${{ matrix.profile }}
+      - name: Regenerate independent C vector and band fixtures
+        run: |
+          python3 tools/reference/generate_qext_vq_vectors.py ${{ matrix.generator_args }}
+          python3 tools/reference/generate_qext_bands_vectors.py ${{ matrix.generator_args }}
+          git diff --exit-code -- rust/tests/fixtures/reference
+      - name: Compare complete quantization state
+        run: |
+          cargo test --locked --features ${{ matrix.features }} --lib qext_
+          cargo test --locked --features ${{ matrix.features }} --lib allocation_and_fine_energy_match_c
+          cargo test --locked --features ${{ matrix.features }} --test codec_api quality_extension
+      - name: Regenerate fixed-point energy math
+        if: matrix.profile != 'qext'
+        run: |
+          bash tools/reference/build_qext_energy_math.sh target/qext-energy-math.bin
+          cmp target/qext-energy-math.bin rust/tests/fixtures/reference/fixed-qext-energy-math.bin
+          bash tools/reference/build_decoder_gain.sh
+          git diff --exit-code -- rust/tests/fixtures/reference/*decoder-gain.tsv
+          cargo test --locked --features ${{ matrix.features }} --lib fixed_decoder_gain_matches_pinned_c
+          cargo test --locked --features ${{ matrix.features }} --lib smooth_fade_matches_pinned_integer_c
+          cargo test --locked --features ${{ matrix.features }} --lib decoder_plc_iir_matches_ctest_vectors
+          cargo test --locked --features ${{ matrix.features }} --test fixed_plc_reference
+          python3 tools/reference/generate_downmix_vectors.py ${{ matrix.profile }}
+          git diff --exit-code -- rust/tests/fixtures/reference
+          cargo test --locked --features ${{ matrix.features }} --test codec_downmix_reference
+  codec:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: qext
+            features: enable_qext
+          - profile: fixed-qext
+            features: fixed_point,enable_qext
+          - profile: fixed-res24-qext
+            features: enable_res24,enable_qext
+    env:
+      CARGO_TARGET_DIR: target/qext-codec-${{ matrix.profile }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - run: bash tools/reference/build.sh ${{ matrix.profile }}
+      - run: cargo build --locked --release --features ${{ matrix.features }} --bin opus-rs-oracle
+      - name: Compare complete QEXT packets and decoded samples
+        run: |
+          mkdir -p target/verification/qext-codec-${{ matrix.profile }}
+          python3 tools/reference/compare_qext.py \
+            --reference target/reference-${{ matrix.profile }}/opus-reference \
+            --candidate "$CARGO_TARGET_DIR/release/opus-rs-oracle" \
+            --record-directory target/verification/qext-codec-${{ matrix.profile }}/packets \
+            | tee target/verification/qext-codec-${{ matrix.profile }}/codec.log
+      - name: Compare SILK and hybrid speech coding at 96 kHz
+        run: |
+          python3 tools/reference/compare_qext_speech.py \
+            --reference target/reference-${{ matrix.profile }}/opus-reference \
+            --candidate "$CARGO_TARGET_DIR/release/opus-rs-oracle" \
+            --record target/verification/qext-codec-${{ matrix.profile }}/speech.json \
+            | tee target/verification/qext-codec-${{ matrix.profile }}/speech.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qext-codec-${{ matrix.profile }}-results
+          path: target/verification/
+  multistream:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: qext
+            features: enable_qext
+          - profile: fixed-qext
+            features: fixed_point,enable_qext
+          - profile: fixed-res24-qext
+            features: enable_res24,enable_qext
+    env:
+      CARGO_TARGET_DIR: target/qext-multistream-${{ matrix.profile }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - run: bash tools/reference/build.sh ${{ matrix.profile }}
+      - name: Compare multistream, surround, projection, and maximum packet budgets
+        run: |
+          mkdir -p target/verification/qext-multistream-${{ matrix.profile }}
+          cargo test --locked --release --features ${{ matrix.features }} \
+            --test multistream_reference -- --ignored --nocapture --test-threads=1 \
+            | tee target/verification/qext-multistream-${{ matrix.profile }}/multistream.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qext-multistream-${{ matrix.profile }}-results
+          path: target/verification/
+  custom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: float-qext
+            features: custom_modes,enable_qext
+          - profile: fixed-qext
+            features: custom_modes,enable_qext,fixed_point
+          - profile: fixed24-qext
+            features: custom_modes,enable_qext,enable_res24
+          - profile: float-qext-pfa
+            features: custom_modes,enable_qext,pfa
+          - profile: fixed-qext-pfa
+            features: custom_modes,enable_qext,fixed_point,pfa
+          - profile: fixed24-qext-pfa
+            features: custom_modes,enable_qext,enable_res24,pfa
+    env:
+      CARGO_TARGET_DIR: target/qext-custom-${{ matrix.profile }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Regenerate independent custom mode tables and codec fixtures
+        run: |
+          bash tools/reference/build_custom.sh ${{ matrix.profile }}
+          python3 tools/reference/generate_custom_vectors.py ${{ matrix.profile }}
+          git diff --exit-code -- rust/tests/fixtures/reference/custom-${{ matrix.profile }}
+      - name: Compare custom mode construction, packet bytes, and decoded samples
+        run: |
+          mkdir -p target/verification/qext-custom-${{ matrix.profile }}
+          cargo test --locked --release --features ${{ matrix.features }} \
+            --lib dynamic_mode_tables_match_pinned_c \
+            | tee target/verification/qext-custom-${{ matrix.profile }}/mode-tables.log
+          cargo test --locked --release --features ${{ matrix.features }} \
+            --test custom_reference \
+            | tee target/verification/qext-custom-${{ matrix.profile }}/codec.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qext-custom-${{ matrix.profile }}-results
+          path: target/verification/

@@ -1,0 +1,218 @@
+{
+  "profile": "dred-quantized",
+  "proofs": [
+    {
+      "profile": "dred-quantized",
+      "candidate_features": [
+        "deep_plc_weights"
+      ],
+      "c_defines": [
+        "DISABLE_DEBUG_FLOAT"
+      ],
+      "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+      "candidate_sha256": "05159ef133781d5374979e0a1d99461388d9a26826fb12f6fd80fcd063082e00",
+      "reference_sha256": "e92496784baf22fd832c4594aa8d03b93753926b4cd722941dab8e6b91fa4bd6",
+      "command": [
+        "python3",
+        "/workspace/opus-rs/tools/reference/compare_codec.py",
+        "--reference",
+        "/workspace/opus-rs/target/reference-dred-quantized/opus-reference",
+        "--candidate",
+        "/workspace/scratch/opus-rs-final-quantized",
+        "--frames",
+        "12",
+        "--profile",
+        "dred-quantized",
+        "--record",
+        "/workspace/opus-rs/target/neural-final-quantized/dred-cbr.json"
+      ],
+      "environment": {
+        "OPUS_ORACLE_DRED_DURATION": "40",
+        "OPUS_ORACLE_LOSS": "15",
+        "OPUS_ORACLE_VBR": "0"
+      },
+      "started_utc": "2026-10-01T16:35:08.937650+00:00",
+      "finished_utc": "2026-10-01T16:37:21.243003+00:00",
+      "exit_code": 0,
+      "cases": 302,
+      "failures": 0,
+      "passed": true,
+      "log": "/workspace/opus-rs/target/neural-final-quantized/dred-cbr.log",
+      "log_sha256": "80cf3aeba3af300983d842a34af33e3dd99a4abfec30fad8ba6e6f1822d4480e"
+    },
+    {
+      "profile": "dred-quantized",
+      "candidate_features": [
+        "deep_plc_weights"
+      ],
+      "c_defines": [
+        "DISABLE_DEBUG_FLOAT"
+      ],
+      "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+      "candidate_sha256": "05159ef133781d5374979e0a1d99461388d9a26826fb12f6fd80fcd063082e00",
+      "reference_sha256": "e92496784baf22fd832c4594aa8d03b93753926b4cd722941dab8e6b91fa4bd6",
+      "command": [
+        "python3",
+        "/workspace/opus-rs/tools/reference/compare_codec.py",
+        "--reference",
+        "/workspace/opus-rs/target/reference-dred-quantized/opus-reference",
+        "--candidate",
+        "/workspace/scratch/opus-rs-final-quantized",
+        "--frames",
+        "12",
+        "--profile",
+        "dred-quantized",
+        "--record",
+        "/workspace/opus-rs/target/neural-final-quantized/dred-vbr.json"
+      ],
+      "environment": {
+        "OPUS_ORACLE_DRED_DURATION": "40",
+        "OPUS_ORACLE_LOSS": "15",
+        "OPUS_ORACLE_VBR": "1"
+      },
+      "started_utc": "2026-10-01T16:35:08.939984+00:00",
+      "finished_utc": "2026-10-01T16:37:15.426440+00:00",
+      "exit_code": 0,
+      "cases": 302,
+      "failures": 0,
+      "passed": true,
+      "log": "/workspace/opus-rs/target/neural-final-quantized/dred-vbr.log",
+      "log_sha256": "80cf3aeba3af300983d842a34af33e3dd99a4abfec30fad8ba6e6f1822d4480e"
+    },
+    {
+      "profile": "dred-quantized",
+      "candidate_features": [
+        "deep_plc_weights"
+      ],
+      "c_defines": [
+        "DISABLE_DEBUG_FLOAT"
+      ],
+      "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+      "candidate_sha256": "05159ef133781d5374979e0a1d99461388d9a26826fb12f6fd80fcd063082e00",
+      "reference_sha256": "e92496784baf22fd832c4594aa8d03b93753926b4cd722941dab8e6b91fa4bd6",
+      "command": [
+        "python3",
+        "/workspace/opus-rs/tools/reference/compare_decode.py",
+        "--reference",
+        "/workspace/opus-rs/target/reference-dred-quantized/opus-reference",
+        "--candidate",
+        "/workspace/scratch/opus-rs-final-quantized",
+        "--loss"
+      ],
+      "environment": {
+        "OPUS_ORACLE_DECODER_COMPLEXITY": "10"
+      },
+      "started_utc": "2026-10-01T16:35:08.962161+00:00",
+      "finished_utc": "2026-10-01T16:40:47.771049+00:00",
+      "exit_code": 0,
+      "cases": 906,
+      "failures": 0,
+      "passed": true,
+      "log": "/workspace/opus-rs/target/neural-final-quantized/deep-plc-decode.log",
+      "log_sha256": "ef328efabc5d9b2e659e29f3395f95afa1e7107d4c69b3bd65e2e7a8ae7b988e"
+    },
+    {
+      "profile": "dred-quantized",
+      "candidate_features": [
+        "deep_plc_weights"
+      ],
+      "c_defines": [
+        "DISABLE_DEBUG_FLOAT"
+      ],
+      "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+      "candidate_sha256": "05159ef133781d5374979e0a1d99461388d9a26826fb12f6fd80fcd063082e00",
+      "reference_sha256": "e92496784baf22fd832c4594aa8d03b93753926b4cd722941dab8e6b91fa4bd6",
+      "command": [
+        "python3",
+        "/workspace/opus-rs/tools/reference/compare_sequences.py",
+        "--reference",
+        "/workspace/opus-rs/target/reference-dred-quantized/opus-reference",
+        "--candidate",
+        "/workspace/scratch/opus-rs-final-quantized",
+        "--decode-only"
+      ],
+      "environment": {
+        "OPUS_ORACLE_DECODER_COMPLEXITY": "10"
+      },
+      "started_utc": "2026-10-01T16:37:15.444688+00:00",
+      "finished_utc": "2026-10-01T16:37:37.131169+00:00",
+      "exit_code": 0,
+      "cases": 24,
+      "failures": 0,
+      "passed": true,
+      "log": "/workspace/opus-rs/target/neural-final-quantized/deep-plc-sequences.log",
+      "log_sha256": "9e2042c4116b5e92b78527f56cbed554922cebdbd113034fef47cbaad767b18d"
+    },
+    {
+      "profile": "dred-quantized",
+      "candidate_features": [
+        "deep_plc_weights"
+      ],
+      "c_defines": [
+        "DISABLE_DEBUG_FLOAT"
+      ],
+      "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+      "candidate_sha256": "05159ef133781d5374979e0a1d99461388d9a26826fb12f6fd80fcd063082e00",
+      "reference_sha256": "e92496784baf22fd832c4594aa8d03b93753926b4cd722941dab8e6b91fa4bd6",
+      "command": [
+        "python3",
+        "/workspace/opus-rs/tools/reference/compare_dred.py",
+        "--reference",
+        "/workspace/opus-rs/target/reference-dred-quantized/opus-reference",
+        "--candidate",
+        "/workspace/scratch/opus-rs-final-quantized"
+      ],
+      "environment": {},
+      "started_utc": "2026-10-01T16:37:21.280473+00:00",
+      "finished_utc": "2026-10-01T16:40:41.200940+00:00",
+      "exit_code": 0,
+      "cases": 204,
+      "failures": 0,
+      "passed": true,
+      "log": "/workspace/opus-rs/target/neural-final-quantized/dred-recovery.log",
+      "log_sha256": "005f2f91cc14b23b8a6ddf9c82fc465d48d1f29379858c674ce2338edd57542b"
+    },
+    {
+      "profile": "osce-quantized",
+      "candidate_features": [
+        "osce"
+      ],
+      "c_defines": [
+        "DISABLE_DEBUG_FLOAT"
+      ],
+      "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+      "cases": 80,
+      "failures": 0,
+      "passed": true,
+      "command": [
+        "python3",
+        "tools/reference/compare_osce.py",
+        "--reference",
+        "target/reference-osce-quantized/opus-reference",
+        "--candidate",
+        "target/neural-wasm-binaries/osce-quantized",
+        "--weights",
+        "target/reference/osce-weights-quantized.bin"
+      ],
+      "candidate_sha256": "d5dc958ff2af9ef0b04404d95bf2c97da16f75cb34219e7698e33591eba82f48",
+      "reference_sha256": "dc21285752ce1e004cd1c69307284b7e6b7e9b3cb1721d8731a5be7dff37568e",
+      "weights_sha256": "60b047cc799bc37241af95982cb68c1d260fcc4537cdd35ad52d98957554fb60",
+      "log": "/workspace/opus-rs/target/neural-final-quantized/osce-native.log",
+      "log_sha256": "19d067dde084bfc3cd9e1f7b21b13a7514124a326b5428dfa1ab326e54e54491"
+    }
+  ],
+  "all_passed": true,
+  "cases": 1818,
+  "component_proof": "components-proof.json",
+  "combined_neural_library": {
+    "features": [
+      "deep_plc_weights",
+      "osce"
+    ],
+    "passed": 850,
+    "failed": 0,
+    "ignored": 3,
+    "log": "all-lib-tests.log",
+    "log_sha256": "c69fdacc2b1493e4c0db2995a03b0f550120b413eaf6f11795974866f6df5630"
+  }
+}

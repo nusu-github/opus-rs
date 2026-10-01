@@ -1,0 +1,75 @@
+name: WebAssembly numerical compatibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: float
+            features: ""
+            comparison: codec
+          - profile: fixed
+            features: fixed_point
+            comparison: codec
+          - profile: res24
+            features: enable_res24
+            comparison: codec
+          - profile: float-pfa
+            features: pfa
+            comparison: codec
+          - profile: fixed-pfa
+            features: fixed_point,pfa
+            comparison: codec
+          - profile: res24-pfa
+            features: enable_res24,pfa
+            comparison: codec
+          - profile: qext
+            features: enable_qext
+            comparison: qext
+          - profile: fixed-qext
+            features: fixed_point,enable_qext
+            comparison: qext
+          - profile: res24-qext
+            features: enable_res24,enable_qext
+            comparison: qext
+    name: ${{ matrix.profile }} native / Wasm
+    env:
+      CARGO_TARGET_DIR: target/wasm-${{ matrix.profile }}
+      OPUS_RUST_FEATURES: ${{ matrix.features }}
+      OPUS_WASM_COMPARISON: ${{ matrix.comparison }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown,wasm32-wasip1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Compare packet bytes, final ranges, and decoded samples
+        run: ./tools/wasm/check.sh
+      - name: Compare state transitions, loss, reset, and gain
+        if: matrix.comparison == 'codec'
+        env:
+          OPUS_WASM_COMPARISON: sequences
+        run: ./tools/wasm/check.sh
+      - name: Compare SILK and hybrid speech coding at 96 kHz
+        if: matrix.comparison == 'qext'
+        env:
+          OPUS_WASM_COMPARISON: qext_speech
+        run: ./tools/wasm/check.sh
+      - name: Compare fixed stereo-to-mono decoding with independent C fixtures
+        if: contains(matrix.features, 'fixed_point') || contains(matrix.features, 'enable_res24')
+        env:
+          CARGO_TARGET_WASM32_WASIP1_RUNNER: node --no-warnings tools/wasm/run.mjs
+        run: cargo test --locked --target wasm32-wasip1 --features "$OPUS_RUST_FEATURES" --test codec_downmix_reference
+      - name: Compare QEXT and PFA stereo-to-mono decoding with C fixtures
+        if: matrix.comparison == 'qext' && (contains(matrix.features, 'fixed_point') || contains(matrix.features, 'enable_res24'))
+        env:
+          CARGO_TARGET_WASM32_WASIP1_RUNNER: node --no-warnings tools/wasm/run.mjs
+        run: cargo test --locked --target wasm32-wasip1 --features "$OPUS_RUST_FEATURES,pfa" --test codec_downmix_reference

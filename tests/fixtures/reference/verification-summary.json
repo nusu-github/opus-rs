@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "model_archive_sha256": "a5177ec6fb7d15058e99e57029746100121f68e4890b1467d4094aa336b6013e",
+  "scope": "Safe scalar Rust port; exact packet bytes, integer PCM, float bits, and final ranges. Finite regression evidence, not exhaustive equivalence for all inputs.",
+  "reference_arithmetic": [
+    "scalar-float-no-fma-no-approx-lrintf",
+    "fixed",
+    "fixed-res24"
+  ],
+  "rfc8251": {
+    "float": {
+      "full_stream_comparisons": 120,
+      "decoded_packets": 200750,
+      "failures": 0,
+      "manifest": "rfc8251-float-manifest.json"
+    },
+    "fixed": {
+      "full_stream_comparisons": 120,
+      "decoded_packets": 200750,
+      "failures": 0,
+      "manifest": "rfc8251-fixed-manifest.json"
+    },
+    "fixed-res24": {
+      "full_stream_comparisons": 120,
+      "decoded_packets": 200750,
+      "failures": 0,
+      "manifest": "rfc8251-fixed-res24-manifest.json"
+    }
+  },
+  "wasm": {
+    "codec_cases": 3408,
+    "neural_cases": 2636,
+    "total_cases": 6084,
+    "failures": 0,
+    "manifests": [
+      "wasm-manifest.json",
+      "neural-wasm-manifest.json",
+      "downmix-wasm-manifest.json"
+    ],
+    "native_wasi_matrix_cases": 6044,
+    "c_golden_wasi_regression_cases": 40
+  },
+  "combined_neural": {
+    "cases": 440,
+    "failures": 0,
+    "manifest": "combined-neural-manifest.json"
+  },
+  "minimum_rust_version": {
+    "rustc": "1.88.0 (6b00bc388 2025-06-23)",
+    "command": "cargo +1.88.0 check --locked --lib",
+    "features": [
+      "",
+      "enable_res24,custom_modes,pfa,enable_qext",
+      "deep_plc_weights,osce,custom_modes,pfa,enable_qext"
+    ],
+    "failures": 0
+  },
+  "documentation": "../../../docs/NUMERICAL_COMPATIBILITY.md",
+  "fixtures": "../../../rust/tests/fixtures/reference",
+  "reproduction": "../../../tools/reference/README.md",
+  "cargo_tests": {
+    "default": {
+      "passed": 920,
+      "failed": 0,
+      "ignored_external_oracle_tests": 4,
+      "command": "cargo test --locked"
+    },
+    "fixed_point_library": {
+      "passed": 865,
+      "failed": 0,
+      "ignored_external_oracle_tests": 1,
+      "command": "cargo test --locked --features fixed_point --lib"
+    },
+    "enable_res24_library": {
+      "passed": 865,
+      "failed": 0,
+      "ignored_external_oracle_tests": 1,
+      "command": "cargo test --locked --features enable_res24 --lib"
+    },
+    "software_math": {
+      "unit_passed": 113,
+      "doctest_passed": 1,
+      "failed": 0,
+      "command": "cargo test --locked --manifest-path rust/math/Cargo.toml"
+    },
+    "note": "Ignored tests require separate C executables and passed in the explicit reference matrices."
+  }
+}

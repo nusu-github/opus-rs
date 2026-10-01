@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "comparison": "Native Rust versus WebAssembly Rust; independent scalar C compatibility is recorded separately.",
+  "validation_date_utc": "2026-10-01",
+  "rust_source": {
+    "repository": "https://github.com/nusu-github/opus-rs",
+    "base_commit": "2e3e5b8091f3389c01347520a5eef2303d2ab7b8",
+    "branch": "feat/safe-rust-opus",
+    "state": "Working tree under validation before the implementation commit; this manifest does not identify an immutable Rust source snapshot."
+  },
+  "toolchain": {
+    "rustc": "1.99.0 (b940084d7 2026-09-28)",
+    "llvm": "23.1.1",
+    "native_target": "x86_64-unknown-linux-gnu",
+    "runtime_target": "wasm32-wasip1",
+    "library_check_target": "wasm32-unknown-unknown",
+    "node": "24.19.0",
+    "wasi": "preview1",
+    "cargo_profile": "release"
+  },
+  "checked_outputs": [
+    "packet bytes",
+    "encoder final range",
+    "decoder final range",
+    "i16 PCM",
+    "f32 PCM bit patterns"
+  ],
+  "profiles": [
+    {
+      "profile": "float",
+      "codec_cases": 302,
+      "sequence_cases": 28,
+      "speech_cases": 0,
+      "failures": 0,
+      "features": [],
+      "arithmetic": "float",
+      "transform": "kiss_fft",
+      "qext": false,
+      "dnn_profile": "none",
+      "cases": 330,
+      "reference_profile": "float",
+      "explicit_simd": false
+    },
+    {
+      "profile": "fixed",
+      "codec_cases": 302,
+      "sequence_cases": 28,
+      "speech_cases": 0,
+      "failures": 0,
+      "features": [
+        "fixed_point"
+      ],
+      "arithmetic": "fixed-res16",
+      "transform": "kiss_fft",
+      "qext": false,
+      "dnn_profile": "none",
+      "cases": 330,
+      "reference_profile": "fixed",
+      "explicit_simd": false
+    },
+    {
+      "profile": "res24",
+      "codec_cases": 302,
+      "sequence_cases": 28,
+      "speech_cases": 0,
+      "failures": 0,
+      "features": [
+        "enable_res24"
+      ],
+      "arithmetic": "fixed-res24",
+      "transform": "kiss_fft",
+      "qext": false,
+      "dnn_profile": "none",
+      "cases": 330,
+      "reference_profile": "fixed-res24",
+      "explicit_simd": false
+    },
+    {
+      "profile": "float-pfa",
+      "codec_cases": 302,
+      "sequence_cases": 28,
+      "speech_cases": 0,
+      "failures": 0,
+      "features": [
+        "pfa"
+      ],
+      "arithmetic": "float",
+      "transform": "pfa",
+      "qext": false,
+      "dnn_profile": "none",
+      "cases": 330,
+      "reference_profile": "pfa",
+      "explicit_simd": false
+    },
+    {
+      "profile": "fixed-pfa",
+      "codec_cases": 302,
+      "sequence_cases": 28,
+      "speech_cases": 0,
+      "failures": 0,
+      "features": [
+        "fixed_point",
+        "pfa"
+      ],
+      "arithmetic": "fixed-res16",
+      "transform": "pfa",
+      "qext": false,
+      "dnn_profile": "none",
+      "cases": 330,
+      "reference_profile": "fixed-pfa",
+      "explicit_simd": false
+    },
+    {
+      "profile": "res24-pfa",
+      "codec_cases": 302,
+      "sequence_cases": 28,
+      "speech_cases": 0,
+      "failures": 0,
+      "features": [
+        "enable_res24",
+        "pfa"
+      ],
+      "arithmetic": "fixed-res24",
+      "transform": "pfa",
+      "qext": false,
+      "dnn_profile": "none",
+      "cases": 330,
+      "reference_profile": "fixed-res24-pfa",
+      "explicit_simd": false
+    },
+    {
+      "profile": "qext",
+      "codec_cases": 384,
+      "sequence_cases": 0,
+      "speech_cases": 92,
+      "failures": 0,
+      "features": [
+        "enable_qext"
+      ],
+      "arithmetic": "float",
+      "transform": "kiss_fft",
+      "qext": true,
+      "dnn_profile": "none",
+      "cases": 476,
+      "reference_profile": "qext",
+      "explicit_simd": false
+    },
+    {
+      "profile": "fixed-qext",
+      "codec_cases": 384,
+      "sequence_cases": 0,
+      "speech_cases": 92,
+      "failures": 0,
+      "features": [
+        "fixed_point",
+        "enable_qext"
+      ],
+      "arithmetic": "fixed-res16",
+      "transform": "kiss_fft",
+      "qext": true,
+      "dnn_profile": "none",
+      "cases": 476,
+      "reference_profile": "fixed-qext",
+      "explicit_simd": false
+    },
+    {
+      "profile": "res24-qext",
+      "codec_cases": 384,
+      "sequence_cases": 0,
+      "speech_cases": 92,
+      "failures": 0,
+      "features": [
+        "enable_res24",
+        "enable_qext"
+      ],
+      "arithmetic": "fixed-res24",
+      "transform": "kiss_fft",
+      "qext": true,
+      "dnn_profile": "none",
+      "cases": 476,
+      "reference_profile": "fixed-res24-qext",
+      "explicit_simd": false
+    }
+  ],
+  "total_cases": 3408,
+  "failures": 0,
+  "reproduction": {
+    "workflow": ".github/workflows/wasm.yml",
+    "documentation": "docs/WASM.md",
+    "entry_point": "tools/wasm/check.sh",
+    "profile_features_environment": "OPUS_RUST_FEATURES",
+    "comparison_environment": "OPUS_WASM_COMPARISON",
+    "matrix_modes": [
+      "codec",
+      "sequences",
+      "qext",
+      "qext_speech"
+    ]
+  },
+  "harness_sha256": {
+    "tools/wasm/check.sh": "54aabdf3dc8d36929bf0bf8294d175a80d3d2b775ef85b9682255c5a68d16c91",
+    "tools/wasm/oracle.sh": "943fc063493ae802e15d1ea7b924b1177362500a4205305723084e14ebba0604",
+    "tools/wasm/run.mjs": "2a037848ec0e3fbc859d0939715e73c08c066867b1a20cd079722d60899c0ef1",
+    "tools/reference/compare_codec.py": "3dc70f0a57bf59e5211116d2cd955c281365ffc74fcc31ddc9e84f53d820159f",
+    "tools/reference/compare_sequences.py": "be1917d92a92604f729514a11056db7b61b5b653e0dac9af56aecfb94d93ffda",
+    "tools/reference/compare_qext.py": "1f76e3bc58b21d66b093a62b5049bbbbd5a5c4e28ae1171f64b5b659f3192b88",
+    "tools/reference/compare_qext_speech.py": "f010099fc8a3f4589e9a0867ad16b02359f55c8acdfccf4a2498bbf454f382db"
+  },
+  "validation_notes": [
+    "Each matrix completed with zero numerical differences.",
+    "A launcher edited during the original parallel runs emitted a trailing shell parse error after completed matrices; a fresh invocation of the final launcher exited successfully and passed seven smoke cases.",
+    "Neural profiles and independently generated C results are outside this manifest."
+  ]
+}

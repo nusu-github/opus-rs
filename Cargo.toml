@@ -1,0 +1,161 @@
+[package]
+name = "opus-rs"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Safe Rust port of the Opus audio codec"
+repository = "https://github.com/nusu-github/opus-rs"
+license = "BSD-3-Clause AND MIT"
+build = false
+autoexamples = false
+autobins = false
+autotests = false
+
+[lib]
+name = "opus_rs"
+path = "rust/src/lib.rs"
+
+[features]
+default = []
+osce = []
+fixed_point = []
+force-scalar = []
+enable_res24 = ["fixed_point"]
+deep_plc = ["dred"]
+deep_plc_weights = ["deep_plc", "dep:mousiki-deep-plc-weights"]
+deep_plc_weights_fetch = ["deep_plc_weights", "mousiki-deep-plc-weights/fetch"]
+dred = ["dep:mousiki-dred-weights"]
+dred_fetch = ["dred", "mousiki-dred-weights/fetch"]
+dnn_debug_float = ["mousiki-deep-plc-weights?/dnn_debug_float"]
+custom_modes = []
+pfa = []
+enable_qext = []
+silk_strict_asserts = []
+
+[dependencies]
+libm = { package = "opus-math", path = "rust/math" }
+cfg-if = "1.0"
+bitflags = "2"
+mousiki-deep-plc-weights = { path = "rust/weights-deep-plc", optional = true }
+mousiki-dred-weights = { path = "rust/weights-dred", optional = true }
+
+[dev-dependencies]
+sha2 = "0.10"
+
+[profile.test]
+opt-level = 2
+debug = 0
+
+[[bin]]
+name = "opus-rs-oracle"
+path = "rust/src/bin/opus_rs_oracle.rs"
+
+[[test]]
+name = "codec_api"
+path = "rust/tests/codec_api.rs"
+
+[[test]]
+name = "extensions"
+path = "rust/tests/extensions.rs"
+
+[[test]]
+name = "fuzz_decoder"
+path = "rust/tests/fuzz_decoder.rs"
+
+[[test]]
+name = "hybrid_decode"
+path = "rust/tests/hybrid_decode.rs"
+
+[[test]]
+name = "hybrid_encode"
+path = "rust/tests/hybrid_encode.rs"
+
+[[test]]
+name = "lpc_inv_pred_gain"
+path = "rust/tests/lpc_inv_pred_gain.rs"
+
+[[test]]
+name = "opus_encode_regressions"
+path = "rust/tests/opus_encode_regressions.rs"
+
+[[test]]
+name = "opus_padding"
+path = "rust/tests/opus_padding.rs"
+
+[[test]]
+name = "packet_helpers"
+path = "rust/tests/packet_helpers.rs"
+
+[[test]]
+name = "repacketizer"
+path = "rust/tests/repacketizer.rs"
+
+[[test]]
+name = "silk_schur"
+path = "rust/tests/silk_schur.rs"
+
+[[test]]
+name = "test_opus_decode"
+path = "rust/tests/test_opus_decode.rs"
+
+[[test]]
+name = "test_opus_encode"
+path = "rust/tests/test_opus_encode.rs"
+
+[[test]]
+name = "test_opus_projection"
+path = "rust/tests/test_opus_projection.rs"
+
+[[test]]
+name = "trivial_example"
+path = "rust/tests/trivial_example.rs"
+
+[[test]]
+name = "packet_reference"
+path = "rust/tests/packet_reference.rs"
+
+[[test]]
+name = "codec_reference"
+path = "rust/tests/codec_reference.rs"
+
+[[test]]
+name = "codec_downmix_reference"
+path = "rust/tests/codec_downmix_reference.rs"
+
+[[test]]
+name = "fixed_plc_reference"
+path = "rust/tests/fixed_plc_reference.rs"
+required-features = ["fixed_point"]
+
+[[test]]
+name = "custom_reference"
+path = "rust/tests/custom_reference.rs"
+required-features = ["custom_modes"]
+
+[[test]]
+name = "reference_entropy"
+path = "rust/tests/reference_entropy.rs"
+
+[[example]]
+name = "decode"
+path = "rust/examples/decode.rs"
+
+[[example]]
+name = "trivial_example"
+path = "rust/examples/trivial_example.rs"
+
+[[example]]
+name = "opus_packet_tool"
+path = "rust/examples/opus_packet_tool.rs"
+
+[[test]]
+name = "multistream_reference"
+path = "rust/tests/multistream_reference.rs"
+
+[[test]]
+name = "silk_encoder_reference"
+path = "rust/tests/silk_encoder_reference.rs"
+
+[[test]]
+name = "encoder_edges_reference"
+path = "rust/tests/encoder_edges_reference.rs"

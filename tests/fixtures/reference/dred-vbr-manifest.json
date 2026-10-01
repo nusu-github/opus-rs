@@ -1,0 +1,2136 @@
+{
+  "revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "profile": "scalar-float-dred-debug-float-no-fma-no-approx-lrintf",
+  "cases": [
+    {
+      "case": "silk/8000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "12b1e7259f0058084364ee63cc70d5fad7701b3dc368347f1775aeb333da5025",
+      "output_sha256": "b80adbfaf488afbd66a3ffebb9153532eb8972182164c14b8c56e0554eac5e17"
+    },
+    {
+      "case": "silk/8000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "06a874d1657506d19cbd162e10f8cbb045e2b581803e681db6d9c7877147ea3e",
+      "output_sha256": "e99afdfab58142b81c65df754bc368111255c1ea197c15128b0549a97f3356dd"
+    },
+    {
+      "case": "silk/8000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "1da8490b3d4c510609ae0a475b6682e5e756bbf2ac5e3d7c28101636f4be4151",
+      "output_sha256": "bd3b6a0f6ba9950538f29e9bf1ee8eab1bf23a7b1bfc8cfd7f832b6250ace34e"
+    },
+    {
+      "case": "silk/8000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "a494bc04ea155c8c7fa43e093467f3d46fa5167ddd9abb1f8fbf42d3b0a01e80"
+    },
+    {
+      "case": "silk/8000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "79b308ef33fb6e45b9b71336f54bcde86ae817e3e554e5c60c016775a17c7a4d",
+      "output_sha256": "ed55ceb92f27ca9a10ee16aaf48ef0d2e187aa534e66f062dda374956b9fdfaf"
+    },
+    {
+      "case": "silk/8000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "ad63c41ad93ad28bbed352baff2fca61ece2e460e4d5d39a82c91aa5de8ec13f",
+      "output_sha256": "acd302990f4351c6f3d2996960f7daa0f3a70de21a12c21c7384e491c6ced99a"
+    },
+    {
+      "case": "silk/8000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "93a8dd029ecf8243ffbc60448f80b5c46312643313bbd90184fe4e8b771ef6d3"
+    },
+    {
+      "case": "silk/8000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "d700103bbb9153ff1f8936b1772d6061520447925ad32bd4eed982fbd8e06e38",
+      "output_sha256": "bc08709ca66b1271a6450ac8ac388a54d29545f89d7949d242aa7857f795b042"
+    },
+    {
+      "case": "silk/8000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fa90d2861290a6e75d0eb470ef1c8c1f7fe40ba03cb8d2e43ef45fa5d9dacdad",
+      "output_sha256": "dc894f84fb962a2be68c055b3e3c03045da13c977deac13dc393a21e396134dc"
+    },
+    {
+      "case": "silk/8000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5aabed023fd72edf0d16b6c31e374745e1e1ca91d46db9d67c7d5869ea319e19",
+      "output_sha256": "70c33fe644bdac54898a4d81980cc9e7e56e638f5261bcdb038dce21fb002cbc"
+    },
+    {
+      "case": "silk/8000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "136ab4bb28083afa7534a1ad3c0c61b519ef5e4ecacf60e3206afdf2e0472c4c"
+    },
+    {
+      "case": "silk/8000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5ff7b152464f9b1a76957123ecd095dfa4dd2aba128124157b1218f615925785",
+      "output_sha256": "09e7868f52572b9485d152a9d5bc1c4cc73ff596c2f53a03ea0381c5e9eb9e11"
+    },
+    {
+      "case": "silk/8000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "02c5dfd92c3cb52ad134bf20df09cfa3cf9503e1e4c60650ff79826156a5ff9c",
+      "output_sha256": "2f1bef66906efcbadb4e7e2ea78cac54ea2227cf6ae8a718b111a3ebfb85711b"
+    },
+    {
+      "case": "silk/8000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "6480f513b89fc82f17918189aa534eb0abcfffd4223eb9c3fb75545f4de1fc7b"
+    },
+    {
+      "case": "silk/12000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "9588eceb1f31f726a6de6089340174bdeda79030819f6089be105c8e0455d825",
+      "output_sha256": "221b9cb8abe8c2593c663a3d5f244088e982758e42d3d82bf1b458a4eee63801"
+    },
+    {
+      "case": "silk/12000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "e9bb70d6dc9929dc6e63cf231a77fff0a5e5cb008b5d9ee6e86b280c231316c6"
+    },
+    {
+      "case": "silk/12000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "4d2ed77a7c9ac95a5e5f98f8b75b04244b3c4bfca08dc9679e45fae796195645"
+    },
+    {
+      "case": "silk/12000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "e82cca1ea6908f165da9367d836197de3ee5e7c79160d5b2afb52dd2b7ddb61e",
+      "output_sha256": "0e694a84030b0e782b31c3c4140c69c3d634574e8611ccddbb0b94eeeafadb40"
+    },
+    {
+      "case": "silk/12000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "62b6b5cc1b749d4fc985ce9af6b8ca98afa9db8dfe14c28aa5ecfabf481d2aa0"
+    },
+    {
+      "case": "silk/12000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "11bc0eb9a136530b05bc7c5fc4e356d0cb7356d8707e3f76496462ac597aa8ad",
+      "output_sha256": "377f6efdf4cdf9d69cb33d43efe9ca760020a22afc589fd3b7f6727cc0cf5162"
+    },
+    {
+      "case": "silk/12000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "0ef9d9e92b1c00325b7dd0ad6931141db7ad07a577d84e06bb115ee89d63c1b3",
+      "output_sha256": "35e9e33e1969f98a099e9f9510b43685defc19d89c711b0dcc172f822ff4f6ab"
+    },
+    {
+      "case": "silk/12000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "8b155092234af572109b0f7ef55900892801e7ef18ec06aea3f8433a9c629808",
+      "output_sha256": "a5fc445ecfe9ed29675fdb7a48930ad16b4734e818163f4857e6110fc2a1d4f4"
+    },
+    {
+      "case": "silk/12000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "65ce88b50f0bb62c9017789a31200e1b33f89a33b353870182aeea3d12180e7a"
+    },
+    {
+      "case": "silk/12000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "95c0c8295f09d7f6d054e946bce078b278b84cbbafbf3b5f60ffd22adb3471d0"
+    },
+    {
+      "case": "silk/12000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "ba5d5f60a3ab5fd177416ede3491a7f1bafa7d84146b504b1437086d37f9de48",
+      "output_sha256": "4e5b07e09162e7cc8dae68642b277557cb78d70b67c87ca1f917b4302ef5e69e"
+    },
+    {
+      "case": "silk/12000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "83d371556c65a5df8968e9305dac54e6e39f522542c59068a73611510bed1126"
+    },
+    {
+      "case": "silk/12000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c0ea914ada69507f3252e1fa08f31906f1dd0ec9fbb6c9c9535093c6b1562a61",
+      "output_sha256": "8245b68a2f2ea093d60d79ce3f2611e86452823ae9570fee06585f533f9e9a94"
+    },
+    {
+      "case": "silk/12000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "b41f632c4a1b6a9e3e971cbfe242a511d7ad75a25182dfd952773c04e9ca8a8d",
+      "output_sha256": "7c9a13e605f43b1b6942b975204b9602abec8303311bcf48569ea46c3fec36b6"
+    },
+    {
+      "case": "silk/16000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "06a874d1657506d19cbd162e10f8cbb045e2b581803e681db6d9c7877147ea3e",
+      "output_sha256": "3d31be02ec6eda27fe8f7d7ff7914e4820f012db85cc425119ff24ddd4066c32"
+    },
+    {
+      "case": "silk/16000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "1da8490b3d4c510609ae0a475b6682e5e756bbf2ac5e3d7c28101636f4be4151",
+      "output_sha256": "382e167fc2c0f8fd5868dcd7bcfd5c335a58c1f68a3fbd6a7f029c033519f177"
+    },
+    {
+      "case": "silk/16000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "79b308ef33fb6e45b9b71336f54bcde86ae817e3e554e5c60c016775a17c7a4d",
+      "output_sha256": "8d3172109ed4e48c262d1c0ff37ae36b0520fcc3c44a8bc350c5865f69e4ef95"
+    },
+    {
+      "case": "silk/16000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "f429ef174fa368c32eb300a58a3e07e2c65e642fe6da92ee37e6537cc65bf625"
+    },
+    {
+      "case": "silk/16000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "5d8cd1aee52357c0df9a31d3d13ea4e3bbedf929a13558a95a5b96f16ac12376",
+      "output_sha256": "86e43ee8053c8f4c48fdd17c044ab3a7de16bd3329744951473af3397b3d5a24"
+    },
+    {
+      "case": "silk/16000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "7d1939c1fc67cf7c1ad3f9f843be3adb35b0a2ce375a96230de2aab7ab432905",
+      "output_sha256": "e96a26503a9117201cbaee827cde4c98accf7b9a64509b208f644323d31a3b70"
+    },
+    {
+      "case": "silk/16000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "4f7cfdaeeaa63b4f990713e23e5d4529609e3200209d9ebe09762957545cca46"
+    },
+    {
+      "case": "silk/16000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fa90d2861290a6e75d0eb470ef1c8c1f7fe40ba03cb8d2e43ef45fa5d9dacdad",
+      "output_sha256": "ade23573dcd36d35c5a60156d1edfd6d00f7ad9dfddd4799ce1f461e34e7e368"
+    },
+    {
+      "case": "silk/16000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5aabed023fd72edf0d16b6c31e374745e1e1ca91d46db9d67c7d5869ea319e19",
+      "output_sha256": "0065359e6b1c0a5ceca4526e2de8ea823eaeb5c58c1862fc8060f76bb6b32ba0"
+    },
+    {
+      "case": "silk/16000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5ff7b152464f9b1a76957123ecd095dfa4dd2aba128124157b1218f615925785",
+      "output_sha256": "e951cade41b1b9ccbf5fba0622e99a5dd1368ffd4c7331f9f7fc9402343fb047"
+    },
+    {
+      "case": "silk/16000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "b9b197e92e40f676f04d7456647201ec1811ae856378a87222a15e86db1abce4"
+    },
+    {
+      "case": "silk/16000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "e4930be844d557dd456851361a58ea76e1271a5d97765c1546a1d4a52034f31b",
+      "output_sha256": "7f8aa7a1c46a256bf972ea222effefd4ce86ea4c5e371027776065d482969f44"
+    },
+    {
+      "case": "silk/16000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "43c1c51565286979f31f39bc750f3b7fc66feb1d99ce1347926bfc68ab709ece",
+      "output_sha256": "ae6ee6cff8694bfcee12c86db3a5cfd5de3bc5a5211dd3584140abedeee2df32"
+    },
+    {
+      "case": "silk/16000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "b70646293baf4ebac9d45ec36da78d39385d3e1767d53e8790aee89591f4d345"
+    },
+    {
+      "case": "silk/24000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "a52cd8196b848b8bb7fba089afd1c90edc8ca281c29ceebb39845fbb3187757f"
+    },
+    {
+      "case": "silk/24000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "cb65ece0f3e8a0b70cea7ec1c128cae50e292c2f209b3522c7879d94cf0f0094"
+    },
+    {
+      "case": "silk/24000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "ad40eeeaeda8dd7b425051d86f7f78dde722eb0ff31b3590065220c901defb40"
+    },
+    {
+      "case": "silk/24000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "0ef9d9e92b1c00325b7dd0ad6931141db7ad07a577d84e06bb115ee89d63c1b3",
+      "output_sha256": "f05278b9199ea94220767095437d3b2af5d339b6f359f6456c42e3525b74682d"
+    },
+    {
+      "case": "silk/24000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "22824da6e70ab466f4eeb23080af8fa6f2110d4297e47c71ca7430635f71042b"
+    },
+    {
+      "case": "silk/24000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "7f61ff5cca0f63fa279180bef04d6ce9ee8764697c622eb90762a2e9f97c4a2d",
+      "output_sha256": "1674656bc152335b18222b5a741cd06aad05088074b36dd5f71c7a31161f0427"
+    },
+    {
+      "case": "silk/24000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "328e8d1fe935a09b774aebdbaa8ce530776e5347cf9674571030997c98b74010",
+      "output_sha256": "ccbebe25d35935de11e6f6f14ffbce867f2ac46ba3c24bd251f180ddae9bf35d"
+    },
+    {
+      "case": "silk/24000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "fb5db1237044c9463d1c37883d5da02de3177d4e0b46bfa933b7f1d042c3f6e7"
+    },
+    {
+      "case": "silk/24000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "8706ab8cff7dfa6de620c09c2e3e6bc971e0c561831cdbd14ff100bf0c9b84f7"
+    },
+    {
+      "case": "silk/24000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "729d01a81cd798613d6d203040f6294ee1e7f53f2944512d001e35105e400bc9"
+    },
+    {
+      "case": "silk/24000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "b41f632c4a1b6a9e3e971cbfe242a511d7ad75a25182dfd952773c04e9ca8a8d",
+      "output_sha256": "f0442b89d5b513e72b594d4825c34e34a84444f170dc84e28574bddf30e38d09"
+    },
+    {
+      "case": "silk/24000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "82412d35a90ebd2086e55e993d27e1893df1338e4550a98ac5155ae24c085e39"
+    },
+    {
+      "case": "silk/24000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "2ebf09a0d5734378d61a3725327ce76fd88e0d81613164d723792652646cdc85",
+      "output_sha256": "be1844c9c94c6070bbda1c68d4d07cde1772cda13e9626504905c174c64df585"
+    },
+    {
+      "case": "silk/24000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "15ef257c857f0346e098ac3a5542a4f1865f67537d455c3bbbe69dd195d4f780",
+      "output_sha256": "94a3fa151a2f64618e229500534b1d8c720da5851c9f08cbcb6fbe1618ab0f17"
+    },
+    {
+      "case": "silk/48000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "a75b065089490270ae9f8e8e6b013d79eb631c76d0d46a62dfd10a4fe1b9e12e"
+    },
+    {
+      "case": "silk/48000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "0982531001b1e7dab6d3aa0e44491cfd9b13f3a825709e0f9401bf76637271a1"
+    },
+    {
+      "case": "silk/48000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "8c86c6e6e56bcbd2fad8d47c72e09319b05f3fe5846da2b811de291411e76c59"
+    },
+    {
+      "case": "silk/48000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "328e8d1fe935a09b774aebdbaa8ce530776e5347cf9674571030997c98b74010",
+      "output_sha256": "470112b4c75af6bc13d0077a1c6c9bf14931a36f01cdd898d35562a751413239"
+    },
+    {
+      "case": "silk/48000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "43f8188085d9316d86325e4a2d44cb0ae8c59050a546843bec3971ff9a2bb604",
+      "output_sha256": "b85399ffac037aed7eb97c77862998c58a4354fc54c9250af80c417cfc8ee8cd"
+    },
+    {
+      "case": "silk/48000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "880ca04c441b8720438a3b4597625ddf398f46cf5eedd368a6c8d714e33f2835",
+      "output_sha256": "444959d5da37e4eae2a07a0e6c7643b0b12d912d294402271ef56a349061e7d3"
+    },
+    {
+      "case": "silk/48000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "564b520b2848387321d51554269c453917f7dbb784aae0df1df6ef4572662be9",
+      "output_sha256": "37de071503e7574b1d1e6bd8ebc3be96ee09abbc14ef6975562d3f321b3f83df"
+    },
+    {
+      "case": "silk/48000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "d644eb744bb895bc872dce60198a691d6acd1095e4e052329fc6ec114c00c484"
+    },
+    {
+      "case": "silk/48000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "8a7357a9f7e24af348658d0a232ef80a815528adb8ea104470bcb6ce3bf58db8"
+    },
+    {
+      "case": "silk/48000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "ac81f0066d47b82514f237e96e82198d1c46eb17ddc8748116a2035c4fa88807"
+    },
+    {
+      "case": "silk/48000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "15ef257c857f0346e098ac3a5542a4f1865f67537d455c3bbbe69dd195d4f780",
+      "output_sha256": "2bfc06e8c1952893430fa27d4af26919002c2256a0995e1993ca0768da0f7ffd"
+    },
+    {
+      "case": "silk/48000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "31bb7b55a95dd16c7618e404997cb332cd07064c610d3cdac35d96f5266403cf",
+      "output_sha256": "3c17ba2a885351e46bd33fdf93d12ff448b9b4e0bb6335c8525e77d3a4ecf7bf"
+    },
+    {
+      "case": "silk/48000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "7c0c422381044d624d2310b640a13988463b8a298abacf7694184ffddd09a379",
+      "output_sha256": "f82a423aae6e459b97a532036d74cff2e116708b149eae1c993159f2eb1266ab"
+    },
+    {
+      "case": "silk/48000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5b41c3e0fa4615449e71129f9d3620b9ca50e1f14ee8930323650ac04205c69a",
+      "output_sha256": "4e7fd28a3af99890bb4b75e5827913696b45959b62989416abf3b45c0a2ecc3c"
+    },
+    {
+      "case": "hybrid/24000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "31f68b9a96ca6c4a664876160b4b22dbe803ca40d46e2ad098c3d379ebab8f41"
+    },
+    {
+      "case": "hybrid/24000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "eb8bbc5b1c9426bedd5ffaf840ec4d98ce44b8b9fb4c5351c13167054750bd42"
+    },
+    {
+      "case": "hybrid/24000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "b3295c3a1b6fb68346e2502b656acc00a082831b16c09dfc9a326657d6de6eae"
+    },
+    {
+      "case": "hybrid/24000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "0ef9d9e92b1c00325b7dd0ad6931141db7ad07a577d84e06bb115ee89d63c1b3",
+      "output_sha256": "fb321846d7c78a3f8e54f0d0fcb16088b2dd621f4bf6fcb2867504f7af3a21ab"
+    },
+    {
+      "case": "hybrid/24000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "39ae69f07f94aad12494436d7b12113987d2185009bc182f41167d2d4b299e17"
+    },
+    {
+      "case": "hybrid/24000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "7f61ff5cca0f63fa279180bef04d6ce9ee8764697c622eb90762a2e9f97c4a2d",
+      "output_sha256": "6b6cc571cb6a7a101aadb744b6921367fbfda34cbccda3882c9341bcc4f01187"
+    },
+    {
+      "case": "hybrid/24000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "328e8d1fe935a09b774aebdbaa8ce530776e5347cf9674571030997c98b74010",
+      "output_sha256": "ea5b3aaca0fdf4e87533b0311a59ccad48513a02825e36e319da8a4c4f4dfba8"
+    },
+    {
+      "case": "hybrid/24000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "65540b1bb4bc87cd2001a5364cc5b372405bd4e4b3e64aa36d83d7f369a6abc5"
+    },
+    {
+      "case": "hybrid/24000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "ab0d7e00e162c180603803d23a164decaf776465eb5c12d54e69fff961e727e8"
+    },
+    {
+      "case": "hybrid/24000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "e9bb287cf6c294106f46fede7369c1cb28e45b5b1898b8a83c420ab3a347d35a"
+    },
+    {
+      "case": "hybrid/24000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "b41f632c4a1b6a9e3e971cbfe242a511d7ad75a25182dfd952773c04e9ca8a8d",
+      "output_sha256": "762ae23cb2daf07d513b19a7410d2f4a6405ac97223511c33089d1f95e88b79e"
+    },
+    {
+      "case": "hybrid/24000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "52b9be89d7a3f4d513ff0133c71775d9d29622803da0728abd7bd18208752c4c"
+    },
+    {
+      "case": "hybrid/24000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "2ebf09a0d5734378d61a3725327ce76fd88e0d81613164d723792652646cdc85",
+      "output_sha256": "4927ce47bf819138b9b76ca42661a5f84a48c807960db2941169c71abe5c6864"
+    },
+    {
+      "case": "hybrid/24000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "15ef257c857f0346e098ac3a5542a4f1865f67537d455c3bbbe69dd195d4f780",
+      "output_sha256": "53be6a1db051c4cb45f971a01f4d570ea4df89008e3a1c4781e1f10f934f45c1"
+    },
+    {
+      "case": "hybrid/48000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "a1a4ae69d928af65afb742681abdd2e54236fe6eab6901a8cf07c87bc601d798"
+    },
+    {
+      "case": "hybrid/48000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "0e505bfaa84f3ab08cf35baccad89583b196ab6a866829ab42a75f384a715140"
+    },
+    {
+      "case": "hybrid/48000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "58b61479ca85ab37bba9ca16086a59d8945625736972e040932937f341acfb72"
+    },
+    {
+      "case": "hybrid/48000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "328e8d1fe935a09b774aebdbaa8ce530776e5347cf9674571030997c98b74010",
+      "output_sha256": "aecbf808086ea459ca958dcc4492feb9d3a58d762707463d1aa3475e8194afd3"
+    },
+    {
+      "case": "hybrid/48000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "43f8188085d9316d86325e4a2d44cb0ae8c59050a546843bec3971ff9a2bb604",
+      "output_sha256": "be69866aa2872bdb29001b97c740652e19319b8b0f043ae177a3e4141c7261dd"
+    },
+    {
+      "case": "hybrid/48000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "880ca04c441b8720438a3b4597625ddf398f46cf5eedd368a6c8d714e33f2835",
+      "output_sha256": "244dc0d8c2e19b6affd699cd868879d3ee95542379b67b496028ceef4a63f1fa"
+    },
+    {
+      "case": "hybrid/48000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "564b520b2848387321d51554269c453917f7dbb784aae0df1df6ef4572662be9",
+      "output_sha256": "b28d6ad3bea31787f94b4c1a8a437e4ca32df7c29e0edd6c8d6b2be3bc215ee8"
+    },
+    {
+      "case": "hybrid/48000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "66247d61a96172dab1fdf8d90d2914f8e1ff9fa449150bdcc81433c79e4dfdf6"
+    },
+    {
+      "case": "hybrid/48000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "3e879d2024ef5223d2f7930623f84f0a588fb050b19bccbc2b5bb6327ab59688"
+    },
+    {
+      "case": "hybrid/48000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "d041a3bf1ffa68cdb71070469bfd6c1a454696145b45ced92c711699122c1c0b"
+    },
+    {
+      "case": "hybrid/48000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "15ef257c857f0346e098ac3a5542a4f1865f67537d455c3bbbe69dd195d4f780",
+      "output_sha256": "ce24af4afdfebe1f65bfe4bfe915d7483f138a42d0d35fd96d4bcb35a88aecb5"
+    },
+    {
+      "case": "hybrid/48000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "31bb7b55a95dd16c7618e404997cb332cd07064c610d3cdac35d96f5266403cf",
+      "output_sha256": "9659e73040934b9cdd5e9a68a334236f43653ee6c08ebd61d202260ec115842a"
+    },
+    {
+      "case": "hybrid/48000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "7c0c422381044d624d2310b640a13988463b8a298abacf7694184ffddd09a379",
+      "output_sha256": "6f0cd5b0f0d06a59da9daf408d4dca5df8bfcc98df1b46776706a7783852422e"
+    },
+    {
+      "case": "hybrid/48000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5b41c3e0fa4615449e71129f9d3620b9ca50e1f14ee8930323650ac04205c69a",
+      "output_sha256": "6e3364ba7836465034c89e22744a87e571ac5769659de4cef78d40e07c0af0a7"
+    },
+    {
+      "case": "celt/8000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "a21003dfdb3f71fdf8df255bbbadf28c8599ac0f2ed1a76889f088827f6096ca",
+      "output_sha256": "167127777094d376209bb389e0f43d3a751bc0522d1dbd178c92d348d6dfc8f4"
+    },
+    {
+      "case": "celt/8000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "a3e4e1f0591026743899a892feb94af4878ab6950ce91992671f495f2d043d54",
+      "output_sha256": "39f93c8d9f092f026253590c1f188a09044b02c7c48b568385332b9ea71bcefc"
+    },
+    {
+      "case": "celt/8000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "12b1e7259f0058084364ee63cc70d5fad7701b3dc368347f1775aeb333da5025",
+      "output_sha256": "4b99d784dcd0c74551accfafe8771573be6a5c7854ff07266b3caa90b7378af0"
+    },
+    {
+      "case": "celt/8000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "06a874d1657506d19cbd162e10f8cbb045e2b581803e681db6d9c7877147ea3e",
+      "output_sha256": "6251bd00173aa82743e57f1326cd9e482ff52cf5f6937eef2961cb9e54d44e4c"
+    },
+    {
+      "case": "celt/8000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "1da8490b3d4c510609ae0a475b6682e5e756bbf2ac5e3d7c28101636f4be4151",
+      "output_sha256": "f36197e767c499c52bdfa8501b06e117199491f1e527b60e2b17557b8214d612"
+    },
+    {
+      "case": "celt/8000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "c269f89a578c393c9337ad119827742a23d857a753086e7dedaa4098fb345f83"
+    },
+    {
+      "case": "celt/8000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "79b308ef33fb6e45b9b71336f54bcde86ae817e3e554e5c60c016775a17c7a4d",
+      "output_sha256": "e09f6f9aaa1fe94661dfab23a3887249d12f2b0bdd952aba9246c97cbf7f0fa3"
+    },
+    {
+      "case": "celt/8000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "ad63c41ad93ad28bbed352baff2fca61ece2e460e4d5d39a82c91aa5de8ec13f",
+      "output_sha256": "1e9c86322b601010290da583fa5b727894bf0fec0d22cde474aab537225c3481"
+    },
+    {
+      "case": "celt/8000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "a64f29e007dc71fc5d17b7ed035744c3594039a0ba2704ccbd247bbc0f590789"
+    },
+    {
+      "case": "celt/8000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "3d67d6c36ed5369716899b1aa223e9bd632b82b15a9a1fe85ee2aa1e7a2761c7",
+      "output_sha256": "38a23d2f5a0043e4fdd056c1077f114fb6697c3f2ca04d014cfdeaf65948a433"
+    },
+    {
+      "case": "celt/8000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "a28116f8d46fb26fe465f9aede6101544034da7ddd7f4c8fb1d6d8de3760e3cd",
+      "output_sha256": "66677f37bee79d0f1716d27ce8d2d5b0ee31c418250db6f8be79de9bb7b44477"
+    },
+    {
+      "case": "celt/8000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "d700103bbb9153ff1f8936b1772d6061520447925ad32bd4eed982fbd8e06e38",
+      "output_sha256": "631d29d8060d03a56fb1e5c1d1e5a271866f0269da37e4a16bd1784db8c33727"
+    },
+    {
+      "case": "celt/8000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "fa90d2861290a6e75d0eb470ef1c8c1f7fe40ba03cb8d2e43ef45fa5d9dacdad",
+      "output_sha256": "86ede7674f2b693d0dc4f353d7025ba38d2013ae6b73f3d0ddd47d3da2737da9"
+    },
+    {
+      "case": "celt/8000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5aabed023fd72edf0d16b6c31e374745e1e1ca91d46db9d67c7d5869ea319e19",
+      "output_sha256": "b0f316e8d727d80a5791c6e3b19e2bd5b0b03618e9479deafc8365cf197f6903"
+    },
+    {
+      "case": "celt/8000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "5dfe7902ccb48a315c86f1bb9002d61bf145080ae2d783b3430d3af73591223a"
+    },
+    {
+      "case": "celt/8000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5ff7b152464f9b1a76957123ecd095dfa4dd2aba128124157b1218f615925785",
+      "output_sha256": "ea6b930c8960500030b8b0da2ee0a69132c99be0e7b097a4d8bc14be5460528c"
+    },
+    {
+      "case": "celt/8000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "02c5dfd92c3cb52ad134bf20df09cfa3cf9503e1e4c60650ff79826156a5ff9c",
+      "output_sha256": "9fd4911fb7f20b89e5ff1dbb38f7de33cdf59be5d8a831d99be7847be739b344"
+    },
+    {
+      "case": "celt/8000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "eaac8d1e6098f481ce11daebe342c876f01e42dbc439a436c46e29b2b9e34e16"
+    },
+    {
+      "case": "celt/12000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "387c35f1e2c5e1b31df47f75662b08f4088b2d47adc4cf0fe742a7e2feeb5dc2",
+      "output_sha256": "35d3ba3d35148849707870c04d6b3fb5d98cc72686a916c4712140944be25a21"
+    },
+    {
+      "case": "celt/12000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "aa53622ccf2916f357fb7e48dbe7d29c79c127bada4d01d0204cc6d940c66675",
+      "output_sha256": "1f1168f0d1f0a705a19a2f35ce928df6da4998be0b4bdfb03f23bd74457752b5"
+    },
+    {
+      "case": "celt/12000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "9588eceb1f31f726a6de6089340174bdeda79030819f6089be105c8e0455d825",
+      "output_sha256": "79f3fae776fea5bb5882d1a2c925f32bec9bb6c277044852e120972ce900a3c6"
+    },
+    {
+      "case": "celt/12000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "de6352e1fe071da8080e5ef717322d507ab8a16e380866a14de19f0913323594"
+    },
+    {
+      "case": "celt/12000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "00351cba466137c2531c1c605802191363c7ff8611910ef6b137830b97d6edff"
+    },
+    {
+      "case": "celt/12000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "e82cca1ea6908f165da9367d836197de3ee5e7c79160d5b2afb52dd2b7ddb61e",
+      "output_sha256": "283e25665c08729db5a39c195b814e1c7e25bcfaa173881d714aafce5ea70200"
+    },
+    {
+      "case": "celt/12000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "0de6e2e8c15297b3869c192e4c89e58983ef49933a8e412110d170cf41ece66b"
+    },
+    {
+      "case": "celt/12000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "11bc0eb9a136530b05bc7c5fc4e356d0cb7356d8707e3f76496462ac597aa8ad",
+      "output_sha256": "b0829274276ca910697c21b2acff84ab5b5d65540fe2b6044f2eb9139a164ec9"
+    },
+    {
+      "case": "celt/12000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "0ef9d9e92b1c00325b7dd0ad6931141db7ad07a577d84e06bb115ee89d63c1b3",
+      "output_sha256": "f781100050a92508b806d8413ee1188e72df05b04ae055571f86774358ef4e68"
+    },
+    {
+      "case": "celt/12000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "d56e4b97cb1b34ddf680bec994c936c782956a75f1eb900f04abbffb40ded03b",
+      "output_sha256": "cd05d48201058ffcde0031f67ba64e5380d52a3090b67a00c63c35f63e569fe0"
+    },
+    {
+      "case": "celt/12000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5f9517ab7ecec38dbce2a60ee82f79751735ec4350afd91a9cefdbdf377d32e0",
+      "output_sha256": "e81e5a815e53fa8d1a615c2321630b1be5242718ebc51904d37f7873a94b6df9"
+    },
+    {
+      "case": "celt/12000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "8b155092234af572109b0f7ef55900892801e7ef18ec06aea3f8433a9c629808",
+      "output_sha256": "6f7d0c5c3bc465428bf62ab39bea216019c6372b8bb2f6514e41f66fff9589ff"
+    },
+    {
+      "case": "celt/12000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "73217e377b59d1c0835584f40ee5d3e1776e9e7edf4c5dc4bcaf7d891ad3aace"
+    },
+    {
+      "case": "celt/12000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "5dd50c6dfdf22b500f6e82cf1514fd84b47000488e0a728a8807b538afc1bde7"
+    },
+    {
+      "case": "celt/12000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "ba5d5f60a3ab5fd177416ede3491a7f1bafa7d84146b504b1437086d37f9de48",
+      "output_sha256": "d8595ce561ba096a4d731f1e0e823d0f2dd1bf1f68334ffab89d0723c54dc23f"
+    },
+    {
+      "case": "celt/12000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "10f7560f9c521f2a7e448b04ba27409c109191b4aa6432b748fab0562e0f18ae"
+    },
+    {
+      "case": "celt/12000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "c0ea914ada69507f3252e1fa08f31906f1dd0ec9fbb6c9c9535093c6b1562a61",
+      "output_sha256": "f32743717e9d323c9e90ea824e3a28654fe2a72e755eac374b79ed8e7f7ef223"
+    },
+    {
+      "case": "celt/12000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "b41f632c4a1b6a9e3e971cbfe242a511d7ad75a25182dfd952773c04e9ca8a8d",
+      "output_sha256": "47cf025ae1e2a5b895b5b9f114b6cb687fe70d54a4667b11ec0f6f015c450c21"
+    },
+    {
+      "case": "celt/16000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "a3e4e1f0591026743899a892feb94af4878ab6950ce91992671f495f2d043d54",
+      "output_sha256": "cb87e1758f2a92b11217ef15407d0f63f5a0f1c014e9bd98450d9aa77fa5d39d"
+    },
+    {
+      "case": "celt/16000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "12b1e7259f0058084364ee63cc70d5fad7701b3dc368347f1775aeb333da5025",
+      "output_sha256": "e00ea01d79c8f9bf3e4b1b6e8ff4df7b4bee67502de65a8e521f9bcac72412c8"
+    },
+    {
+      "case": "celt/16000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "06a874d1657506d19cbd162e10f8cbb045e2b581803e681db6d9c7877147ea3e",
+      "output_sha256": "cfb6b5838c87f80b61058d1698e26b60ba9b2da1727dd2c3fd2d8bdb38c1e7e0"
+    },
+    {
+      "case": "celt/16000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "1da8490b3d4c510609ae0a475b6682e5e756bbf2ac5e3d7c28101636f4be4151",
+      "output_sha256": "d578d183fda75562c40cdf15abce1b136c14bf773c2c3e53d981affd94b695de"
+    },
+    {
+      "case": "celt/16000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "79b308ef33fb6e45b9b71336f54bcde86ae817e3e554e5c60c016775a17c7a4d",
+      "output_sha256": "327a36be5fa87897fdb52b445ece9c6c026d4e8adda4b3726c0d797f5eb105c9"
+    },
+    {
+      "case": "celt/16000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "3aab67c27412775749572d713eefbfa2ac68bb12b628e2334ac6f1a08b46af89"
+    },
+    {
+      "case": "celt/16000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5d8cd1aee52357c0df9a31d3d13ea4e3bbedf929a13558a95a5b96f16ac12376",
+      "output_sha256": "894eee9f77e503457017800279815beeeb88da7566d35a4073d6142eb2883c2f"
+    },
+    {
+      "case": "celt/16000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "7d1939c1fc67cf7c1ad3f9f843be3adb35b0a2ce375a96230de2aab7ab432905",
+      "output_sha256": "f7cd53a9cb5f0fa3441b902b589ab0f91da8f9de9c7a171ee09e3bdd5bd6453b"
+    },
+    {
+      "case": "celt/16000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "2b7e0bfcb2fc239ce434d67d4d16e6b519f2103da06578213cabed644e995151"
+    },
+    {
+      "case": "celt/16000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "a28116f8d46fb26fe465f9aede6101544034da7ddd7f4c8fb1d6d8de3760e3cd",
+      "output_sha256": "3a4b228bdb90f23ecded3b2e2118e88b0a082a7153b52e2f20633de99ae0c6db"
+    },
+    {
+      "case": "celt/16000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "d700103bbb9153ff1f8936b1772d6061520447925ad32bd4eed982fbd8e06e38",
+      "output_sha256": "fd277328c0da1d7040b26f2d8e1b8b2dfd6d35ff5799ee9f610ddd6f0787fd5c"
+    },
+    {
+      "case": "celt/16000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "fa90d2861290a6e75d0eb470ef1c8c1f7fe40ba03cb8d2e43ef45fa5d9dacdad",
+      "output_sha256": "2432ab78f89960abffcd5c0a503a1210efb01196cfa14bab010174c40f599d13"
+    },
+    {
+      "case": "celt/16000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5aabed023fd72edf0d16b6c31e374745e1e1ca91d46db9d67c7d5869ea319e19",
+      "output_sha256": "8f5b3a0365aa3c6187fa461293b13f05082056caa0b59dd8620f38e7476fa85e"
+    },
+    {
+      "case": "celt/16000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5ff7b152464f9b1a76957123ecd095dfa4dd2aba128124157b1218f615925785",
+      "output_sha256": "a48fdc37825e088f9ca500ceb0931f0c0f0cf2bbfd4e6b2de736f3ebbf3421c2"
+    },
+    {
+      "case": "celt/16000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "54b961bc2bea5907489b3060d23230292358f42de13b7d8f1db59185be82aca3"
+    },
+    {
+      "case": "celt/16000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e4930be844d557dd456851361a58ea76e1271a5d97765c1546a1d4a52034f31b",
+      "output_sha256": "abde04aec5625716c3fa84ef0c87859b001be5de97eebd9c924c8c8cb47e85a4"
+    },
+    {
+      "case": "celt/16000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "43c1c51565286979f31f39bc750f3b7fc66feb1d99ce1347926bfc68ab709ece",
+      "output_sha256": "403e7db6904e931fdcd1fdbe2c6acfcd942f97ccca841f2b3a1d24f0a879bd84"
+    },
+    {
+      "case": "celt/16000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "45c1db6e80a86564ae61a794a8e58780296f1c0503dca5641100729d9b7a98d2"
+    },
+    {
+      "case": "celt/24000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "aa53622ccf2916f357fb7e48dbe7d29c79c127bada4d01d0204cc6d940c66675",
+      "output_sha256": "7c94e54d502b9d82ed1532463fe42b5ad42c53a17743d6460bbe7e23059ca72f"
+    },
+    {
+      "case": "celt/24000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "9588eceb1f31f726a6de6089340174bdeda79030819f6089be105c8e0455d825",
+      "output_sha256": "689043c2e56a1639ddc2fd2d48a708d4113471c35f0f70ba827c0096eb17860c"
+    },
+    {
+      "case": "celt/24000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "d0483f94930698669cecffd81f720965b891d300be0115a592ccb4e5a1ee6bd4"
+    },
+    {
+      "case": "celt/24000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "c2e3517730ea74326e8afdc6b1b13de12593db91a00ee6eb5ee8db6a775ccd80"
+    },
+    {
+      "case": "celt/24000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "20ec4b9abfca92469fa66694167ddfa4e5902126cec5ee4b21714dcb94fe8e62"
+    },
+    {
+      "case": "celt/24000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "0ef9d9e92b1c00325b7dd0ad6931141db7ad07a577d84e06bb115ee89d63c1b3",
+      "output_sha256": "a4943a8703960f3e3e3d1b91fa8b09d487b1263433fff5af7ec717776ef6577d"
+    },
+    {
+      "case": "celt/24000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "95d87eeb2fae4f6738b58e4402f43a6ffc82764ce8b300a2516adbfb4c7df45f"
+    },
+    {
+      "case": "celt/24000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "7f61ff5cca0f63fa279180bef04d6ce9ee8764697c622eb90762a2e9f97c4a2d",
+      "output_sha256": "48a4bcb6b0dfb92bef6ec1fd27139b6d55c3b0b09a3f7504d07ac7937428fb62"
+    },
+    {
+      "case": "celt/24000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "328e8d1fe935a09b774aebdbaa8ce530776e5347cf9674571030997c98b74010",
+      "output_sha256": "9a028a75180f555a3a1c748ae7d3173e4cf89fd7de733919f8edfabdc8bc4edd"
+    },
+    {
+      "case": "celt/24000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5f9517ab7ecec38dbce2a60ee82f79751735ec4350afd91a9cefdbdf377d32e0",
+      "output_sha256": "55ad9c88d08de7c7ec64309774e4e79da62897389917c43b1f27eb4d54d824da"
+    },
+    {
+      "case": "celt/24000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "8b155092234af572109b0f7ef55900892801e7ef18ec06aea3f8433a9c629808",
+      "output_sha256": "c9e2f18a035a8f7ec38e1f29e7b7101f4e1b7183bed166742635d2c860b4445d"
+    },
+    {
+      "case": "celt/24000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "f86821fe5f79076d562bafde3e675ac0ae6a0f679f7afba4dd6dea6c4638ee50"
+    },
+    {
+      "case": "celt/24000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "e0b6943196414c4a91c046ff059e8ffab9e638661317f77a332272e295d9281b"
+    },
+    {
+      "case": "celt/24000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "d7a2bebf23e077d6910589ae9c8045620de5001e616d8a932015c01b14b937ed"
+    },
+    {
+      "case": "celt/24000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "b41f632c4a1b6a9e3e971cbfe242a511d7ad75a25182dfd952773c04e9ca8a8d",
+      "output_sha256": "60b2aadbefdf2f3ff74af8b9b0bec8f37190feda6b4fb7e6e776b1bad06e7ade"
+    },
+    {
+      "case": "celt/24000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "98fcbf684733b0e19fd1bfda07787e7135ea20b7d663df55b8fb99961311ca14"
+    },
+    {
+      "case": "celt/24000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "2ebf09a0d5734378d61a3725327ce76fd88e0d81613164d723792652646cdc85",
+      "output_sha256": "2ffba8ae183d703728a0e44568d12160e485acbe66688260e4275fa92f8e01cd"
+    },
+    {
+      "case": "celt/24000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "15ef257c857f0346e098ac3a5542a4f1865f67537d455c3bbbe69dd195d4f780",
+      "output_sha256": "dd27f9742efe448036801b7c50785b432cb844c8d2f707130929ef167a2149a2"
+    },
+    {
+      "case": "celt/48000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "9588eceb1f31f726a6de6089340174bdeda79030819f6089be105c8e0455d825",
+      "output_sha256": "e760ffa36fbb92402a26234632ac9f9c5f11a35f63e1624935ec7ab91383adea"
+    },
+    {
+      "case": "celt/48000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "e4b29e65c877cea83023db36d1a89a8e3ba80295fe8b7cede529fcc527429d29"
+    },
+    {
+      "case": "celt/48000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "f421f6d3b53542725292dc7c370ee533548bb704408caf2bc082241bd724946f"
+    },
+    {
+      "case": "celt/48000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "768d27b9d82214025c91a041af0e38ced7561682c35bf08199b601910a8df38b"
+    },
+    {
+      "case": "celt/48000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "3388a8001fbf378217f03a2abeaa16d30f15a397709e790c403413b020fd2f7c"
+    },
+    {
+      "case": "celt/48000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "328e8d1fe935a09b774aebdbaa8ce530776e5347cf9674571030997c98b74010",
+      "output_sha256": "777a4fc689196f919df1b293369895c077dd8a3f58abcc1fb812c98fc4b1cc29"
+    },
+    {
+      "case": "celt/48000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "43f8188085d9316d86325e4a2d44cb0ae8c59050a546843bec3971ff9a2bb604",
+      "output_sha256": "76ccfedc6868a210b95160a4fedd5932d31eb9572ff6834f85b947eadaaee7da"
+    },
+    {
+      "case": "celt/48000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "880ca04c441b8720438a3b4597625ddf398f46cf5eedd368a6c8d714e33f2835",
+      "output_sha256": "0a4e87c6da069e326975b5c12870cb05feebb8859bb0eaa667e4cdcc4bbcf35c"
+    },
+    {
+      "case": "celt/48000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "564b520b2848387321d51554269c453917f7dbb784aae0df1df6ef4572662be9",
+      "output_sha256": "0530d9861629f234e4a9e476f1420e7c84ed66e40bad52105dc87afd0bed527f"
+    },
+    {
+      "case": "celt/48000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "8b155092234af572109b0f7ef55900892801e7ef18ec06aea3f8433a9c629808",
+      "output_sha256": "41621583d5b071034f4e2f9c6b260f7616cc6f5d6da0fa06987d298a8dfa35ea"
+    },
+    {
+      "case": "celt/48000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "1a02b270c240d480bfc8fa1c4d2c4b2f370011bd0e264bf71bb6964114bf937a"
+    },
+    {
+      "case": "celt/48000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "4b07550b458beb205b9093511afb8ed5d3108386f9d0680d1c4f0daaef6e8ea2"
+    },
+    {
+      "case": "celt/48000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "d84e2821dea6f849b3c0df678a4b904319e3200cc9c8afcba988b6a0de5414de"
+    },
+    {
+      "case": "celt/48000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "886e6809ba62ced55b92713e3171d66608e0de605830e6dd11c7d4bb436f17a5"
+    },
+    {
+      "case": "celt/48000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "15ef257c857f0346e098ac3a5542a4f1865f67537d455c3bbbe69dd195d4f780",
+      "output_sha256": "20bfd1a91eea2536876d5d2f6c5191641896c1494a642079771e1748e33cf15f"
+    },
+    {
+      "case": "celt/48000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "31bb7b55a95dd16c7618e404997cb332cd07064c610d3cdac35d96f5266403cf",
+      "output_sha256": "b7db63dcf994f4b18df5009f7ce3f57be4f5ae9cabdb536317a89956a5b1fc3a"
+    },
+    {
+      "case": "celt/48000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "7c0c422381044d624d2310b640a13988463b8a298abacf7694184ffddd09a379",
+      "output_sha256": "37dc75bd9faf9e1ee7cb78a6a52f22dcf22b506bf35ebeb8935136a7baf44a26"
+    },
+    {
+      "case": "celt/48000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5b41c3e0fa4615449e71129f9d3620b9ca50e1f14ee8930323650ac04205c69a",
+      "output_sha256": "3e71e817e6f2269056af9036deaf663084989a37ac3e603c87ec0c544ee9cb7d"
+    },
+    {
+      "case": "auto/8000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "a21003dfdb3f71fdf8df255bbbadf28c8599ac0f2ed1a76889f088827f6096ca",
+      "output_sha256": "167127777094d376209bb389e0f43d3a751bc0522d1dbd178c92d348d6dfc8f4"
+    },
+    {
+      "case": "auto/8000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "a3e4e1f0591026743899a892feb94af4878ab6950ce91992671f495f2d043d54",
+      "output_sha256": "39f93c8d9f092f026253590c1f188a09044b02c7c48b568385332b9ea71bcefc"
+    },
+    {
+      "case": "auto/8000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "12b1e7259f0058084364ee63cc70d5fad7701b3dc368347f1775aeb333da5025",
+      "output_sha256": "a27d3820f7f6d72eb9524fd29b7caa8b97cca97ea9a236743541566a5b2bb951"
+    },
+    {
+      "case": "auto/8000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "06a874d1657506d19cbd162e10f8cbb045e2b581803e681db6d9c7877147ea3e",
+      "output_sha256": "6251bd00173aa82743e57f1326cd9e482ff52cf5f6937eef2961cb9e54d44e4c"
+    },
+    {
+      "case": "auto/8000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "1da8490b3d4c510609ae0a475b6682e5e756bbf2ac5e3d7c28101636f4be4151",
+      "output_sha256": "f36197e767c499c52bdfa8501b06e117199491f1e527b60e2b17557b8214d612"
+    },
+    {
+      "case": "auto/8000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "c269f89a578c393c9337ad119827742a23d857a753086e7dedaa4098fb345f83"
+    },
+    {
+      "case": "auto/8000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "79b308ef33fb6e45b9b71336f54bcde86ae817e3e554e5c60c016775a17c7a4d",
+      "output_sha256": "e09f6f9aaa1fe94661dfab23a3887249d12f2b0bdd952aba9246c97cbf7f0fa3"
+    },
+    {
+      "case": "auto/8000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "ad63c41ad93ad28bbed352baff2fca61ece2e460e4d5d39a82c91aa5de8ec13f",
+      "output_sha256": "1e9c86322b601010290da583fa5b727894bf0fec0d22cde474aab537225c3481"
+    },
+    {
+      "case": "auto/8000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "a64f29e007dc71fc5d17b7ed035744c3594039a0ba2704ccbd247bbc0f590789"
+    },
+    {
+      "case": "auto/8000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "3d67d6c36ed5369716899b1aa223e9bd632b82b15a9a1fe85ee2aa1e7a2761c7",
+      "output_sha256": "38a23d2f5a0043e4fdd056c1077f114fb6697c3f2ca04d014cfdeaf65948a433"
+    },
+    {
+      "case": "auto/8000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "a28116f8d46fb26fe465f9aede6101544034da7ddd7f4c8fb1d6d8de3760e3cd",
+      "output_sha256": "66677f37bee79d0f1716d27ce8d2d5b0ee31c418250db6f8be79de9bb7b44477"
+    },
+    {
+      "case": "auto/8000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "d700103bbb9153ff1f8936b1772d6061520447925ad32bd4eed982fbd8e06e38",
+      "output_sha256": "631d29d8060d03a56fb1e5c1d1e5a271866f0269da37e4a16bd1784db8c33727"
+    },
+    {
+      "case": "auto/8000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "fa90d2861290a6e75d0eb470ef1c8c1f7fe40ba03cb8d2e43ef45fa5d9dacdad",
+      "output_sha256": "86ede7674f2b693d0dc4f353d7025ba38d2013ae6b73f3d0ddd47d3da2737da9"
+    },
+    {
+      "case": "auto/8000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5aabed023fd72edf0d16b6c31e374745e1e1ca91d46db9d67c7d5869ea319e19",
+      "output_sha256": "b0f316e8d727d80a5791c6e3b19e2bd5b0b03618e9479deafc8365cf197f6903"
+    },
+    {
+      "case": "auto/8000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "5dfe7902ccb48a315c86f1bb9002d61bf145080ae2d783b3430d3af73591223a"
+    },
+    {
+      "case": "auto/8000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5ff7b152464f9b1a76957123ecd095dfa4dd2aba128124157b1218f615925785",
+      "output_sha256": "ea6b930c8960500030b8b0da2ee0a69132c99be0e7b097a4d8bc14be5460528c"
+    },
+    {
+      "case": "auto/8000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "02c5dfd92c3cb52ad134bf20df09cfa3cf9503e1e4c60650ff79826156a5ff9c",
+      "output_sha256": "9fd4911fb7f20b89e5ff1dbb38f7de33cdf59be5d8a831d99be7847be739b344"
+    },
+    {
+      "case": "auto/8000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "eaac8d1e6098f481ce11daebe342c876f01e42dbc439a436c46e29b2b9e34e16"
+    },
+    {
+      "case": "auto/12000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "387c35f1e2c5e1b31df47f75662b08f4088b2d47adc4cf0fe742a7e2feeb5dc2",
+      "output_sha256": "35d3ba3d35148849707870c04d6b3fb5d98cc72686a916c4712140944be25a21"
+    },
+    {
+      "case": "auto/12000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "aa53622ccf2916f357fb7e48dbe7d29c79c127bada4d01d0204cc6d940c66675",
+      "output_sha256": "1f1168f0d1f0a705a19a2f35ce928df6da4998be0b4bdfb03f23bd74457752b5"
+    },
+    {
+      "case": "auto/12000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "9588eceb1f31f726a6de6089340174bdeda79030819f6089be105c8e0455d825",
+      "output_sha256": "8ffc6c198447c590ea490b5aa30775ac944233f7292f6bd9a9d0f2ffa618da0d"
+    },
+    {
+      "case": "auto/12000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "de6352e1fe071da8080e5ef717322d507ab8a16e380866a14de19f0913323594"
+    },
+    {
+      "case": "auto/12000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "00351cba466137c2531c1c605802191363c7ff8611910ef6b137830b97d6edff"
+    },
+    {
+      "case": "auto/12000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "e82cca1ea6908f165da9367d836197de3ee5e7c79160d5b2afb52dd2b7ddb61e",
+      "output_sha256": "283e25665c08729db5a39c195b814e1c7e25bcfaa173881d714aafce5ea70200"
+    },
+    {
+      "case": "auto/12000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "0de6e2e8c15297b3869c192e4c89e58983ef49933a8e412110d170cf41ece66b"
+    },
+    {
+      "case": "auto/12000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "11bc0eb9a136530b05bc7c5fc4e356d0cb7356d8707e3f76496462ac597aa8ad",
+      "output_sha256": "b0829274276ca910697c21b2acff84ab5b5d65540fe2b6044f2eb9139a164ec9"
+    },
+    {
+      "case": "auto/12000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "0ef9d9e92b1c00325b7dd0ad6931141db7ad07a577d84e06bb115ee89d63c1b3",
+      "output_sha256": "f781100050a92508b806d8413ee1188e72df05b04ae055571f86774358ef4e68"
+    },
+    {
+      "case": "auto/12000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "d56e4b97cb1b34ddf680bec994c936c782956a75f1eb900f04abbffb40ded03b",
+      "output_sha256": "cd05d48201058ffcde0031f67ba64e5380d52a3090b67a00c63c35f63e569fe0"
+    },
+    {
+      "case": "auto/12000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5f9517ab7ecec38dbce2a60ee82f79751735ec4350afd91a9cefdbdf377d32e0",
+      "output_sha256": "e81e5a815e53fa8d1a615c2321630b1be5242718ebc51904d37f7873a94b6df9"
+    },
+    {
+      "case": "auto/12000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "8b155092234af572109b0f7ef55900892801e7ef18ec06aea3f8433a9c629808",
+      "output_sha256": "6f7d0c5c3bc465428bf62ab39bea216019c6372b8bb2f6514e41f66fff9589ff"
+    },
+    {
+      "case": "auto/12000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "73217e377b59d1c0835584f40ee5d3e1776e9e7edf4c5dc4bcaf7d891ad3aace"
+    },
+    {
+      "case": "auto/12000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "5dd50c6dfdf22b500f6e82cf1514fd84b47000488e0a728a8807b538afc1bde7"
+    },
+    {
+      "case": "auto/12000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "ba5d5f60a3ab5fd177416ede3491a7f1bafa7d84146b504b1437086d37f9de48",
+      "output_sha256": "d8595ce561ba096a4d731f1e0e823d0f2dd1bf1f68334ffab89d0723c54dc23f"
+    },
+    {
+      "case": "auto/12000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "10f7560f9c521f2a7e448b04ba27409c109191b4aa6432b748fab0562e0f18ae"
+    },
+    {
+      "case": "auto/12000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "c0ea914ada69507f3252e1fa08f31906f1dd0ec9fbb6c9c9535093c6b1562a61",
+      "output_sha256": "f32743717e9d323c9e90ea824e3a28654fe2a72e755eac374b79ed8e7f7ef223"
+    },
+    {
+      "case": "auto/12000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "b41f632c4a1b6a9e3e971cbfe242a511d7ad75a25182dfd952773c04e9ca8a8d",
+      "output_sha256": "47cf025ae1e2a5b895b5b9f114b6cb687fe70d54a4667b11ec0f6f015c450c21"
+    },
+    {
+      "case": "auto/16000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "a3e4e1f0591026743899a892feb94af4878ab6950ce91992671f495f2d043d54",
+      "output_sha256": "cb87e1758f2a92b11217ef15407d0f63f5a0f1c014e9bd98450d9aa77fa5d39d"
+    },
+    {
+      "case": "auto/16000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "12b1e7259f0058084364ee63cc70d5fad7701b3dc368347f1775aeb333da5025",
+      "output_sha256": "e00ea01d79c8f9bf3e4b1b6e8ff4df7b4bee67502de65a8e521f9bcac72412c8"
+    },
+    {
+      "case": "auto/16000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "06a874d1657506d19cbd162e10f8cbb045e2b581803e681db6d9c7877147ea3e",
+      "output_sha256": "e175e57ff02a4abda50e69ab58d4e4171a2c266e836bd87a9f70930d340131d3"
+    },
+    {
+      "case": "auto/16000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "1da8490b3d4c510609ae0a475b6682e5e756bbf2ac5e3d7c28101636f4be4151",
+      "output_sha256": "1c92cba8b7fb501c7053e6369999b83ec08c471176f27cf7a0b249c94ffb3009"
+    },
+    {
+      "case": "auto/16000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "79b308ef33fb6e45b9b71336f54bcde86ae817e3e554e5c60c016775a17c7a4d",
+      "output_sha256": "54369618edba1baf8cdf4208c629b5afade11dcedcc61d3b7914ca110479bb8e"
+    },
+    {
+      "case": "auto/16000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "469b3c8cd558008e44b9fb796a8193ed7e65263e90d4935815f3cc5fb1e3e81e"
+    },
+    {
+      "case": "auto/16000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "5d8cd1aee52357c0df9a31d3d13ea4e3bbedf929a13558a95a5b96f16ac12376",
+      "output_sha256": "64d2410feeed614300b1b64807eebcd711a40a686261d7b0808f388629a5f932"
+    },
+    {
+      "case": "auto/16000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "7d1939c1fc67cf7c1ad3f9f843be3adb35b0a2ce375a96230de2aab7ab432905",
+      "output_sha256": "d765225fe9646416e451e16fc37dd1d6a154f6a89419b0f052a82376385d59eb"
+    },
+    {
+      "case": "auto/16000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "1b4bdf93f566f2c6006f1e20dd3cbd91bd93b71ed443f4d47c88b4f48f1490a5"
+    },
+    {
+      "case": "auto/16000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "a28116f8d46fb26fe465f9aede6101544034da7ddd7f4c8fb1d6d8de3760e3cd",
+      "output_sha256": "3a4b228bdb90f23ecded3b2e2118e88b0a082a7153b52e2f20633de99ae0c6db"
+    },
+    {
+      "case": "auto/16000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "d700103bbb9153ff1f8936b1772d6061520447925ad32bd4eed982fbd8e06e38",
+      "output_sha256": "fd277328c0da1d7040b26f2d8e1b8b2dfd6d35ff5799ee9f610ddd6f0787fd5c"
+    },
+    {
+      "case": "auto/16000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "fa90d2861290a6e75d0eb470ef1c8c1f7fe40ba03cb8d2e43ef45fa5d9dacdad",
+      "output_sha256": "bd7a3d129a0d2681b62c368c0a7f90d9b5471126758bc8d6b165c0ceb4c16db4"
+    },
+    {
+      "case": "auto/16000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5aabed023fd72edf0d16b6c31e374745e1e1ca91d46db9d67c7d5869ea319e19",
+      "output_sha256": "8f5b3a0365aa3c6187fa461293b13f05082056caa0b59dd8620f38e7476fa85e"
+    },
+    {
+      "case": "auto/16000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5ff7b152464f9b1a76957123ecd095dfa4dd2aba128124157b1218f615925785",
+      "output_sha256": "a48fdc37825e088f9ca500ceb0931f0c0f0cf2bbfd4e6b2de736f3ebbf3421c2"
+    },
+    {
+      "case": "auto/16000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "54b961bc2bea5907489b3060d23230292358f42de13b7d8f1db59185be82aca3"
+    },
+    {
+      "case": "auto/16000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e4930be844d557dd456851361a58ea76e1271a5d97765c1546a1d4a52034f31b",
+      "output_sha256": "abde04aec5625716c3fa84ef0c87859b001be5de97eebd9c924c8c8cb47e85a4"
+    },
+    {
+      "case": "auto/16000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "43c1c51565286979f31f39bc750f3b7fc66feb1d99ce1347926bfc68ab709ece",
+      "output_sha256": "403e7db6904e931fdcd1fdbe2c6acfcd942f97ccca841f2b3a1d24f0a879bd84"
+    },
+    {
+      "case": "auto/16000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "45c1db6e80a86564ae61a794a8e58780296f1c0503dca5641100729d9b7a98d2"
+    },
+    {
+      "case": "auto/24000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "aa53622ccf2916f357fb7e48dbe7d29c79c127bada4d01d0204cc6d940c66675",
+      "output_sha256": "7c94e54d502b9d82ed1532463fe42b5ad42c53a17743d6460bbe7e23059ca72f"
+    },
+    {
+      "case": "auto/24000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "9588eceb1f31f726a6de6089340174bdeda79030819f6089be105c8e0455d825",
+      "output_sha256": "689043c2e56a1639ddc2fd2d48a708d4113471c35f0f70ba827c0096eb17860c"
+    },
+    {
+      "case": "auto/24000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "31f68b9a96ca6c4a664876160b4b22dbe803ca40d46e2ad098c3d379ebab8f41"
+    },
+    {
+      "case": "auto/24000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "eb8bbc5b1c9426bedd5ffaf840ec4d98ce44b8b9fb4c5351c13167054750bd42"
+    },
+    {
+      "case": "auto/24000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "024dab7120e18ac4082d4dce17ab26bb75aae2b01bdd6dc4405284206b6beb7e"
+    },
+    {
+      "case": "auto/24000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "0ef9d9e92b1c00325b7dd0ad6931141db7ad07a577d84e06bb115ee89d63c1b3",
+      "output_sha256": "1e4fb753143a28e24d3b45580a3e878de937d0346a4f48b236ff1b6519f51b92"
+    },
+    {
+      "case": "auto/24000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "a86f3db60b54673c8ac50495222430cecf2ccf34211c7406a49bfefe4b69c86c"
+    },
+    {
+      "case": "auto/24000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "7f61ff5cca0f63fa279180bef04d6ce9ee8764697c622eb90762a2e9f97c4a2d",
+      "output_sha256": "2ddb3c73ff04b05f3581bea23090d998382bf0b69ffe92da7463066536506e6d"
+    },
+    {
+      "case": "auto/24000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "328e8d1fe935a09b774aebdbaa8ce530776e5347cf9674571030997c98b74010",
+      "output_sha256": "9a028a75180f555a3a1c748ae7d3173e4cf89fd7de733919f8edfabdc8bc4edd"
+    },
+    {
+      "case": "auto/24000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5f9517ab7ecec38dbce2a60ee82f79751735ec4350afd91a9cefdbdf377d32e0",
+      "output_sha256": "55ad9c88d08de7c7ec64309774e4e79da62897389917c43b1f27eb4d54d824da"
+    },
+    {
+      "case": "auto/24000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "8b155092234af572109b0f7ef55900892801e7ef18ec06aea3f8433a9c629808",
+      "output_sha256": "c9e2f18a035a8f7ec38e1f29e7b7101f4e1b7183bed166742635d2c860b4445d"
+    },
+    {
+      "case": "auto/24000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "a82c94b5b615f43e4d19ee11048886c0a5576ce17fbdeff76ce50d02a1ad2b56"
+    },
+    {
+      "case": "auto/24000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "e0b6943196414c4a91c046ff059e8ffab9e638661317f77a332272e295d9281b"
+    },
+    {
+      "case": "auto/24000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "d7a2bebf23e077d6910589ae9c8045620de5001e616d8a932015c01b14b937ed"
+    },
+    {
+      "case": "auto/24000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "b41f632c4a1b6a9e3e971cbfe242a511d7ad75a25182dfd952773c04e9ca8a8d",
+      "output_sha256": "60b2aadbefdf2f3ff74af8b9b0bec8f37190feda6b4fb7e6e776b1bad06e7ade"
+    },
+    {
+      "case": "auto/24000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "98fcbf684733b0e19fd1bfda07787e7135ea20b7d663df55b8fb99961311ca14"
+    },
+    {
+      "case": "auto/24000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "2ebf09a0d5734378d61a3725327ce76fd88e0d81613164d723792652646cdc85",
+      "output_sha256": "2ffba8ae183d703728a0e44568d12160e485acbe66688260e4275fa92f8e01cd"
+    },
+    {
+      "case": "auto/24000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "15ef257c857f0346e098ac3a5542a4f1865f67537d455c3bbbe69dd195d4f780",
+      "output_sha256": "dd27f9742efe448036801b7c50785b432cb844c8d2f707130929ef167a2149a2"
+    },
+    {
+      "case": "auto/48000/1/2500us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "9588eceb1f31f726a6de6089340174bdeda79030819f6089be105c8e0455d825",
+      "output_sha256": "e760ffa36fbb92402a26234632ac9f9c5f11a35f63e1624935ec7ab91383adea"
+    },
+    {
+      "case": "auto/48000/1/5000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "493f3b0604c8f5488d08bb50848981101457cdaa7e76d29a068bd574b222fd1f",
+      "output_sha256": "e4b29e65c877cea83023db36d1a89a8e3ba80295fe8b7cede529fcc527429d29"
+    },
+    {
+      "case": "auto/48000/1/10000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "c4e84a1d42c5ad236191dd13db875e7f9b702bf1165b35035ea78872bc0dc357",
+      "output_sha256": "a1a4ae69d928af65afb742681abdd2e54236fe6eab6901a8cf07c87bc601d798"
+    },
+    {
+      "case": "auto/48000/1/20000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "fab1c63892daeeb561eed94f99933df0d35bfcb953f17c57dddfe4389fa56b68",
+      "output_sha256": "0e505bfaa84f3ab08cf35baccad89583b196ab6a866829ab42a75f384a715140"
+    },
+    {
+      "case": "auto/48000/1/40000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46bf3bf9603ae3e83f3f247a91e33fe39019bee748613a4782b2f4b489b991ed",
+      "output_sha256": "5e250ccdc8316e11a31defa8f0e53b2f2576ba1aed17b84df419741283e3cadc"
+    },
+    {
+      "case": "auto/48000/1/60000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "328e8d1fe935a09b774aebdbaa8ce530776e5347cf9674571030997c98b74010",
+      "output_sha256": "777a4fc689196f919df1b293369895c077dd8a3f58abcc1fb812c98fc4b1cc29"
+    },
+    {
+      "case": "auto/48000/1/80000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "43f8188085d9316d86325e4a2d44cb0ae8c59050a546843bec3971ff9a2bb604",
+      "output_sha256": "76ccfedc6868a210b95160a4fedd5932d31eb9572ff6834f85b947eadaaee7da"
+    },
+    {
+      "case": "auto/48000/1/100000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "880ca04c441b8720438a3b4597625ddf398f46cf5eedd368a6c8d714e33f2835",
+      "output_sha256": "0a4e87c6da069e326975b5c12870cb05feebb8859bb0eaa667e4cdcc4bbcf35c"
+    },
+    {
+      "case": "auto/48000/1/120000us/mixed",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "564b520b2848387321d51554269c453917f7dbb784aae0df1df6ef4572662be9",
+      "output_sha256": "0530d9861629f234e4a9e476f1420e7c84ed66e40bad52105dc87afd0bed527f"
+    },
+    {
+      "case": "auto/48000/2/2500us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "8b155092234af572109b0f7ef55900892801e7ef18ec06aea3f8433a9c629808",
+      "output_sha256": "41621583d5b071034f4e2f9c6b260f7616cc6f5d6da0fa06987d298a8dfa35ea"
+    },
+    {
+      "case": "auto/48000/2/5000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "68ddf5f591481e5c05daa7646b852c1d5c0cafdc92a1bbb95c7801a99932ccb8",
+      "output_sha256": "1a02b270c240d480bfc8fa1c4d2c4b2f370011bd0e264bf71bb6964114bf937a"
+    },
+    {
+      "case": "auto/48000/2/10000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5a4333bc328ce410b7321ab93217ef26f11e2344daae23280c96b81c1a2e918d",
+      "output_sha256": "3ed3573876a7b421f4a3668af2232ed06cd68bc3531020f82836d2c79c65d660"
+    },
+    {
+      "case": "auto/48000/2/20000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "36bbc250eacfbef53051a2a79b90512dbce3ce341af881d4f1b3fb93a5776ba5",
+      "output_sha256": "d84e2821dea6f849b3c0df678a4b904319e3200cc9c8afcba988b6a0de5414de"
+    },
+    {
+      "case": "auto/48000/2/40000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "e02990b55e50d9e598731ac42f94b85ccc191018ad6b1b192a4ea232f45e3300",
+      "output_sha256": "886e6809ba62ced55b92713e3171d66608e0de605830e6dd11c7d4bb436f17a5"
+    },
+    {
+      "case": "auto/48000/2/60000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "15ef257c857f0346e098ac3a5542a4f1865f67537d455c3bbbe69dd195d4f780",
+      "output_sha256": "20bfd1a91eea2536876d5d2f6c5191641896c1494a642079771e1748e33cf15f"
+    },
+    {
+      "case": "auto/48000/2/80000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "31bb7b55a95dd16c7618e404997cb332cd07064c610d3cdac35d96f5266403cf",
+      "output_sha256": "b7db63dcf994f4b18df5009f7ce3f57be4f5ae9cabdb536317a89956a5b1fc3a"
+    },
+    {
+      "case": "auto/48000/2/100000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "7c0c422381044d624d2310b640a13988463b8a298abacf7694184ffddd09a379",
+      "output_sha256": "37dc75bd9faf9e1ee7cb78a6a52f22dcf22b506bf35ebeb8935136a7baf44a26"
+    },
+    {
+      "case": "auto/48000/2/120000us/mixed",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "5b41c3e0fa4615449e71129f9d3620b9ca50e1f14ee8930323650ac04205c69a",
+      "output_sha256": "3e71e817e6f2269056af9036deaf663084989a37ac3e603c87ec0c544ee9cb7d"
+    },
+    {
+      "case": "silk/16000/1/20000us/silence",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "f6e28ad1753237d42be72be187a88f09a269097eeda24bcf12908db6bd361246",
+      "output_sha256": "96fc4b4da86154e9fffe594ae97e23db78db117ec165e0da48f7bcdfd7ca97ba"
+    },
+    {
+      "case": "silk/16000/1/20000us/impulse",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "249418da59af0b95b2b5bf50684a2aca5fbc037db7f5e6cd012fb87964d1b594",
+      "output_sha256": "041e43b77eb7e277da65e81139d39ef3da9042f07724aa24fc80c9e719b7f8ac"
+    },
+    {
+      "case": "silk/16000/1/20000us/alternating",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "c8e0bff78320b0304a671ee8fa98e0c494f7a18c9dd38735d008601ccea62484",
+      "output_sha256": "fc6e3bb0ca9aefaa19cc6a65bd6ab1c8fdc3709a84012b8ccb5407980ab13077"
+    },
+    {
+      "case": "silk/16000/1/20000us/noise",
+      "frames": 12,
+      "bitrate": 24000,
+      "input_sha256": "6c02e2b9f10a89513d7bc8b21503ef4ae1c4071e1a91a3c83371915fb2502aee",
+      "output_sha256": "4a5a288523748ac1149c87b7b28f45ed50d93de36ea4b14ebec562dd125d9c5b"
+    },
+    {
+      "case": "silk/16000/2/20000us/silence",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "0299f757a85a1aad6cbe1ad2b0eda925d8df667cd04e646af8917f65cbf24537",
+      "output_sha256": "423922c8d48181216ce8203a498a1cd2077e4f9769e9f8bf79dcec87db8e07c1"
+    },
+    {
+      "case": "silk/16000/2/20000us/impulse",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "65821fcc2bf4d811c716539fa1303b1842fca76819e590747984ce6ccc0f221e",
+      "output_sha256": "825b35b8fb87dee41e26306b266fd00829075614e65e8e21d8e8e48db8b1c5a2"
+    },
+    {
+      "case": "silk/16000/2/20000us/alternating",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "6fd70648398a88d46de3e3ccf6439c3c2b4ab1f03114f1465f5dae4153e8ee7c",
+      "output_sha256": "7297ad8495a583e9fc012898272829f2178b132126417d09e233f060fc12a65d"
+    },
+    {
+      "case": "silk/16000/2/20000us/noise",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "bc756269947aa6dcbe8b7eb97abab5cc86a733a3fa59de2aebf5cee6e1975118",
+      "output_sha256": "37689989734e651c7165c0aa506a945a42f938e04159089ad4193f268d9019a7"
+    },
+    {
+      "case": "hybrid/48000/1/20000us/silence",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46e2096b907947368d310929303a04005b39c4a278e3a7de2225c355b4522694",
+      "output_sha256": "9426e1cbbe5d0603c03c0774a9fa26903f7784b17678834f4258296985c88606"
+    },
+    {
+      "case": "hybrid/48000/1/20000us/impulse",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "713b7991bab267714134900aefba515f5a9629d9fedf581a957037b1cd199834",
+      "output_sha256": "6902b435bb42cbdf37b47abf3caaac71c194e438574cc085331f09cbb0cef693"
+    },
+    {
+      "case": "hybrid/48000/1/20000us/alternating",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "30a407e0d96208bf4b2e211b27facd20a8b957ebe01deaa69f47ac192046948b",
+      "output_sha256": "935921fc3ae9a1bea42edb96aaab925c125758bdcefc5c349f42715a1632cd3c"
+    },
+    {
+      "case": "hybrid/48000/1/20000us/noise",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "f3f9f404c88905f7d57f5dbeef4be2361b2ed66c3ee1b304137e20efe9f2c8a0",
+      "output_sha256": "4f850106d516f0d20480a4eee4fae0ae3651e86af2eec4ff49f0782f416479b7"
+    },
+    {
+      "case": "hybrid/48000/2/20000us/silence",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "7e36bec0af80ff78cd2cba3643b862a6c0e3ec56e52acabe92b246dcd6ad4816",
+      "output_sha256": "a75a995a8b487106e3fd1db026c80d55e738835cb740f990b871f8658561e5a2"
+    },
+    {
+      "case": "hybrid/48000/2/20000us/impulse",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "d66aee6ecff714faff4089430e6b511b074c9606d13b14ba0d6e97ca45eb2ce3",
+      "output_sha256": "98a60174be243f72581e982b1c12cc0ffde40e94361de89b6a42430920e8381e"
+    },
+    {
+      "case": "hybrid/48000/2/20000us/alternating",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "241e2f0ec29d3f07f4d7dcd79b0fe7ee23968246b727f031f7c4491554b9c546",
+      "output_sha256": "d8a2e1712658c5addd0621f4c76c7e0dd9bbacd53a6c53f73e697ca1e8597cba"
+    },
+    {
+      "case": "hybrid/48000/2/20000us/noise",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "a18a03c2c181980c5d038422eda9f11a8cf5d777f4d6690e4d31537eb4a002bd",
+      "output_sha256": "d1b679bcc8237a6e470974f3a2725ee40e9d336c57b0a1d3fce3ae22a0b9d97d"
+    },
+    {
+      "case": "celt/48000/1/20000us/silence",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "46e2096b907947368d310929303a04005b39c4a278e3a7de2225c355b4522694",
+      "output_sha256": "1106410273e6399aa9e0f6451653e3af3d7e91eb978ad5eb9bdb87f2efa11fe8"
+    },
+    {
+      "case": "celt/48000/1/20000us/impulse",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "713b7991bab267714134900aefba515f5a9629d9fedf581a957037b1cd199834",
+      "output_sha256": "4334b3cbb1a7789ec403ef626239f2e3404954af208876164e0d1599070f1471"
+    },
+    {
+      "case": "celt/48000/1/20000us/alternating",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "30a407e0d96208bf4b2e211b27facd20a8b957ebe01deaa69f47ac192046948b",
+      "output_sha256": "15df5592c743f96f4cea663b63e6e7bc13f5aed4cefa81de0fbfa683ddd6e40f"
+    },
+    {
+      "case": "celt/48000/1/20000us/noise",
+      "frames": 12,
+      "bitrate": 48000,
+      "input_sha256": "f3f9f404c88905f7d57f5dbeef4be2361b2ed66c3ee1b304137e20efe9f2c8a0",
+      "output_sha256": "0f45b7ec4bfe1609d5e33825c97f4da125cb107be8005db5f12db33f5d0607de"
+    },
+    {
+      "case": "celt/48000/2/20000us/silence",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "7e36bec0af80ff78cd2cba3643b862a6c0e3ec56e52acabe92b246dcd6ad4816",
+      "output_sha256": "dabe0e327094b18cc3c51e5f0d89f45c6308c2e412c2aa2d5bed0d987bd5997f"
+    },
+    {
+      "case": "celt/48000/2/20000us/impulse",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "d66aee6ecff714faff4089430e6b511b074c9606d13b14ba0d6e97ca45eb2ce3",
+      "output_sha256": "3d90f07ff7cc326acc6ebdfc43da1c3ea44b9c8d42b93cf529251445a17f177c"
+    },
+    {
+      "case": "celt/48000/2/20000us/alternating",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "241e2f0ec29d3f07f4d7dcd79b0fe7ee23968246b727f031f7c4491554b9c546",
+      "output_sha256": "21757c5d1faf4be42c42b0ba6a6ca62b9c6db92d3f752c5afce647d32cf76545"
+    },
+    {
+      "case": "celt/48000/2/20000us/noise",
+      "frames": 12,
+      "bitrate": 96000,
+      "input_sha256": "a18a03c2c181980c5d038422eda9f11a8cf5d777f4d6690e4d31537eb4a002bd",
+      "output_sha256": "5bba297af808db227725018a46efe519c338deed791bfbf141858bb14a2914d8"
+    }
+  ],
+  "failures": [],
+  "features": [
+    "dred"
+  ],
+  "encoder_controls": {
+    "dred_duration": 40,
+    "packet_loss_percent": 15,
+    "vbr": true,
+    "complexity": 10
+  },
+  "model_sha256": "a5177ec6fb7d15058e99e57029746100121f68e4890b1467d4094aa336b6013e",
+  "environment": {
+    "OPUS_ORACLE_VBR": "1",
+    "OPUS_ORACLE_LOSS": "15",
+    "OPUS_ORACLE_DRED_DURATION": "40"
+  }
+}

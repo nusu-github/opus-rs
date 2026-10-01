@@ -89,3 +89,14 @@ src/x64
 .vs/
 .vscode/
 CMakeSettings.json
+
+# Rust build outputs and local C reference artifacts
+/target/
+/build-cloud/
+/build-reference/
+
+# Python helper caches
+__pycache__/
+*.pyc
+
+/rust/math/target/

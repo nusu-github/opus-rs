@@ -1,0 +1,247 @@
+use opus_rs::c_style_api::repacketizer::{
+    OpusRepacketizer, RepacketizerError, opus_multistream_packet_pad,
+    opus_multistream_packet_unpad, opus_packet_pad, opus_packet_unpad,
+};
+
+#[test]
+fn malformed_extensions_are_rejected_even_when_none_were_counted() {
+    for padding in [&[0x07][..], &[0x06, 0x07][..]] {
+        let mut packet = vec![0x83, 0x41, padding.len() as u8];
+        packet.extend_from_slice(padding);
+        let mut rp = OpusRepacketizer::new();
+        rp.opus_repacketizer_cat(&packet, packet.len()).unwrap();
+        let mut output = [0u8; 64];
+        assert_eq!(
+            rp.opus_repacketizer_out(&mut output, 64),
+            Err(RepacketizerError::InvalidPacket)
+        );
+    }
+}
+
+#[test]
+fn extension_padding_lacing_matches_reference_at_254_bytes() {
+    // A final long extension uses one ID byte and consumes the remaining
+    // padding. Exactly 254 extension bytes need only one padding-size byte.
+    let mut packet = vec![0x83, 0x41, 254, 0x40];
+    packet.extend_from_slice(&[0x5a; 253]);
+    let mut rp = OpusRepacketizer::new();
+    rp.opus_repacketizer_cat(&packet, packet.len()).unwrap();
+    let mut output = vec![0; 300];
+    let written = rp.opus_repacketizer_out(&mut output, 300).unwrap();
+    assert_eq!(&output[..written], packet);
+}
+
+#[test]
+fn explicit_lengths_cannot_exceed_slice_bounds() {
+    let mut rp = OpusRepacketizer::new();
+    rp.opus_repacketizer_cat(&[0x80], 1).unwrap();
+    assert_eq!(
+        rp.opus_repacketizer_out(&mut [], 1),
+        Err(RepacketizerError::BadArgument)
+    );
+    assert_eq!(
+        opus_packet_pad(&mut [], 1, 1),
+        Err(RepacketizerError::BadArgument)
+    );
+    assert_eq!(
+        opus_multistream_packet_pad(&mut [], 1, 1, 1),
+        Err(RepacketizerError::BadArgument)
+    );
+    assert_eq!(
+        opus_multistream_packet_unpad(&mut [], 1, 1),
+        Err(RepacketizerError::BadArgument)
+    );
+}
+
+#[test]
+fn size_and_init_reset_state() {
+    let size = OpusRepacketizer::opus_repacketizer_get_size();
+    assert!(size > 0);
+
+    let mut rp = OpusRepacketizer::new();
+    rp.opus_repacketizer_init();
+    assert_eq!(rp.opus_repacketizer_get_nb_frames(), 0);
+}
+
+#[test]
+fn rejects_empty_and_toc_mismatch() {
+    let mut rp = OpusRepacketizer::new();
+    let packet = [0u8];
+    assert_eq!(
+        rp.opus_repacketizer_cat(&packet, 0),
+        Err(RepacketizerError::InvalidPacket)
+    );
+
+    let packet_ok = [0u8, 0xAA, 0xBB];
+    rp.opus_repacketizer_cat(&packet_ok, packet_ok.len())
+        .expect("first packet should be accepted");
+
+    let mut packet_bad = packet_ok;
+    packet_bad[0] = 0x04; // change upper ToC bits
+    assert_eq!(
+        rp.opus_repacketizer_cat(&packet_bad, packet_bad.len()),
+        Err(RepacketizerError::InvalidPacket)
+    );
+}
+
+#[test]
+fn out_roundtrips_single_frame_packet() {
+    let mut rp = OpusRepacketizer::new();
+    let packet = [0u8, 0xAA, 0xBB];
+    rp.opus_repacketizer_cat(&packet, packet.len())
+        .expect("cat should succeed");
+
+    let mut out = [0u8; 8];
+    let capacity = out.len();
+    let written = rp
+        .opus_repacketizer_out(&mut out, capacity)
+        .expect("out should succeed");
+
+    assert_eq!(written, packet.len());
+    assert_eq!(&out[..written], &packet);
+}
+
+#[test]
+fn combines_two_equal_coded_frames_into_code1_packet() {
+    let mut rp = OpusRepacketizer::new();
+    let packet = [1u8, 0xAA, 0xBB, 0xCC, 0xDD];
+
+    rp.opus_repacketizer_cat(&packet, packet.len())
+        .expect("first packet should be accepted");
+    rp.opus_repacketizer_cat(&packet, packet.len())
+        .expect("second packet should be accepted");
+
+    let mut out = [0u8; 12];
+    let capacity = out.len();
+    let written = rp
+        .opus_repacketizer_out(&mut out, capacity)
+        .expect("out should succeed");
+
+    // Four CBR frames should be encoded as Code 3 with a 4-frame count.
+    assert_eq!(written, 10);
+    assert_eq!(out[0] & 0x03, 3); // code 3 (arbitrary frames)
+    assert_eq!(out[1] & 0x3F, 4); // frame count
+    assert_eq!(
+        &out[2..written],
+        &[0xAA, 0xBB, 0xCC, 0xDD, 0xAA, 0xBB, 0xCC, 0xDD]
+    );
+}
+
+#[test]
+fn returns_buffer_too_small_when_output_slice_is_short() {
+    let mut rp = OpusRepacketizer::new();
+    let packet = [0u8, 0xAA, 0xBB];
+    rp.opus_repacketizer_cat(&packet, packet.len())
+        .expect("cat should succeed");
+
+    let mut out = [0u8; 2];
+    let capacity = out.len();
+    let err = rp
+        .opus_repacketizer_out(&mut out, capacity)
+        .expect_err("out should fail due to capacity");
+    assert_eq!(err, RepacketizerError::BufferTooSmall);
+}
+
+#[test]
+fn pad_and_unpad_preserve_payload() {
+    let mut packet = [0u8, 1, 2, 3, 0, 0];
+    opus_packet_pad(&mut packet, 4, 6).expect("pad should succeed");
+    let new_len = opus_packet_unpad(&mut packet, 6).expect("unpad should succeed");
+    assert_eq!(new_len, 4);
+    assert_eq!(&packet[..new_len], &[0, 1, 2, 3]);
+}
+
+#[test]
+fn pad_is_noop_when_lengths_match() {
+    let mut packet = [0u8, 1, 2, 3];
+    opus_packet_pad(&mut packet, 4, 4).expect("equal lengths should succeed");
+    assert_eq!(&packet[..4], &[0, 1, 2, 3]);
+}
+
+#[test]
+fn pad_rejects_invalid_lengths() {
+    let mut packet = [0u8; 5];
+    assert_eq!(
+        opus_packet_pad(&mut packet, 5, 4),
+        Err(RepacketizerError::BadArgument)
+    );
+    assert_eq!(
+        opus_packet_pad(&mut packet, 0, 5),
+        Err(RepacketizerError::BadArgument)
+    );
+}
+
+#[test]
+fn pad_rejects_invalid_packet() {
+    let mut packet = *b"Opus\0\0";
+    assert_eq!(
+        opus_packet_pad(&mut packet, 4, 5),
+        Err(RepacketizerError::InvalidPacket)
+    );
+}
+
+#[test]
+fn unpad_rejects_zero_length_and_invalid_packet() {
+    let mut packet = [0u8; 4];
+    assert_eq!(
+        opus_packet_unpad(&mut packet, 0),
+        Err(RepacketizerError::BadArgument)
+    );
+
+    let mut invalid = *b"Opus";
+    assert_eq!(
+        opus_packet_unpad(&mut invalid, 4),
+        Err(RepacketizerError::InvalidPacket)
+    );
+}
+
+#[test]
+fn multistream_pad_and_unpad_roundtrip() {
+    let mut packet = [0u8, 0xAA, 0xBB, 0, 0];
+    opus_multistream_packet_pad(&mut packet, 3, 5, 1).expect("pad should succeed");
+    let new_len = opus_multistream_packet_unpad(&mut packet, 5, 1).expect("unpad should succeed");
+    assert_eq!(new_len, 3);
+    assert_eq!(&packet[..new_len], &[0, 0xAA, 0xBB]);
+}
+
+#[test]
+fn multistream_pad_rejects_invalid_lengths() {
+    let mut packet = [0u8; 5];
+    assert_eq!(
+        opus_multistream_packet_pad(&mut packet, 5, 4, 1),
+        Err(RepacketizerError::BadArgument)
+    );
+    assert_eq!(
+        opus_multistream_packet_pad(&mut packet, 0, 5, 1),
+        Err(RepacketizerError::BadArgument)
+    );
+}
+
+#[test]
+fn multistream_pad_rejects_missing_self_delimited_stream() {
+    let mut packet = [0u8; 5];
+    packet[..4].copy_from_slice(&[0, 0xAA, 0xBB, 0xCC]);
+    assert_eq!(
+        opus_multistream_packet_pad(&mut packet, 4, 5, 2),
+        Err(RepacketizerError::InvalidPacket)
+    );
+}
+
+#[test]
+fn multistream_unpad_rejects_invalid_packet() {
+    let mut packet = *b"Opus";
+    assert_eq!(
+        opus_multistream_packet_unpad(&mut packet, 4, 1),
+        Err(RepacketizerError::InvalidPacket)
+    );
+}
+
+#[test]
+fn multistream_unpad_rejects_missing_self_delimited_size() {
+    let mut packet = [0u8, 0xAA, 0xBB];
+    let len = packet.len();
+    assert_eq!(
+        opus_multistream_packet_unpad(&mut packet, len, 2),
+        Err(RepacketizerError::InvalidPacket)
+    );
+}

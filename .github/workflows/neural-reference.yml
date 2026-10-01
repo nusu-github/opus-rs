@@ -1,0 +1,96 @@
+name: Neural codec numerical compatibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+env:
+  CARGO_INCREMENTAL: "0"
+  CARGO_PROFILE_TEST_OPT_LEVEL: "2"
+  CARGO_PROFILE_TEST_DEBUG: "0"
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: quantized
+            debug_float: "0"
+            suffix: -quantized
+            feature_suffix: ""
+            exporter_flags: ""
+          - profile: debug-float
+            debug_float: "1"
+            suffix: ""
+            feature_suffix: ",dnn_debug_float"
+            exporter_flags: --debug-float
+    env:
+      OPUS_DNN_DEBUG_FLOAT: ${{ matrix.debug_float }}
+      OSCE_MODEL_DIRECTORY: ${{ github.workspace }}/target/reference/models/dnn
+      DRED_WEIGHTS_PATH: ${{ github.workspace }}/target/reference/models/dnn
+      DNN_WEIGHTS_PATH: ${{ github.workspace }}/target/reference/models/dnn
+      OSCE_WEIGHTS_PATH: ${{ github.workspace }}/target/reference/osce-weights${{ matrix.suffix }}.bin
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - run: python3 tools/reference/fetch_models.py
+      - run: bash tools/reference/build.sh
+      - name: Regenerate independent neural fixtures
+        run: |
+          bash tools/reference/build_burg_cepstrum.sh > target/reference/burg-cepstrum.txt
+          cmp target/reference/burg-cepstrum.txt rust/tests/fixtures/reference/burg-cepstrum.txt
+          bash tools/reference/build_deep_plc.sh > target/reference/deep-plc${{ matrix.suffix }}.txt
+          cmp target/reference/deep-plc${{ matrix.suffix }}.txt rust/tests/fixtures/reference/deep-plc${{ matrix.suffix }}.txt
+          bash tools/reference/build_dred_networks.sh > target/reference/dred-networks${{ matrix.suffix }}.txt
+          cmp target/reference/dred-networks${{ matrix.suffix }}.txt rust/tests/fixtures/reference/dred-networks${{ matrix.suffix }}.txt
+          bash tools/reference/build_dred_packets.sh > target/reference/dred-packets${{ matrix.suffix }}.txt
+          cmp target/reference/dred-packets${{ matrix.suffix }}.txt rust/tests/fixtures/reference/dred-packets${{ matrix.suffix }}.txt
+          bash tools/reference/build_osce_features.sh > target/reference/osce-features.txt
+          cmp target/reference/osce-features.txt rust/tests/fixtures/reference/osce-features.txt
+          bash tools/reference/build_osce_reference.sh > target/reference/osce-networks${{ matrix.suffix }}.txt
+          cmp target/reference/osce-networks${{ matrix.suffix }}.txt rust/tests/fixtures/reference/osce-networks${{ matrix.suffix }}.txt
+      - name: Compare neural components
+        run: |
+          cargo test --locked --features deep_plc_weights${{ matrix.feature_suffix }} --lib pinned_scalar_c
+          cargo test --locked --features dred${{ matrix.feature_suffix }} --lib current_packet_reference
+          cargo test --locked --features dred${{ matrix.feature_suffix }} --lib rejects_unprocessed_redundancy
+          cargo test --locked --features osce${{ matrix.feature_suffix }} --lib osce::
+          python3 tools/reference/export_osce_weights.py "$OSCE_MODEL_DIRECTORY" "$OSCE_WEIGHTS_PATH" ${{ matrix.exporter_flags }}
+          bash tools/reference/check_osce.sh
+      - name: Compare loaded OSCE decoder behavior
+        run: |
+          bash tools/reference/build_osce_codec.sh
+          cargo build --locked --release --features osce${{ matrix.feature_suffix }} --bin opus-rs-oracle
+          python3 tools/reference/compare_osce.py --reference target/reference-osce${{ matrix.suffix }}/opus-reference --candidate target/release/opus-rs-oracle --weights "$OSCE_WEIGHTS_PATH"
+      - name: Compare DRED encoding and neural packet loss concealment
+        run: |
+          bash tools/reference/build_dred_codec.sh
+          cargo build --locked --release --features deep_plc_weights${{ matrix.feature_suffix }} --bin opus-rs-oracle
+          OPUS_ORACLE_DRED_DURATION=40 OPUS_ORACLE_LOSS=15 OPUS_ORACLE_VBR=0 python3 tools/reference/compare_codec.py --frames 12 --reference target/reference-dred${{ matrix.suffix }}/opus-reference --candidate target/release/opus-rs-oracle --profile dred-${{ matrix.profile }} --record target/reference/dred-cbr.json
+          OPUS_ORACLE_DRED_DURATION=40 OPUS_ORACLE_LOSS=15 OPUS_ORACLE_VBR=1 python3 tools/reference/compare_codec.py --frames 12 --reference target/reference-dred${{ matrix.suffix }}/opus-reference --candidate target/release/opus-rs-oracle --profile dred-${{ matrix.profile }} --record target/reference/dred-vbr.json
+          OPUS_ORACLE_DECODER_COMPLEXITY=10 python3 tools/reference/compare_decode.py --reference target/reference-dred${{ matrix.suffix }}/opus-reference --candidate target/release/opus-rs-oracle --loss
+          OPUS_ORACLE_DECODER_COMPLEXITY=10 python3 tools/reference/compare_sequences.py --reference target/reference-dred${{ matrix.suffix }}/opus-reference --candidate target/release/opus-rs-oracle --decode-only
+          python3 tools/reference/compare_dred.py --reference target/reference-dred${{ matrix.suffix }}/opus-reference --candidate target/release/opus-rs-oracle
+      - name: Compare 96 kHz neural feature combinations
+        run: |
+          OPUS_REFERENCE_QEXT=1 bash tools/reference/build_dred_codec.sh
+          OPUS_REFERENCE_QEXT=1 bash tools/reference/build_osce_codec.sh
+          cargo build --locked --release --features deep_plc_weights,enable_qext${{ matrix.feature_suffix }} --bin opus-rs-oracle
+          cp target/release/opus-rs-oracle target/reference/opus-rs-dred-qext
+          cargo build --locked --release --features osce,enable_qext${{ matrix.feature_suffix }} --bin opus-rs-oracle
+          python3 tools/reference/compare_qext_neural.py --candidate target/reference/opus-rs-dred-qext --osce-candidate target/release/opus-rs-oracle --dred-reference target/reference-dred${{ matrix.suffix }}-qext/opus-reference --osce-reference target/reference-osce${{ matrix.suffix }}-qext/opus-reference --osce-weights "$OSCE_WEIGHTS_PATH"
+      - name: Compare combined neural decoder models
+        run: |
+          OPUS_REFERENCE_QEXT=1 bash tools/reference/build_combined_neural_codec.sh
+          python3 tools/reference/export_osce_weights.py "$OSCE_MODEL_DIRECTORY" target/reference/all-models${{ matrix.suffix }}.bin --all-models ${{ matrix.exporter_flags }}
+          cargo build --locked --release --features deep_plc_weights,osce,enable_qext${{ matrix.feature_suffix }} --bin opus-rs-oracle
+          python3 tools/reference/compare_combined_neural.py --reference target/reference-neural-combined${{ matrix.suffix }}-qext/opus-reference --candidate target/release/opus-rs-oracle --weights target/reference/all-models${{ matrix.suffix }}.bin --output-dir target/reference/combined-results --record target/reference/combined.json
+      - name: Compare combined neural decoder models with PFA
+        run: |
+          OPUS_REFERENCE_QEXT=1 OPUS_REFERENCE_PFA=1 bash tools/reference/build_combined_neural_codec.sh
+          cargo build --locked --release --features deep_plc_weights,osce,enable_qext,pfa${{ matrix.feature_suffix }} --bin opus-rs-oracle
+          python3 tools/reference/compare_combined_neural.py --reference target/reference-neural-combined${{ matrix.suffix }}-qext-pfa/opus-reference --candidate target/release/opus-rs-oracle --weights target/reference/all-models${{ matrix.suffix }}.bin --output-dir target/reference/combined-pfa-results --record target/reference/combined-pfa.json
