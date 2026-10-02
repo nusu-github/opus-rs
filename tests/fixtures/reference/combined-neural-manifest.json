@@ -1,0 +1,1888 @@
+{
+  "schema_version": 1,
+  "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "model_archive_sha256": "a5177ec6fb7d15058e99e57029746100121f68e4890b1467d4094aa336b6013e",
+  "comparison": "Pinned scalar C versus native Rust with combined DRED, Deep PLC, OSCE, BWE, and QEXT.",
+  "validation_date_utc": "2026-10-01",
+  "rust_source": {
+    "base_commit": "2e3e5b8091f3389c01347520a5eef2303d2ab7b8",
+    "state": "Working tree validated before the implementation commit."
+  },
+  "toolchain": {
+    "rustc": "1.99.0 (b940084d7 2026-09-28)",
+    "target": "x86_64-unknown-linux-gnu",
+    "cargo_profile": "release"
+  },
+  "scope": {
+    "sample_rates": [
+      48000,
+      96000
+    ],
+    "codec_cases_per_profile": 6,
+    "normal_fec_plc_reset_gain_cases_per_profile": 80,
+    "dred_recovery_cases_per_profile": 24,
+    "loss_burst_ms": 400,
+    "decoder_complexities": [
+      6,
+      10
+    ],
+    "bandwidth_extension": [
+      false,
+      true
+    ],
+    "dred_processing": [
+      "immediate",
+      "deferred"
+    ],
+    "checked_outputs": [
+      "packet bytes",
+      "encoder and decoder final ranges",
+      "i16 PCM",
+      "f32 PCM bit patterns",
+      "i24 DRED recovery PCM"
+    ]
+  },
+  "profiles": [
+    {
+      "reference_profile": "neural-combined-quantized-qext",
+      "features": [
+        "deep_plc_weights",
+        "osce",
+        "enable_qext"
+      ],
+      "arithmetic": "scalar-float",
+      "dnn_profile": "quantized",
+      "transform": "kiss_fft",
+      "model_blob_sha256": "4a99cf61293822712c7b3c9ea717e541276d9d9f5d25dbaf854a0f936d8303ee",
+      "cases": 110,
+      "failures": 0,
+      "case_results": [
+        {
+          "case": "combined/48000/1/mode1000/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss4/deferred1",
+          "error": null
+        }
+      ]
+    },
+    {
+      "reference_profile": "neural-combined-qext",
+      "features": [
+        "deep_plc_weights",
+        "osce",
+        "enable_qext",
+        "dnn_debug_float"
+      ],
+      "arithmetic": "scalar-float",
+      "dnn_profile": "debug-float",
+      "transform": "kiss_fft",
+      "model_blob_sha256": "3491f0c0391311d3d1dd99f3192498f33421942a23e851073c35186c0480ada8",
+      "cases": 110,
+      "failures": 0,
+      "case_results": [
+        {
+          "case": "combined/48000/1/mode1000/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss4/deferred1",
+          "error": null
+        }
+      ]
+    },
+    {
+      "reference_profile": "neural-combined-quantized-qext-pfa",
+      "features": [
+        "deep_plc_weights",
+        "osce",
+        "enable_qext",
+        "pfa"
+      ],
+      "arithmetic": "scalar-float",
+      "dnn_profile": "quantized",
+      "transform": "pfa",
+      "model_blob_sha256": "4a99cf61293822712c7b3c9ea717e541276d9d9f5d25dbaf854a0f936d8303ee",
+      "cases": 110,
+      "failures": 0,
+      "case_results": [
+        {
+          "case": "combined/48000/1/mode1000/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss4/deferred1",
+          "error": null
+        }
+      ]
+    },
+    {
+      "reference_profile": "neural-combined-qext-pfa",
+      "features": [
+        "deep_plc_weights",
+        "osce",
+        "enable_qext",
+        "pfa",
+        "dnn_debug_float"
+      ],
+      "arithmetic": "scalar-float",
+      "dnn_profile": "debug-float",
+      "transform": "pfa",
+      "model_blob_sha256": "3491f0c0391311d3d1dd99f3192498f33421942a23e851073c35186c0480ada8",
+      "cases": 110,
+      "failures": 0,
+      "case_results": [
+        {
+          "case": "combined/48000/1/mode1000/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1000/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/2/mode1001/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/codec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/48000/1/mode1002/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/1/mode1000/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity6/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/complexity10/bwe1/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1001/dred-loss4/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/codec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity6/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/normal",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/long-plc",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/fec",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/complexity10/bwe0/reset-gain",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss1/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss1/deferred1",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss4/deferred0",
+          "error": null
+        },
+        {
+          "case": "combined/96000/2/mode1002/dred-loss4/deferred1",
+          "error": null
+        }
+      ]
+    }
+  ],
+  "total_cases": 440,
+  "failures": 0,
+  "reproduction": {
+    "builder": "tools/reference/build_combined_neural_codec.sh",
+    "model_exporter": "tools/reference/export_osce_weights.py --all-models",
+    "runner": "tools/reference/compare_combined_neural.py",
+    "workflow": ".github/workflows/neural-reference.yml"
+  },
+  "harness_sha256": {
+    "tools/reference/build_combined_neural_codec.sh": "50c22c997e602665838cd867d0a7a021e23d3a2d7df14f325de37fcdc99902a3",
+    "tools/reference/export_osce_weights.py": "fa1d0339a32f8ba433566f15afac59c9d126d3e57ed445dfde69d7191beb111a",
+    "tools/reference/compare_combined_neural.py": "17bc60cf9243f936a149bad459863efc8f228a038ffc3cfb264e85a43c624e56"
+  }
+}

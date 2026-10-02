@@ -1,0 +1,375 @@
+{
+  "schema_version": 1,
+  "comparison": "WASI Rust against independently generated scalar C decoder fixtures",
+  "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "started_utc": "2026-10-01T17:18:02.200475+00:00",
+  "rust_source": {
+    "repository": "https://github.com/nusu-github/opus-rs",
+    "base_commit": "2e3e5b8091f3389c01347520a5eef2303d2ab7b8",
+    "branch": "feat/safe-rust-opus",
+    "state": "Working tree before the implementation commit; individual hashes identify the regression and harness, and the aggregate hash identifies production Rust sources and Cargo inputs.",
+    "sha256": {
+      "Cargo.toml": "459c9b91928b2b1afd6a846b1ed065e6f123808988c2182ac43774bc15bcb796",
+      "Cargo.lock": "4b0fec293309e9e4315db5f31a94f887d73ecb96895497fb351d17f327851549",
+      "rust/src/celt/celt_decoder.rs": "a0d626a33ffc3f6c8ffb8caff3503373106a8e95b6c0780163db90769e44cd6a",
+      "rust/tests/codec_downmix_reference.rs": "aa4e2e7e8efaefb4ea643b6499e554f0ebdd608defd3ce50ad86b30d7ac8c5a8",
+      "tools/wasm/run.mjs": "2a037848ec0e3fbc859d0939715e73c08c066867b1a20cd079722d60899c0ef1",
+      "tools/reference/generate_downmix_vectors.py": "150ea4a2e3c65e96d2e0adbf0643c6bbf7c638b61bc549cfb24f6f4ba01d9375",
+      "tools/reference/build.sh": "3aec5cd9f466e826f9f490cf0557bf8895d8bf05f198fdf5208a5ebf56fe5aef",
+      "rust/tests/fixtures/reference/rfc8251-downmix-packets.tsv": "73095ae99dda89cb78a865f11231c8fd41f3bdeacd9311811b7ad3c077b89789"
+    },
+    "production_source_tree": {
+      "algorithm": "SHA-256 of sorted repository-relative path, NUL, file SHA-256 hex, LF for each production Rust source and Cargo input",
+      "roots": [
+        "rust/src/**/*.rs",
+        "rust/math/**/*.rs",
+        "Cargo.toml",
+        "Cargo.lock",
+        "rust/math/Cargo.toml"
+      ],
+      "files": 399,
+      "sha256": "39f1e9fbdc0dce35292b030ddd0ad7f309faa5030f8b48b3ad560bad47c4bcc0"
+    }
+  },
+  "toolchain": {
+    "rustc_verbose": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "node": "v24.19.0",
+    "runtime_target": "wasm32-wasip1",
+    "wasi": "preview1",
+    "profile": "test",
+    "opt_level": 2,
+    "debug_info": 0,
+    "incremental": false,
+    "runner": "node --no-warnings tools/wasm/run.mjs"
+  },
+  "checked_outputs": [
+    "decoded sample count",
+    "decoder final range",
+    "i16 PCM SHA-256",
+    "f32 PCM bit-pattern SHA-256"
+  ],
+  "test": "stereo_packets_decode_to_mono_like_pinned_c",
+  "profiles": [
+    {
+      "profile": "fixed",
+      "features": [
+        "fixed_point"
+      ],
+      "cases": 4,
+      "passed": 4,
+      "failures": 0,
+      "exit_code": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--target",
+        "wasm32-wasip1",
+        "--test",
+        "codec_downmix_reference",
+        "--features",
+        "fixed_point",
+        "--",
+        "--nocapture"
+      ],
+      "started_utc": "2026-10-01T17:18:02.246272+00:00",
+      "finished_utc": "2026-10-01T17:18:18.401727+00:00",
+      "fixture": "rust/tests/fixtures/reference/fixed-downmix.tsv",
+      "fixture_sha256": "bcd5830a0dc93f0ab7b63e55096b823193daa42d68d4628ec6daa1f2dfcc816b",
+      "reference_profile": "fixed",
+      "fixture_generation_command": [
+        "python3",
+        "tools/reference/generate_downmix_vectors.py",
+        "fixed"
+      ],
+      "log": "target/downmix-wasi/fixed.log",
+      "log_sha256": "38b5525864cab8293627ae7044970f97d8d917876c6f834ae97bb7a5b02e60a6",
+      "module": "target/downmix-wasi-binaries/fixed.wasm",
+      "module_sha256": "4e75f885cef8b161e544b5a0ea0155734ed6d3afe47014f6756289e5850ac539",
+      "reference_oracle_sha256": "1728f582ebcf523aba6741fc41f898ed3cff16ca01515f457c59c826e9e80f84"
+    },
+    {
+      "profile": "fixed-pfa",
+      "features": [
+        "fixed_point",
+        "pfa"
+      ],
+      "cases": 4,
+      "passed": 4,
+      "failures": 0,
+      "exit_code": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--target",
+        "wasm32-wasip1",
+        "--test",
+        "codec_downmix_reference",
+        "--features",
+        "fixed_point,pfa",
+        "--",
+        "--nocapture"
+      ],
+      "started_utc": "2026-10-01T17:18:18.407493+00:00",
+      "finished_utc": "2026-10-01T17:18:33.660510+00:00",
+      "fixture": "rust/tests/fixtures/reference/fixed-pfa-downmix.tsv",
+      "fixture_sha256": "cdcedc0daa508c3aff14e3feefe64c56df5a1824028e65622a05decf416d6e83",
+      "reference_profile": "fixed-pfa",
+      "fixture_generation_command": [
+        "python3",
+        "tools/reference/generate_downmix_vectors.py",
+        "fixed-pfa"
+      ],
+      "log": "target/downmix-wasi/fixed-pfa.log",
+      "log_sha256": "26d093f3bb550b698c7c3c5be7a510124e305c149b02c0421ce945dcc455057c",
+      "module": "target/downmix-wasi-binaries/fixed-pfa.wasm",
+      "module_sha256": "3b22a4d0f52a84a00c479e116bd067ff487e0f83a33d49f594fd36bfe36fb185",
+      "reference_oracle_sha256": "de7cd98bbf16db99cea9f6abbed8879874db3c56517530932a6410be8afa04f8"
+    },
+    {
+      "profile": "fixed-qext",
+      "features": [
+        "fixed_point",
+        "enable_qext"
+      ],
+      "cases": 6,
+      "passed": 6,
+      "failures": 0,
+      "exit_code": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--target",
+        "wasm32-wasip1",
+        "--test",
+        "codec_downmix_reference",
+        "--features",
+        "fixed_point,enable_qext",
+        "--",
+        "--nocapture"
+      ],
+      "started_utc": "2026-10-01T17:18:33.671467+00:00",
+      "finished_utc": "2026-10-01T17:18:48.732682+00:00",
+      "fixture": "rust/tests/fixtures/reference/fixed-qext-downmix.tsv",
+      "fixture_sha256": "8537ee6bd6c7cb984b208c57674d5bdc6287f322850243a915822d0b57770032",
+      "reference_profile": "fixed-qext",
+      "fixture_generation_command": [
+        "python3",
+        "tools/reference/generate_downmix_vectors.py",
+        "fixed-qext"
+      ],
+      "log": "target/downmix-wasi/fixed-qext.log",
+      "log_sha256": "5fa351f17295c407a1d552a2b316f2b72a2dabfad371466a64606a9608928587",
+      "module": "target/downmix-wasi-binaries/fixed-qext.wasm",
+      "module_sha256": "730f1b7e6e90727359b55b253d8aa5bef71b0c4cd9779ee1e2768e9415c56942",
+      "reference_oracle_sha256": "75c26d608a9c0d2302bdb1a923f0bb17f26e236c037e114f5bf51c21ba7cbacd"
+    },
+    {
+      "profile": "fixed-qext-pfa",
+      "features": [
+        "fixed_point",
+        "enable_qext",
+        "pfa"
+      ],
+      "cases": 6,
+      "passed": 6,
+      "failures": 0,
+      "exit_code": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--target",
+        "wasm32-wasip1",
+        "--test",
+        "codec_downmix_reference",
+        "--features",
+        "fixed_point,enable_qext,pfa",
+        "--",
+        "--nocapture"
+      ],
+      "started_utc": "2026-10-01T17:18:48.739145+00:00",
+      "finished_utc": "2026-10-01T17:19:05.127622+00:00",
+      "fixture": "rust/tests/fixtures/reference/fixed-qext-pfa-downmix.tsv",
+      "fixture_sha256": "b35cf5169027e7700ea1e9b33adf6e3aef08a463b3b2194ec3222e6f8c4736b4",
+      "reference_profile": "fixed-qext-pfa",
+      "fixture_generation_command": [
+        "python3",
+        "tools/reference/generate_downmix_vectors.py",
+        "fixed-qext-pfa"
+      ],
+      "log": "target/downmix-wasi/fixed-qext-pfa.log",
+      "log_sha256": "a81ee26920f12c5b89f7a4df1978353ff171a059dda9faae9eec92207b6f94dd",
+      "module": "target/downmix-wasi-binaries/fixed-qext-pfa.wasm",
+      "module_sha256": "d35e6a396a4efe45692121f9d6d4ffe0cad7d1895ec82ab8e8a9292a56a5de09",
+      "reference_oracle_sha256": "7dd69e7f0c6925ac0404b9f2c9eb955aa1ffd6c7c3778aac63d77c8e1689a82c"
+    },
+    {
+      "profile": "fixed-res24",
+      "features": [
+        "fixed_point",
+        "enable_res24"
+      ],
+      "cases": 4,
+      "passed": 4,
+      "failures": 0,
+      "exit_code": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--target",
+        "wasm32-wasip1",
+        "--test",
+        "codec_downmix_reference",
+        "--features",
+        "fixed_point,enable_res24",
+        "--",
+        "--nocapture"
+      ],
+      "started_utc": "2026-10-01T17:19:05.132761+00:00",
+      "finished_utc": "2026-10-01T17:19:20.970289+00:00",
+      "fixture": "rust/tests/fixtures/reference/fixed-res24-downmix.tsv",
+      "fixture_sha256": "2e385d0c8829583fbdc7de39f2d307caf56a94d6bfe7ccf286dd81f97d9781a6",
+      "reference_profile": "fixed-res24",
+      "fixture_generation_command": [
+        "python3",
+        "tools/reference/generate_downmix_vectors.py",
+        "fixed-res24"
+      ],
+      "log": "target/downmix-wasi/fixed-res24.log",
+      "log_sha256": "06f2854e15e93cb0e2da9fd2acb1296a4a7e3871a2850bbe020fddf82a259d8a",
+      "module": "target/downmix-wasi-binaries/fixed-res24.wasm",
+      "module_sha256": "0bd14ced5982134e3d361e007e98b3ee64f05ff28bf995dfd5d93ee2e3156c76",
+      "reference_oracle_sha256": "584a1d69f5f70070f96f5063e8b9078ab64d60705eab2c7e38d416dd95180bcb"
+    },
+    {
+      "profile": "fixed-res24-pfa",
+      "features": [
+        "fixed_point",
+        "enable_res24",
+        "pfa"
+      ],
+      "cases": 4,
+      "passed": 4,
+      "failures": 0,
+      "exit_code": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--target",
+        "wasm32-wasip1",
+        "--test",
+        "codec_downmix_reference",
+        "--features",
+        "fixed_point,enable_res24,pfa",
+        "--",
+        "--nocapture"
+      ],
+      "started_utc": "2026-10-01T17:19:20.976955+00:00",
+      "finished_utc": "2026-10-01T17:19:36.632570+00:00",
+      "fixture": "rust/tests/fixtures/reference/fixed-res24-pfa-downmix.tsv",
+      "fixture_sha256": "5ca3e3f44904628205d95413341d8b7b5b6140dfae0b4b5cb1fc877d980b2ac4",
+      "reference_profile": "fixed-res24-pfa",
+      "fixture_generation_command": [
+        "python3",
+        "tools/reference/generate_downmix_vectors.py",
+        "fixed-res24-pfa"
+      ],
+      "log": "target/downmix-wasi/fixed-res24-pfa.log",
+      "log_sha256": "627cdf22350a92ff54a8a95bc4f8e94f0a4ad2d401b02253b52f8c111b7294f1",
+      "module": "target/downmix-wasi-binaries/fixed-res24-pfa.wasm",
+      "module_sha256": "c949acedb3dfe87410de3af85d878bb96cff349ab6ebe3b707adb801c6d657a5",
+      "reference_oracle_sha256": "0f9eeb8428d1e37f61ccc307ca090756a5653cb3bfed3d86c934fa3d51dd71b3"
+    },
+    {
+      "profile": "fixed-res24-qext",
+      "features": [
+        "fixed_point",
+        "enable_res24",
+        "enable_qext"
+      ],
+      "cases": 6,
+      "passed": 6,
+      "failures": 0,
+      "exit_code": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--target",
+        "wasm32-wasip1",
+        "--test",
+        "codec_downmix_reference",
+        "--features",
+        "fixed_point,enable_res24,enable_qext",
+        "--",
+        "--nocapture"
+      ],
+      "started_utc": "2026-10-01T17:19:36.636552+00:00",
+      "finished_utc": "2026-10-01T17:19:55.397538+00:00",
+      "fixture": "rust/tests/fixtures/reference/fixed-res24-qext-downmix.tsv",
+      "fixture_sha256": "35708d25bb5fa256f8e5c026609b86aa2a394819cffe3271d9db93454e28f853",
+      "reference_profile": "fixed-res24-qext",
+      "fixture_generation_command": [
+        "python3",
+        "tools/reference/generate_downmix_vectors.py",
+        "fixed-res24-qext"
+      ],
+      "log": "target/downmix-wasi/fixed-res24-qext.log",
+      "log_sha256": "8a9e28012d1c4cf6e620e89e06af3b020ee857ad0b45b44bae40bf880685a60d",
+      "module": "target/downmix-wasi-binaries/fixed-res24-qext.wasm",
+      "module_sha256": "84667477055ab231758c57a16feb5bec792b7797a02664f03e80bf187847b15d",
+      "reference_oracle_sha256": "9250b61a08d37e92a333bfb416d7c22a68e8840e25ad0a155eb406f6c946eacf"
+    },
+    {
+      "profile": "fixed-res24-qext-pfa",
+      "features": [
+        "fixed_point",
+        "enable_res24",
+        "enable_qext",
+        "pfa"
+      ],
+      "cases": 6,
+      "passed": 6,
+      "failures": 0,
+      "exit_code": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--target",
+        "wasm32-wasip1",
+        "--test",
+        "codec_downmix_reference",
+        "--features",
+        "fixed_point,enable_res24,enable_qext,pfa",
+        "--",
+        "--nocapture"
+      ],
+      "started_utc": "2026-10-01T17:19:55.402249+00:00",
+      "finished_utc": "2026-10-01T17:20:15.356817+00:00",
+      "fixture": "rust/tests/fixtures/reference/fixed-res24-qext-pfa-downmix.tsv",
+      "fixture_sha256": "20482a51e9a778b358adcbdce143c037ea7df1c33172fcd984559871ec114ea9",
+      "reference_profile": "fixed-res24-qext-pfa",
+      "fixture_generation_command": [
+        "python3",
+        "tools/reference/generate_downmix_vectors.py",
+        "fixed-res24-qext-pfa"
+      ],
+      "log": "target/downmix-wasi/fixed-res24-qext-pfa.log",
+      "log_sha256": "ae5973968be790ee44a444c26ae98e0605be38b1a6eca2e2a8fc2b69f334309a",
+      "module": "target/downmix-wasi-binaries/fixed-res24-qext-pfa.wasm",
+      "module_sha256": "976c87de9ff72b71f449e5c44d6f2717a310f5d764e3b315a54d3ce4ef9f9c08",
+      "reference_oracle_sha256": "ba1b4484ca39773669aea68052d27fed5a0b794da31b75cfe3be0f71b2735a09"
+    }
+  ],
+  "finished_utc": "2026-10-01T17:20:15.360813+00:00",
+  "cases": 40,
+  "failures": 0,
+  "all_passed": true
+}

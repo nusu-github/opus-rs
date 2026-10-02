@@ -1,0 +1,78 @@
+name: Rust numerical compatibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+env:
+  CARGO_INCREMENTAL: "0"
+  CARGO_PROFILE_TEST_OPT_LEVEL: "2"
+  CARGO_PROFILE_TEST_DEBUG: "0"
+jobs:
+  msrv:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.88.0
+      - run: cargo check --locked --lib
+      - run: cargo check --locked --lib --features enable_res24,custom_modes,pfa,enable_qext
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test --locked
+      - run: cargo test --locked --manifest-path rust/math/Cargo.toml
+  scalar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [float, fixed, fixed-res24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - run: bash tools/reference/verify.sh baseline ${{ matrix.profile }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scalar-${{ matrix.profile }}-reference-results
+          path: target/verification/
+  pfa:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [float, fixed, fixed-res24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - run: bash tools/reference/verify.sh pfa ${{ matrix.profile }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pfa-${{ matrix.profile }}-reference-results
+          path: target/verification/
+  custom:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [custom, custom-pfa]
+        profile: [float, fixed, fixed-res24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - run: bash tools/reference/verify.sh ${{ matrix.suite }} ${{ matrix.profile }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.suite }}-${{ matrix.profile }}-reference-results
+          path: target/verification/

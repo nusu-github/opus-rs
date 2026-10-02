@@ -1,0 +1,121 @@
+{
+  "base_rust_revision": "38f077cc6051e5020fcb21a353cccceca2127c81",
+  "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "rust_sources_sha256": "25036acd7d7c06dd0584ea9a9a46ff9ad7c3312cd0370e137c7789e02439306f",
+  "checks": {
+    "final2-all-tests": {
+      "passed": 922,
+      "failed": 0,
+      "ignored": 4,
+      "log_sha256": "849db4a5d852d1ca1e9a83e1da7cb1fc8cba1532d60cfdb80afcf18396c86bac"
+    },
+    "final2-float-unit-tests": {
+      "passed": 821,
+      "failed": 0,
+      "ignored": 1,
+      "log_sha256": "428547c4b2456fc14aacaebbcc8a0b78daa76fa20e7ad5e10f1473cbabd399d0"
+    },
+    "final2-fixed-unit-tests": {
+      "passed": 867,
+      "failed": 0,
+      "ignored": 1,
+      "log_sha256": "30479fc50414de178682303f304017d2b3ee0139974711ed9d81453276d4159d"
+    },
+    "final2-fixed-res24-unit-tests": {
+      "passed": 867,
+      "failed": 0,
+      "ignored": 1,
+      "log_sha256": "f9666334578919791b5fbe836211580d5cc9028716671986d4bdc465fb37ece8"
+    },
+    "final2-custom-tests": {
+      "passed": 3,
+      "failed": 0,
+      "ignored": 0,
+      "log_sha256": "132cb4f1837aa48099b69268e228a386496d67366ed284349eacef40a1e34d44"
+    },
+    "final2-custom-pfa-tests": {
+      "passed": 3,
+      "failed": 0,
+      "ignored": 0,
+      "log_sha256": "3de3e929828fac9e69a9e98c14835b6d13779fa0785b4ab89e037db4208b43e9"
+    },
+    "parity-final2-float-codec": {
+      "cases": 302,
+      "failures": 0,
+      "log_sha256": "80cf3aeba3af300983d842a34af33e3dd99a4abfec30fad8ba6e6f1822d4480e"
+    },
+    "parity-final2-float-decode": {
+      "cases": 906,
+      "failures": 0,
+      "log_sha256": "ef328efabc5d9b2e659e29f3395f95afa1e7107d4c69b3bd65e2e7a8ae7b988e"
+    },
+    "parity-final2-float-sequences": {
+      "cases": 28,
+      "failures": 0,
+      "log_sha256": "3f70c603d0b238273256c03a1eb6184e0b93fb30e93ddd662b7617244efc7d3a"
+    },
+    "wasm-final2-float": {
+      "cases": 302,
+      "failures": 0,
+      "log_sha256": "be7ff30294e81eafe887c108c36a59dd02f9a650ca6527040c21311c726d7098"
+    },
+    "parity-final2-fixed-codec": {
+      "cases": 302,
+      "failures": 0,
+      "log_sha256": "80cf3aeba3af300983d842a34af33e3dd99a4abfec30fad8ba6e6f1822d4480e"
+    },
+    "parity-final2-fixed-decode": {
+      "cases": 906,
+      "failures": 0,
+      "log_sha256": "ef328efabc5d9b2e659e29f3395f95afa1e7107d4c69b3bd65e2e7a8ae7b988e"
+    },
+    "parity-final2-fixed-sequences": {
+      "cases": 28,
+      "failures": 0,
+      "log_sha256": "3f70c603d0b238273256c03a1eb6184e0b93fb30e93ddd662b7617244efc7d3a"
+    },
+    "wasm-final2-fixed": {
+      "cases": 302,
+      "failures": 0,
+      "log_sha256": "254ed7da05ec6b97b2d33840c3003c6c25e38265e57213ca8f3996fd7c050e35"
+    },
+    "parity-final2-fixed-res24-codec": {
+      "cases": 302,
+      "failures": 0,
+      "log_sha256": "80cf3aeba3af300983d842a34af33e3dd99a4abfec30fad8ba6e6f1822d4480e"
+    },
+    "parity-final2-fixed-res24-decode": {
+      "cases": 906,
+      "failures": 0,
+      "log_sha256": "ef328efabc5d9b2e659e29f3395f95afa1e7107d4c69b3bd65e2e7a8ae7b988e"
+    },
+    "parity-final2-fixed-res24-sequences": {
+      "cases": 28,
+      "failures": 0,
+      "log_sha256": "3f70c603d0b238273256c03a1eb6184e0b93fb30e93ddd662b7617244efc7d3a"
+    },
+    "wasm-final2-fixed-res24": {
+      "cases": 302,
+      "failures": 0,
+      "log_sha256": "247a475201d909098fbe120b4cdcf9ff05381203c64c66f14c824de8d8c6eb12"
+    },
+    "parity-final2-qext": {
+      "cases": 384,
+      "failures": 0,
+      "log_sha256": "ad488751d4744bcf4bc3d31d5d5586b6c19a42711b4446d1ea6bf1d383cb8a00"
+    },
+    "parity-final2-pfa": {
+      "cases": 98,
+      "failures": 0,
+      "log_sha256": "f8c17aa07754b482d5c135e898b695fb82196e134ff70754888a2b32c49db83e"
+    },
+    "minimum_rust_version": {
+      "version": "1.88.0",
+      "profiles": [
+        "default",
+        "fixed_point,custom_modes,pfa,enable_qext"
+      ],
+      "passed": true
+    }
+  }
+}

@@ -1,0 +1,59 @@
+name: Neural WebAssembly numerical compatibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: quantized
+            debug_float: "0"
+            suffix: -quantized
+            exporter_flags: ""
+          - profile: debug-float
+            debug_float: "1"
+            suffix: ""
+            exporter_flags: --debug-float
+    name: ${{ matrix.profile }} neural native / Wasm
+    env:
+      CARGO_TARGET_DIR: target/neural-wasm-build
+      CARGO_INCREMENTAL: "0"
+      CARGO_PROFILE_RELEASE_DEBUG: "0"
+      OPUS_DNN_DEBUG_FLOAT: ${{ matrix.debug_float }}
+      OPUS_NEURAL_FULL_DECODE: "1"
+      OSCE_MODEL_DIRECTORY: ${{ github.workspace }}/target/reference/models/dnn
+      DRED_WEIGHTS_PATH: ${{ github.workspace }}/target/reference/models/dnn
+      DNN_WEIGHTS_PATH: ${{ github.workspace }}/target/reference/models/dnn
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown,wasm32-wasip1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Prepare verified models and scalar references
+        run: |
+          python3 tools/reference/fetch_models.py
+          bash tools/reference/build_dred_codec.sh
+          bash tools/reference/build_osce_codec.sh
+          OPUS_REFERENCE_QEXT=1 bash tools/reference/build_dred_codec.sh
+          OPUS_REFERENCE_QEXT=1 bash tools/reference/build_osce_codec.sh
+          python3 tools/reference/export_osce_weights.py "$OSCE_MODEL_DIRECTORY" "target/reference/osce-weights${{ matrix.suffix }}.bin" ${{ matrix.exporter_flags }}
+      - name: Compare neural loss recovery and speech enhancement
+        run: ./tools/wasm/check_neural.sh ${{ matrix.profile }}
+      - name: Compare 96 kHz neural and QEXT combinations
+        run: ./tools/wasm/check_neural_qext.sh ${{ matrix.profile }}
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: neural-wasm-${{ matrix.profile }}-logs
+          path: target/neural-wasm-${{ matrix.profile }}/*.log

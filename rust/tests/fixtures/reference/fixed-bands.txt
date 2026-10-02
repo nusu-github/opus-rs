@@ -1,0 +1,4 @@
+normalise 16384000 -32000 1536000 -2048000
+denormalise 0 -150080 46501 -61449
+downsample 0 -150080 0 0
+silence 0 0 0 0

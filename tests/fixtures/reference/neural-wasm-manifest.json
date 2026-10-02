@@ -1,0 +1,172 @@
+{
+  "all_passed": true,
+  "cases": 2636,
+  "browser_wasm_checks": 8,
+  "profiles": [
+    {
+      "profile": "quantized",
+      "comparison": "native Rust versus WASI Rust",
+      "cases": 1318,
+      "failures": 0,
+      "browser_wasm_checks": 4,
+      "checks": [
+        {
+          "name": "deep-plc-wasi",
+          "cases": 906,
+          "failures": 0,
+          "log": "target/neural-wasm-quantized/deep-plc-wasi.log",
+          "log_sha256": "ef328efabc5d9b2e659e29f3395f95afa1e7107d4c69b3bd65e2e7a8ae7b988e"
+        },
+        {
+          "name": "deep-plc-sequences-wasi",
+          "cases": 24,
+          "failures": 0,
+          "log": "target/neural-wasm-quantized/deep-plc-sequences-wasi.log",
+          "log_sha256": "9e2042c4116b5e92b78527f56cbed554922cebdbd113034fef47cbaad767b18d"
+        },
+        {
+          "name": "dred-wasi",
+          "cases": 204,
+          "failures": 0,
+          "log": "target/neural-wasm-quantized/dred-wasi.log",
+          "log_sha256": "005f2f91cc14b23b8a6ddf9c82fc465d48d1f29379858c674ce2338edd57542b"
+        },
+        {
+          "name": "osce-wasi",
+          "cases": 80,
+          "failures": 0,
+          "log": "target/neural-wasm-quantized/osce-wasi.log",
+          "log_sha256": "19d067dde084bfc3cd9e1f7b21b13a7514124a326b5428dfa1ab326e54e54491"
+        },
+        {
+          "name": "qext-wasi",
+          "cases": 104,
+          "failures": 0,
+          "log": "target/neural-wasm-quantized/qext-wasi.log",
+          "log_sha256": "7bb17c2766444add4b8e7b97a1371fede714ffbb3a62dcd0014e2ad433c9f392"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "target/neural-wasm-binaries/deep-plc-quantized",
+          "sha256": "05159ef133781d5374979e0a1d99461388d9a26826fb12f6fd80fcd063082e00"
+        },
+        {
+          "path": "target/neural-wasm-binaries/deep-plc-quantized.wasm",
+          "sha256": "5a3a93d822a2ff5302db80a5cc35d668fae46d010d12d65cd4c9ce89e9b07d63"
+        },
+        {
+          "path": "target/neural-wasm-binaries/osce-quantized",
+          "sha256": "d5dc958ff2af9ef0b04404d95bf2c97da16f75cb34219e7698e33591eba82f48"
+        },
+        {
+          "path": "target/neural-wasm-binaries/osce-quantized.wasm",
+          "sha256": "eb07e13f5af5b09cc76fa4d1abdb9a1d4e89a6a3cae1889ce93f7624301e7dc7"
+        },
+        {
+          "path": "target/neural-wasm-binaries/qext-deep-plc-quantized",
+          "sha256": "54fc0721ffe0165acefad2125639ac9f50c1e79ec41eee1dee006cbd4c645fff"
+        },
+        {
+          "path": "target/neural-wasm-binaries/qext-deep-plc-quantized.wasm",
+          "sha256": "af2eece40c3f98e3f95e3e9a4a5521a139bfd44cf6b64b7d2e8844ca389baa08"
+        },
+        {
+          "path": "target/neural-wasm-binaries/qext-osce-quantized",
+          "sha256": "679486f85dec906bb4c1501fcd9205e951a71e5a847b52b2e537eb787bb2193b"
+        },
+        {
+          "path": "target/neural-wasm-binaries/qext-osce-quantized.wasm",
+          "sha256": "0c9f4ab1df76c9120d269da20783068117bd8ce7c9c165f6bd4473faad77f4b1"
+        }
+      ]
+    },
+    {
+      "profile": "debug-float",
+      "comparison": "native Rust versus WASI Rust",
+      "cases": 1318,
+      "failures": 0,
+      "browser_wasm_checks": 4,
+      "checks": [
+        {
+          "name": "deep-plc-wasi",
+          "cases": 906,
+          "failures": 0,
+          "log": "target/neural-wasm-debug-float/deep-plc-wasi.log",
+          "log_sha256": "ef328efabc5d9b2e659e29f3395f95afa1e7107d4c69b3bd65e2e7a8ae7b988e"
+        },
+        {
+          "name": "deep-plc-sequences-wasi",
+          "cases": 24,
+          "failures": 0,
+          "log": "target/neural-wasm-debug-float/deep-plc-sequences-wasi.log",
+          "log_sha256": "9e2042c4116b5e92b78527f56cbed554922cebdbd113034fef47cbaad767b18d"
+        },
+        {
+          "name": "dred-wasi",
+          "cases": 204,
+          "failures": 0,
+          "log": "target/neural-wasm-debug-float/dred-wasi.log",
+          "log_sha256": "005f2f91cc14b23b8a6ddf9c82fc465d48d1f29379858c674ce2338edd57542b"
+        },
+        {
+          "name": "osce-wasi",
+          "cases": 80,
+          "failures": 0,
+          "log": "target/neural-wasm-debug-float/osce-wasi.log",
+          "log_sha256": "19d067dde084bfc3cd9e1f7b21b13a7514124a326b5428dfa1ab326e54e54491"
+        },
+        {
+          "name": "qext-wasi",
+          "cases": 104,
+          "failures": 0,
+          "log": "target/neural-wasm-debug-float/qext-wasi.log",
+          "log_sha256": "7bb17c2766444add4b8e7b97a1371fede714ffbb3a62dcd0014e2ad433c9f392"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "target/neural-wasm-binaries/deep-plc-debug-float",
+          "sha256": "bc50b6d29a929d2674a9e168ee042f38065cd3b4d6706684e1726e1fe0b61fc2"
+        },
+        {
+          "path": "target/neural-wasm-binaries/deep-plc-debug-float.wasm",
+          "sha256": "c6384eb02b1407482ef0a648db0b601a2cd48c8750456c33a0df904a460150bc"
+        },
+        {
+          "path": "target/neural-wasm-binaries/osce-debug-float",
+          "sha256": "13997ae2638442514beb5fd2aa0d2bd75b9877277a4aa440e0b99f427cbd319b"
+        },
+        {
+          "path": "target/neural-wasm-binaries/osce-debug-float.wasm",
+          "sha256": "bf0af58ad63d47b7b2c45adecef16822ba15844ec19731950dc682e7e7b829c3"
+        },
+        {
+          "path": "target/neural-wasm-binaries/qext-deep-plc-debug-float",
+          "sha256": "e29de59da374a4f01605bc4214c7b3e5e995dfd7f5ac01c1b101e62a6246304b"
+        },
+        {
+          "path": "target/neural-wasm-binaries/qext-deep-plc-debug-float.wasm",
+          "sha256": "553b8a459ffa28f4fd96bbdc5e53fbff2c860884751ec6f73c891fb63772eb26"
+        },
+        {
+          "path": "target/neural-wasm-binaries/qext-osce-debug-float",
+          "sha256": "35f4be7680bb764fd0ea9c1abf24dcee69ccaf6746b8f09fc53d70175ece1455"
+        },
+        {
+          "path": "target/neural-wasm-binaries/qext-osce-debug-float.wasm",
+          "sha256": "b454ab4216a49f722e6bc8b1eb4c3871a335ef52cf493e0830c16e32ed15c12f"
+        }
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "model_archive_sha256": "a5177ec6fb7d15058e99e57029746100121f68e4890b1467d4094aa336b6013e",
+  "reproduction": [
+    "OPUS_NEURAL_FULL_DECODE=1 tools/wasm/check_neural.sh quantized",
+    "OPUS_NEURAL_FULL_DECODE=1 tools/wasm/check_neural.sh debug-float",
+    "tools/wasm/check_neural_qext.sh quantized",
+    "tools/wasm/check_neural_qext.sh debug-float"
+  ]
+}

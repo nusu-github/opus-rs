@@ -8,3 +8,12 @@ update_version		export-ignore
 *.vcxproj eol=crlf
 *.vcxproj.filters eol=crlf
 common.props eol=crlf
+
+# Generated reference data is retained for independent numerical regression.
+rust/tests/fixtures/** linguist-generated=true
+tests/fixtures/reference/** linguist-generated=true
+
+# An empty byte field is represented by a trailing tab in the entropy TSV.
+rust/tests/fixtures/reference/entropy/*.tsv whitespace=-blank-at-eol
+# This fixture deliberately contains an empty encoder command line.
+rust/tests/fixtures/reference/entropy/empty.script whitespace=-blank-at-eof

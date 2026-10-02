@@ -1,0 +1,27 @@
+size 256
+bits 1 1
+bits 3 2
+bits 7 3
+bits 15 4
+bits 31 5
+bits 63 6
+bits 127 7
+bits 255 8
+bits 511 9
+bits 1023 10
+bits 2047 11
+bits 4095 12
+bits 8191 13
+bits 16383 14
+bits 32767 15
+bits 65535 16
+bits 131071 17
+bits 262143 18
+bits 524287 19
+bits 1048575 20
+bits 2097151 21
+bits 4194303 22
+bits 8388607 23
+bits 16777215 24
+bits 33554431 25
+shrink 41
