@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "measured_utc": "2026-10-02T08:05:38.386651+00:00",
+  "rust_revision": "38f077cc6051e5020fcb21a353cccceca2127c81",
+  "candidate_revision": "working-tree",
+  "working_tree_changes": [
+    " M Cargo.toml",
+    " M rust/src/celt/bands.rs",
+    " M rust/src/celt/celt_decoder.rs",
+    " M rust/src/celt/cwrs.rs",
+    " M rust/src/celt/entenc.rs",
+    " M rust/src/celt/float_cast.rs",
+    " M rust/src/celt/kiss_fft.rs",
+    " M rust/src/celt/mdct.rs",
+    " M rust/src/celt/quant_bands.rs",
+    " M rust/src/celt/vq.rs",
+    "?? rust/src/bin/opus_rs_bench.rs",
+    "?? tools/benchmark/"
+  ],
+  "profile": "pfa",
+  "suite": "core",
+  "loss_every": 0,
+  "cpu_affinity": 0,
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "gcc": "gcc (Debian 14.2.0-19) 14.2.0",
+  "reference_binary_sha256": "301a629e3fd9882923559e6edb4478dce2161fa2ebefa3d3b6294a7cbf66d3b2",
+  "candidate_binary_sha256": "43ec8bf4899a758d60b3d56721c0e2dafd523355713e9ced4f4617529dc77b12",
+  "timing": "In-process thread CPU time from /proc/thread-self/schedstat; monotonic wall time also retained; setup, corpus generation, and file I/O excluded;64 warmup frames;128-frame mixed-input corpus;alternating order;median per-frame cost.",
+  "threshold": "Rust elapsed time / C elapsed time >=1.10",
+  "repetitions": 7,
+  "minimum_c_duration_ms": 250,
+  "time_source": "cpu",
+  "cases": [
+    {
+      "name": "celt-mono",
+      "operation": "encode",
+      "sample_rate": 48000,
+      "channels": 1,
+      "frame_samples": 960,
+      "mode": 1002,
+      "bitrate": 64000,
+      "complexity": 10,
+      "iterations": 1777,
+      "input_sha256": "324de2d5696d2517056295637dbc4b8e557811c5f710af26ce210764b0ff65ac",
+      "verified_output_sha256": "893f184fccffa473e5b1e98b86f2b327711c24d46fa99812d42c57c53b447310",
+      "c_ns_per_frame": 128141.65109735509,
+      "rust_ns_per_frame": 143908.86719189645,
+      "rust_over_c": 1.123045207858,
+      "slowdown_percent": 12.3045207858,
+      "samples_ns_per_frame": {
+        "c": [
+          128141.65109735509,
+          126059.30557118739,
+          125894.71581316827,
+          126013.80078784468,
+          128311.57343837929,
+          132619.97017445133,
+          130320.35171637591
+        ],
+        "rust": [
+          143858.49352841868,
+          143908.86719189645,
+          143893.21722003375,
+          144744.79065841305,
+          144839.32470455824,
+          146115.301631964,
+          143905.15925717502
+        ]
+      },
+      "wall_samples_ns_per_frame": {
+        "c": [
+          127601.89532920653,
+          127113.53404614519,
+          126166.77490151941,
+          126499.06359032076,
+          127010.39842431064,
+          131321.4625773776,
+          129230.45526167698
+        ],
+        "rust": [
+          145464.66797974115,
+          144390.1457512662,
+          144117.66572875634,
+          147093.1131119865,
+          144648.16826111425,
+          145586.95498030388,
+          143261.42768711312
+        ]
+      }
+    },
+    {
+      "name": "celt-mono",
+      "operation": "decode",
+      "sample_rate": 48000,
+      "channels": 1,
+      "frame_samples": 960,
+      "mode": 1002,
+      "bitrate": 64000,
+      "complexity": 10,
+      "iterations": 9142,
+      "input_sha256": "324de2d5696d2517056295637dbc4b8e557811c5f710af26ce210764b0ff65ac",
+      "verified_output_sha256": "893f184fccffa473e5b1e98b86f2b327711c24d46fa99812d42c57c53b447310",
+      "c_ns_per_frame": 29283.239444322906,
+      "rust_ns_per_frame": 41510.16429665281,
+      "rust_over_c": 1.417540036018806,
+      "slowdown_percent": 41.7540036018806,
+      "samples_ns_per_frame": {
+        "c": [
+          29714.559614963902,
+          28847.505469262742,
+          30160.124152264274,
+          28409.681470137824,
+          29283.239444322906,
+          30917.551192299277,
+          28844.389411507327
+        ],
+        "rust": [
+          41510.16429665281,
+          41505.82312404288,
+          41075.818529862176,
+          46763.61277619777,
+          40224.92441478889,
+          42379.95241741413,
+          46796.43010282214
+        ]
+      },
+      "wall_samples_ns_per_frame": {
+        "c": [
+          30010.386129949682,
+          28775.554911397943,
+          29995.978888645812,
+          28754.61299496828,
+          28941.872238022315,
+          31267.379238678626,
+          29062.504156639687
+        ],
+        "rust": [
+          41691.695033909426,
+          41655.07460074382,
+          41465.95504266025,
+          46816.33220301903,
+          40591.89827171298,
+          42624.36129949683,
+          46754.87125355502
+        ]
+      }
+    },
+    {
+      "name": "celt-stereo",
+      "operation": "encode",
+      "sample_rate": 48000,
+      "channels": 2,
+      "frame_samples": 960,
+      "mode": 1002,
+      "bitrate": 128000,
+      "complexity": 10,
+      "iterations": 1230,
+      "input_sha256": "47f0990c9e9570bec446e1726ec3d001dda6554b7b9dc0c73d4774a4da59cee9",
+      "verified_output_sha256": "60916a12700d45b64ddb953b0f1d818e2a16a78ff78fce7b5e4ee84cb54aa72f",
+      "c_ns_per_frame": 194914.98211382114,
+      "rust_ns_per_frame": 230651.36666666667,
+      "rust_over_c": 1.1833434462825294,
+      "slowdown_percent": 18.334344628252943,
+      "samples_ns_per_frame": {
+        "c": [
+          194873.59268292683,
+          194902.60650406504,
+          198084.41463414635,
+          194851.3,
+          201326.55121951218,
+          201257.01463414636,
+          194914.98211382114
+        ],
+        "rust": [
+          227361.9138211382,
+          230655.3105691057,
+          227403.30162601627,
+          237183.7861788618,
+          230651.36666666667,
+          227381.38699186992,
+          233899.53008130082
+        ]
+      },
+      "wall_samples_ns_per_frame": {
+        "c": [
+          196053.89105691056,
+          196103.4357723577,
+          198519.17886178862,
+          195543.0349593496,
+          200929.9943089431,
+          199935.4105691057,
+          195182.65528455283
+        ],
+        "rust": [
+          230445.71219512195,
+          231055.96016260164,
+          228673.4593495935,
+          237359.51463414636,
+          231520.17642276423,
+          229776.51300813007,
+          232839.23658536584
+        ]
+      }
+    },
+    {
+      "name": "celt-stereo",
+      "operation": "decode",
+      "sample_rate": 48000,
+      "channels": 2,
+      "frame_samples": 960,
+      "mode": 1002,
+      "bitrate": 128000,
+      "complexity": 10,
+      "iterations": 4922,
+      "input_sha256": "47f0990c9e9570bec446e1726ec3d001dda6554b7b9dc0c73d4774a4da59cee9",
+      "verified_output_sha256": "60916a12700d45b64ddb953b0f1d818e2a16a78ff78fce7b5e4ee84cb54aa72f",
+      "c_ns_per_frame": 52769.58594067452,
+      "rust_ns_per_frame": 79307.79703372612,
+      "rust_over_c": 1.5029073209497383,
+      "slowdown_percent": 50.29073209497383,
+      "samples_ns_per_frame": {
+        "c": [
+          53581.006501422184,
+          52769.34924827306,
+          53572.19565217391,
+          53582.18874441284,
+          52757.30495733442,
+          52769.58594067452,
+          51956.877285656235
+        ],
+        "rust": [
+          79589.42381145875,
+          78716.7336448598,
+          77946.75863470134,
+          79520.77752945956,
+          78732.60849248273,
+          80301.52559934986,
+          79307.79703372612
+        ]
+      },
+      "wall_samples_ns_per_frame": {
+        "c": [
+          53119.35331166193,
+          53315.102194229985,
+          53221.42015440878,
+          53510.49268590004,
+          52644.74969524583,
+          53016.78362454287,
+          52036.892320195046
+        ],
+        "rust": [
+          79006.33055668428,
+          78907.73994311255,
+          78052.74075579034,
+          79417.159488013,
+          78655.7903291345,
+          80456.43051605039,
+          79588.358390898
+        ]
+      }
+    }
+  ],
+  "working_tree_source_sha256": "f775ca9e654a4cf0df442fd90cd51f84ffb6eb9009c4e9815a87f71518d1a53e"
+}

@@ -192,8 +192,12 @@ fn post_rotate_forward(
     }
 }
 
-fn pre_rotate_backward(input: &[f32], twiddles: &[f32], stride: usize) -> Vec<KissFftCpx> {
-    let n2 = input.len() / stride;
+fn pre_rotate_backward(
+    input: &[f32],
+    twiddles: &[f32],
+    stride: usize,
+    n2: usize,
+) -> Vec<KissFftCpx> {
     let n4 = n2 / 2;
     let (cos_part, sin_part) = twiddles.split_at(n4);
     let mut out = vec![KissFftCpx::default(); n4];
@@ -227,7 +231,7 @@ fn post_rotate_backward(
     let n2 = n4 * 2;
     let (cos_part, sin_part) = twiddles.split_at(n4);
     let half_overlap = overlap >> 1;
-    let mut temp = vec![0.0f32; n2];
+    let temp = &mut out[half_overlap..half_overlap + n2];
 
     let pairs = (n4 + 1) >> 1;
     for i in 0..pairs {
@@ -259,13 +263,6 @@ fn post_rotate_backward(
         temp[front_odd] = yi_back;
         temp[back_even] = yr_back;
         temp[back_odd] = yi_front;
-    }
-
-    for (dst, src) in out[half_overlap..half_overlap + n2]
-        .iter_mut()
-        .zip(temp.iter())
-    {
-        *dst = *src;
     }
 
     if overlap == 0 {
@@ -380,7 +377,7 @@ pub fn clt_mdct_backward(
     let n2 = n >> 1;
     let n4 = n >> 2;
 
-    assert!(input.len() >= stride * n2);
+    assert!(input.len() >= (n2 - 1) * stride + 1);
     assert!(window.len() >= overlap);
     let half_overlap = overlap >> 1;
     assert!(output.len() >= overlap);
@@ -388,17 +385,14 @@ pub fn clt_mdct_backward(
     assert!(stride > 0);
 
     let twiddles = lookup.twiddles(shift);
-    let pre = pre_rotate_backward(input, twiddles, stride);
+    let mut pre = pre_rotate_backward(input, twiddles, stride, n2);
     let mut fft_out = vec![KissFftCpx::default(); n4];
     // The C inverse MDCT swaps components around a forward FFT. Besides
     // matching its arithmetic order, this preserves the sign of zero.
-    let swapped: Vec<_> = pre
-        .iter()
-        .map(|value| KissFftCpx::new(value.i, value.r))
-        .collect();
-    lookup
-        .forward_plan(shift)
-        .fft_unscaled(&swapped, &mut fft_out);
+    for value in &mut pre {
+        core::mem::swap(&mut value.r, &mut value.i);
+    }
+    lookup.forward_plan(shift).fft_unscaled(&pre, &mut fft_out);
     for value in &mut fft_out {
         core::mem::swap(&mut value.r, &mut value.i);
     }
@@ -1712,7 +1706,7 @@ mod tests {
         let n = lookup.effective_len(shift);
         let n2 = n >> 1;
         let twiddles = lookup.twiddles(shift);
-        let pre = pre_rotate_backward(input, twiddles, stride);
+        let pre = pre_rotate_backward(input, twiddles, stride, n2);
         let freq = naive_fft(&pre, true);
         let mut out = vec![0.0f32; overlap.max((overlap >> 1) + n2)];
         post_rotate_backward(&freq, twiddles, &mut out, window, overlap);

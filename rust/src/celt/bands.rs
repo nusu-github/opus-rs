@@ -210,7 +210,7 @@ impl<'a, 'b> BandCodingState<'a, 'b> {
     #[inline]
     fn encoder_snapshot(&self) -> EcEncSnapshot {
         match self {
-            Self::Encoder(enc) => EcEncSnapshot::capture(enc),
+            Self::Encoder(enc) => EcEncSnapshot::capture_active(enc),
             Self::Decoder(_) => unreachable!("encoder snapshot requested on a decoder"),
         }
     }
@@ -851,12 +851,10 @@ fn special_hybrid_folding_fixed(
 
     let copy_len = n2 - n1;
     let src_start = 2 * n1 - n2;
-    let temp: Vec<FixedCeltNorm> = norm[src_start..src_start + copy_len].to_vec();
-    norm[n1..n1 + copy_len].copy_from_slice(&temp);
+    norm.copy_within(src_start..src_start + copy_len, n1);
 
     if let (true, Some(norm2)) = (dual_stereo, norm2) {
-        let temp2: Vec<FixedCeltNorm> = norm2[src_start..src_start + copy_len].to_vec();
-        norm2[n1..n1 + copy_len].copy_from_slice(&temp2);
+        norm2.copy_within(src_start..src_start + copy_len, n1);
     }
 }
 
@@ -3540,8 +3538,7 @@ pub(crate) fn special_hybrid_folding(
         "source slice exceeds bounds"
     );
 
-    let temp: Vec<OpusVal16> = norm[src_start..src_start + copy_len].to_vec();
-    norm[n1..n1 + copy_len].copy_from_slice(&temp);
+    norm.copy_within(src_start..src_start + copy_len, n1);
 
     if let (true, Some(norm2)) = (dual_stereo, norm2) {
         debug_assert!(
@@ -3553,8 +3550,7 @@ pub(crate) fn special_hybrid_folding(
             "source slice exceeds bounds"
         );
 
-        let temp2: Vec<OpusVal16> = norm2[src_start..src_start + copy_len].to_vec();
-        norm2[n1..n1 + copy_len].copy_from_slice(&temp2);
+        norm2.copy_within(src_start..src_start + copy_len, n1);
     }
 }
 

@@ -465,22 +465,16 @@ fn apply_inverse_mdct(
     assert!(freq.len() >= nb.saturating_mul(stride));
     assert!(output.len() >= nb.saturating_mul(stride));
 
-    let mut temp = vec![0.0f32; nb];
     for band in 0..bands {
-        for (idx, sample) in temp.iter_mut().enumerate() {
-            let src_index = band + idx * stride;
-            *sample = freq.get(src_index).copied().unwrap_or_default();
-        }
-
         let start = band * nb;
         clt_mdct_backward(
             &mode.mdct,
-            &temp,
+            &freq[band..band + (nb - 1) * stride + 1],
             &mut output[start..],
             mode.window,
             mode.overlap,
             shift,
-            1,
+            stride,
         );
     }
 }
@@ -2581,7 +2575,11 @@ fn deemphasis_fixed(
         return;
     }
 
-    let mut scratch = vec![0; n];
+    let mut scratch = if downsample > 1 || (coef.len() > 3 && coef[1] != 0.0) {
+        vec![0; n]
+    } else {
+        Vec::new()
+    };
     let nd = n / downsample;
 
     for channel in 0..channels {
@@ -2719,7 +2717,11 @@ fn deemphasis_fixed_to_int16(
         return;
     }
 
-    let mut scratch = vec![0; n];
+    let mut scratch = if downsample > 1 || (coef.len() > 3 && coef[1] != 0.0) {
+        vec![0; n]
+    } else {
+        Vec::new()
+    };
     let nd = n / downsample;
 
     for channel in 0..channels {
@@ -2841,7 +2843,11 @@ pub(crate) fn deemphasis(
         return;
     }
 
-    let mut scratch = vec![CeltSig::default(); n];
+    let mut scratch = if downsample > 1 || (coef.len() > 3 && coef[1] != 0.0) {
+        vec![CeltSig::default(); n]
+    } else {
+        Vec::new()
+    };
     let coef0 = coef[0];
     let nd = n / downsample;
 

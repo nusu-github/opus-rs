@@ -246,11 +246,18 @@ fn pvq_u(n: usize, k: usize) -> Option<OpusUint32> {
     let col = n.max(k);
     let row_offset = *CELT_PVQ_U_ROW_OFFSETS.get(row)?;
     let row_len = *CELT_PVQ_U_ROW_LENGTHS.get(row)?;
-    let max_col = row.checked_add(row_len.checked_sub(1)?)?;
+    let max_col = row + row_len - 1;
     if col > max_col {
         return None;
     }
     CELT_PVQ_U_DATA.get(row_offset + col).copied()
+}
+
+#[inline]
+fn pvq_row(row: usize) -> Option<&'static [OpusUint32]> {
+    let offset = *CELT_PVQ_U_ROW_OFFSETS.get(row)?;
+    let length = *CELT_PVQ_U_ROW_LENGTHS.get(row)?;
+    CELT_PVQ_U_DATA.get(offset..offset + row + length)
 }
 
 #[inline]
@@ -281,7 +288,8 @@ fn cwrsi_pvq(
 
     while n > 2 {
         if k >= n {
-            let sign_threshold = pvq_u(n, k + 1)?;
+            let row = pvq_row(n)?;
+            let sign_threshold = *row.get(k + 1)?;
             let negative = if index >= sign_threshold {
                 index -= sign_threshold;
                 true
@@ -290,7 +298,7 @@ fn cwrsi_pvq(
             };
 
             let original_k = k;
-            let diagonal = pvq_u(n, n)?;
+            let diagonal = row[n];
             let p = if diagonal > index {
                 debug_assert!(sign_threshold > diagonal);
                 k = n;
@@ -303,7 +311,7 @@ fn cwrsi_pvq(
                 }
             } else {
                 loop {
-                    let candidate = pvq_u(n, k)?;
+                    let candidate = *row.get(k)?;
                     if candidate <= index {
                         break candidate;
                     }
@@ -381,11 +389,32 @@ fn cwrsi_pvq(
     Some(energy)
 }
 
+fn icwrs_pvq(y: &[OpusInt32], n: usize) -> Option<OpusUint32> {
+    let mut index = OpusUint32::from(y[n - 1] < 0);
+    let mut pulses = y[n - 1].unsigned_abs() as usize;
+    for j in (0..n - 1).rev() {
+        index = index.checked_add(pvq_u(n - j, pulses)?)?;
+        pulses += y[j].unsigned_abs() as usize;
+        if y[j] < 0 {
+            index = index.checked_add(pvq_u(n - j, pulses + 1)?)?;
+        }
+    }
+    Some(index)
+}
+
 pub(crate) fn encode_pulses(y: &[OpusInt32], n: usize, k: usize, enc: &mut EcEnc<'_>) {
     debug_assert!(k > 0);
     debug_assert!(n >= 2);
     debug_assert!(y.len() >= n);
 
+    // Use the same O(N) static-table path as the normal C build. Rebuilding
+    // combinatorial rows costs O(N*K) and allocates once for every PVQ band.
+    if let Some(total) = pvq_v(n, k) {
+        if let Some(index) = icwrs_pvq(y, n) {
+            enc.enc_uint(index, total);
+            return;
+        }
+    }
     let mut workspace = vec![0u32; k + 2];
     let (index, total) = icwrs(y, n, k, &mut workspace);
     enc.enc_uint(index, total);

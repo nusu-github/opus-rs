@@ -14,6 +14,9 @@ matrix, reference conditions, verification coverage, and defined input boundarie
 [The port goal](docs/RUST_PORT.md) records the acceptance criteria and source
 provenance. Rust API compatibility with the C library is not required.
 
+[Performance measurements](docs/PERFORMANCE.md) record reproducible scalar C
+comparisons, optimizations, and remaining cases above the 10% slowdown threshold.
+
 ## Rust API
 
 Rust 1.88 or newer is required.

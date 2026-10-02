@@ -480,12 +480,23 @@ pub struct EcEncSnapshot {
     rem: OpusInt32,
     error: OpusInt32,
     buffer: Vec<u8>,
+    capacity: usize,
 }
 
 impl EcEncSnapshot {
     /// Captures the current encoder state, including the output buffer.
     #[must_use]
     pub fn capture(enc: &EcEnc<'_>) -> Self {
+        Self::capture_prefix(enc, enc.ctx().buffer().len())
+    }
+
+    /// RDO only needs the live storage range, even when the caller supplied a
+    /// much larger packet buffer. Preserve the public full-buffer snapshot API.
+    pub(crate) fn capture_active(enc: &EcEnc<'_>) -> Self {
+        Self::capture_prefix(enc, enc.ctx().storage as usize)
+    }
+
+    fn capture_prefix(enc: &EcEnc<'_>, length: usize) -> Self {
         let ctx = enc.ctx();
         Self {
             storage: ctx.storage,
@@ -499,14 +510,15 @@ impl EcEncSnapshot {
             ext: ctx.ext,
             rem: ctx.rem,
             error: ctx.error,
-            buffer: ctx.buffer().to_vec(),
+            buffer: ctx.buffer()[..length].to_vec(),
+            capacity: ctx.buffer().len(),
         }
     }
 
     /// Restores a previously captured encoder state.
     pub fn restore(&self, enc: &mut EcEnc<'_>) {
         let ctx = enc.ctx_mut();
-        assert_eq!(self.buffer.len(), ctx.buffer().len());
+        assert_eq!(self.capacity, ctx.buffer().len());
         ctx.storage = self.storage;
         ctx.end_offs = self.end_offs;
         ctx.end_window = self.end_window;
@@ -518,7 +530,7 @@ impl EcEncSnapshot {
         ctx.ext = self.ext;
         ctx.rem = self.rem;
         ctx.error = self.error;
-        ctx.buffer_mut().copy_from_slice(&self.buffer);
+        ctx.buffer_mut()[..self.buffer.len()].copy_from_slice(&self.buffer);
     }
 
     #[must_use]
@@ -611,6 +623,32 @@ mod tests {
     use super::EcEnc;
     use crate::celt::entcode::{EC_CODE_BITS, EC_CODE_TOP, EC_WINDOW_SIZE};
     use crate::celt::entdec::EcDec;
+
+    #[test]
+    fn active_snapshot_preserves_coding_state_after_storage_shrink() {
+        let mut buffer = vec![0x5a; 8192];
+        let mut encoder = EcEnc::new(&mut buffer);
+        encoder.enc_shrink(64);
+        encoder.enc_uint(7, 19);
+        encoder.enc_bits(13, 4);
+        let active = super::EcEncSnapshot::capture_active(&encoder);
+        let complete = super::EcEncSnapshot::capture(&encoder);
+        assert_eq!(active.buffer_len(), 64);
+        assert_eq!(complete.buffer_len(), 8192);
+        encoder.enc_uint(4, 11);
+        encoder.enc_bits(3, 2);
+        encoder.ctx_mut().buffer_mut()[1000] = 0x33;
+        active.restore(&mut encoder);
+        encoder.enc_uint(6, 23);
+        encoder.enc_done();
+        let active_bytes = encoder.ctx().buffer()[..64].to_vec();
+        assert_eq!(encoder.ctx().buffer()[1000], 0x33);
+        complete.restore(&mut encoder);
+        encoder.enc_uint(6, 23);
+        encoder.enc_done();
+        assert_eq!(encoder.ctx().buffer()[..64], active_bytes);
+        assert_eq!(encoder.ctx().buffer()[1000], 0x5a);
+    }
 
     #[test]
     fn encoder_initialises_like_reference() {

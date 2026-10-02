@@ -933,19 +933,20 @@ fn kf_bfly2(fout: &mut [KissFftCpx], m: usize, n: usize) {
     if m == 1 {
         for i in 0..n {
             let base = 2 * i;
+            let fout: &mut [KissFftCpx; 2] = (&mut fout[base..base + 2]).try_into().unwrap();
             #[cfg(test)]
             let mut before = [KissFftCpx::new(0.0, 0.0); 2];
             #[cfg(test)]
             if trace_enabled {
-                before[0] = fout[base];
-                before[1] = fout[base + 1];
+                before[0] = fout[0];
+                before[1] = fout[1];
             }
-            let t = fout[base + 1];
-            fout[base + 1] = c_sub(fout[base], t);
-            fout[base] = c_add(fout[base], t);
+            let t = fout[1];
+            fout[1] = c_sub(fout[0], t);
+            fout[0] = c_add(fout[0], t);
             #[cfg(test)]
             if trace_enabled {
-                let after = [fout[base], fout[base + 1]];
+                let after = [fout[0], fout[1]];
                 fft_stage_trace::dump_bfly(&before, &after);
             }
         }
@@ -954,40 +955,36 @@ fn kf_bfly2(fout: &mut [KissFftCpx], m: usize, n: usize) {
         let tw = FRAC_1_SQRT_2;
         for i in 0..n {
             let base = i * 2 * m;
+            let fout: &mut [KissFftCpx; 8] = (&mut fout[base..base + 8]).try_into().unwrap();
             #[cfg(test)]
             let mut before = [KissFftCpx::new(0.0, 0.0); 8];
             #[cfg(test)]
             if trace_enabled {
                 for k in 0..8 {
-                    before[k] = fout[base + k];
+                    before[k] = fout[k];
                 }
             }
-            let t0 = fout[base + 4];
-            fout[base + 4] = c_sub(fout[base], t0);
-            fout[base] = c_add(fout[base], t0);
+            let t0 = fout[4];
+            fout[4] = c_sub(fout[0], t0);
+            fout[0] = c_add(fout[0], t0);
 
-            let mut t1 = KissFftCpx::new(
-                (fout[base + 5].r + fout[base + 5].i) * tw,
-                (fout[base + 5].i - fout[base + 5].r) * tw,
-            );
-            fout[base + 5] = c_sub(fout[base + 1], t1);
-            fout[base + 1] = c_add(fout[base + 1], t1);
+            let mut t1 =
+                KissFftCpx::new((fout[5].r + fout[5].i) * tw, (fout[5].i - fout[5].r) * tw);
+            fout[5] = c_sub(fout[1], t1);
+            fout[1] = c_add(fout[1], t1);
 
-            let t2 = KissFftCpx::new(fout[base + 6].i, -fout[base + 6].r);
-            fout[base + 6] = c_sub(fout[base + 2], t2);
-            fout[base + 2] = c_add(fout[base + 2], t2);
+            let t2 = KissFftCpx::new(fout[6].i, -fout[6].r);
+            fout[6] = c_sub(fout[2], t2);
+            fout[2] = c_add(fout[2], t2);
 
-            t1 = KissFftCpx::new(
-                (fout[base + 7].i - fout[base + 7].r) * tw,
-                -(fout[base + 7].i + fout[base + 7].r) * tw,
-            );
-            fout[base + 7] = c_sub(fout[base + 3], t1);
-            fout[base + 3] = c_add(fout[base + 3], t1);
+            t1 = KissFftCpx::new((fout[7].i - fout[7].r) * tw, -(fout[7].i + fout[7].r) * tw);
+            fout[7] = c_sub(fout[3], t1);
+            fout[3] = c_add(fout[3], t1);
             #[cfg(test)]
             if trace_enabled {
                 let mut after = [KissFftCpx::new(0.0, 0.0); 8];
                 for k in 0..8 {
-                    after[k] = fout[base + k];
+                    after[k] = fout[k];
                 }
                 fft_stage_trace::dump_bfly(&before, &after);
             }
@@ -1005,44 +1002,48 @@ fn kf_bfly3(
 ) {
     #[cfg(test)]
     let trace_enabled = fft_stage_trace::bfly_active();
-    let m2 = 2 * m;
+
     let twiddles = st.twiddles.as_slice();
     let epi3 = twiddles[fstride * m];
     for i in 0..n {
         let base = i * mm;
+        let block = &mut fout[base..base + 3 * m];
+        let (arm0, tail) = block.split_at_mut(m);
+        let (arm1, tail) = tail.split_at_mut(m);
+        let arm2 = tail;
         let mut tw1 = 0usize;
         let mut tw2 = 0usize;
-        for k in 0..m {
+        for (k, ((out0, out1), out2)) in arm0.iter_mut().zip(arm1).zip(arm2).enumerate() {
             #[cfg(test)]
             let mut before = [KissFftCpx::new(0.0, 0.0); 3];
             #[cfg(test)]
             if trace_enabled {
-                before[0] = fout[base + k];
-                before[1] = fout[base + m + k];
-                before[2] = fout[base + m2 + k];
+                before[0] = *out0;
+                before[1] = *out1;
+                before[2] = *out2;
             }
-            let scratch1 = c_mul(fout[base + m + k], twiddles[tw1]);
-            let scratch2 = c_mul(fout[base + m2 + k], twiddles[tw2]);
+            let scratch1 = c_mul(*out1, twiddles[tw1]);
+            let scratch2 = c_mul(*out2, twiddles[tw2]);
             let scratch3 = c_add(scratch1, scratch2);
             let scratch0 = c_sub(scratch1, scratch2);
             tw1 += fstride;
             tw2 += fstride * 2;
 
             let mut fout_m = KissFftCpx::new(
-                fout[base + k].r - half_of(scratch3.r),
-                fout[base + k].i - half_of(scratch3.i),
+                (*out0).r - half_of(scratch3.r),
+                (*out0).i - half_of(scratch3.i),
             );
             let scratch0 = c_mul_by_scalar(scratch0, epi3.i);
-            let fout0 = c_add(fout[base + k], scratch3);
+            let fout0 = c_add(*out0, scratch3);
 
-            fout[base + m2 + k] = KissFftCpx::new(fout_m.r + scratch0.i, fout_m.i - scratch0.r);
+            *out2 = KissFftCpx::new(fout_m.r + scratch0.i, fout_m.i - scratch0.r);
             fout_m = KissFftCpx::new(fout_m.r - scratch0.i, fout_m.i + scratch0.r);
 
-            fout[base + k] = fout0;
-            fout[base + m + k] = fout_m;
+            *out0 = fout0;
+            *out1 = fout_m;
             #[cfg(test)]
             if trace_enabled {
-                let after = [fout[base + k], fout[base + m + k], fout[base + m2 + k]];
+                let after = [*out0, *out1, *out2];
                 fft_stage_trace::dump_bfly(&before, &after);
             }
         }
@@ -1063,12 +1064,13 @@ fn kf_bfly4(
     if m == 1 {
         for i in 0..n {
             let base = i * mm;
+            let fout: &mut [KissFftCpx; 4] = (&mut fout[base..base + 4]).try_into().unwrap();
             #[cfg(test)]
             let mut before = [KissFftCpx::new(0.0, 0.0); 4];
             #[cfg(test)]
             if trace_enabled {
                 for k in 0..4 {
-                    before[k] = fout[base + k];
+                    before[k] = fout[k];
                 }
             }
             #[cfg(test)]
@@ -1077,22 +1079,22 @@ fn kf_bfly4(
             } else {
                 None
             };
-            let scratch0 = c_sub(fout[base], fout[base + 2]);
-            let scratch1 = c_add(fout[base + 1], fout[base + 3]);
-            let scratch1b = c_sub(fout[base + 1], fout[base + 3]);
+            let scratch0 = c_sub(fout[0], fout[2]);
+            let scratch1 = c_add(fout[1], fout[3]);
+            let scratch1b = c_sub(fout[1], fout[3]);
             #[cfg(test)]
             if let Some(bfly_idx) = bfly_idx {
                 fft_stage_trace::dump_bfly_value(bfly_idx, "scratch0", scratch0);
                 fft_stage_trace::dump_bfly_value(bfly_idx, "scratch1", scratch1);
             }
 
-            let mut fout0 = c_add(fout[base], fout[base + 2]);
-            fout[base + 2] = c_sub(fout0, scratch1);
+            let mut fout0 = c_add(fout[0], fout[2]);
+            fout[2] = c_sub(fout0, scratch1);
             fout0 = c_add(fout0, scratch1);
 
-            fout[base + 1] = KissFftCpx::new(scratch0.r + scratch1b.i, scratch0.i - scratch1b.r);
-            fout[base + 3] = KissFftCpx::new(scratch0.r - scratch1b.i, scratch0.i + scratch1b.r);
-            fout[base] = fout0;
+            fout[1] = KissFftCpx::new(scratch0.r + scratch1b.i, scratch0.i - scratch1b.r);
+            fout[3] = KissFftCpx::new(scratch0.r - scratch1b.i, scratch0.i + scratch1b.r);
+            fout[0] = fout0;
             #[cfg(test)]
             if let Some(bfly_idx) = bfly_idx {
                 fft_stage_trace::dump_bfly_value(bfly_idx, "scratch1b", scratch1b);
@@ -1101,28 +1103,33 @@ fn kf_bfly4(
             if trace_enabled {
                 let mut after = [KissFftCpx::new(0.0, 0.0); 4];
                 for k in 0..4 {
-                    after[k] = fout[base + k];
+                    after[k] = fout[k];
                 }
                 fft_stage_trace::dump_bfly(&before, &after);
             }
         }
     } else {
-        let m2 = 2 * m;
-        let m3 = 3 * m;
         for i in 0..n {
             let base = i * mm;
+            let block = &mut fout[base..base + 4 * m];
+            let (arm0, tail) = block.split_at_mut(m);
+            let (arm1, tail) = tail.split_at_mut(m);
+            let (arm2, tail) = tail.split_at_mut(m);
+            let arm3 = tail;
             let mut tw1 = 0usize;
             let mut tw2 = 0usize;
             let mut tw3 = 0usize;
-            for j in 0..m {
+            for (j, (((out0, out1), out2), out3)) in
+                arm0.iter_mut().zip(arm1).zip(arm2).zip(arm3).enumerate()
+            {
                 #[cfg(test)]
                 let mut before = [KissFftCpx::new(0.0, 0.0); 4];
                 #[cfg(test)]
                 if trace_enabled {
-                    before[0] = fout[base + j];
-                    before[1] = fout[base + j + m];
-                    before[2] = fout[base + j + m2];
-                    before[3] = fout[base + j + m3];
+                    before[0] = *out0;
+                    before[1] = *out1;
+                    before[2] = *out2;
+                    before[3] = *out3;
                 }
                 #[cfg(test)]
                 let bfly_idx = if trace_enabled {
@@ -1130,9 +1137,9 @@ fn kf_bfly4(
                 } else {
                     None
                 };
-                let scratch0 = c_mul(fout[base + j + m], twiddles[tw1]);
-                let scratch1 = c_mul(fout[base + j + m2], twiddles[tw2]);
-                let scratch2 = c_mul(fout[base + j + m3], twiddles[tw3]);
+                let scratch0 = c_mul(*out1, twiddles[tw1]);
+                let scratch1 = c_mul(*out2, twiddles[tw2]);
+                let scratch2 = c_mul(*out3, twiddles[tw3]);
                 #[cfg(test)]
                 if let Some(bfly_idx) = bfly_idx {
                     fft_stage_trace::dump_bfly_value(bfly_idx, "mul_in0", before[1]);
@@ -1159,8 +1166,8 @@ fn kf_bfly4(
                 tw2 += fstride * 2;
                 tw3 += fstride * 3;
 
-                let scratch5 = c_sub(fout[base + j], scratch1);
-                let mut fout0 = c_add(fout[base + j], scratch1);
+                let scratch5 = c_sub(*out0, scratch1);
+                let mut fout0 = c_add(*out0, scratch1);
                 let scratch3 = c_add(scratch0, scratch2);
                 let scratch4 = c_sub(scratch0, scratch2);
                 #[cfg(test)]
@@ -1170,23 +1177,18 @@ fn kf_bfly4(
                     fft_stage_trace::dump_bfly_value(bfly_idx, "scratch4", scratch4);
                 }
 
-                fout[base + j + m2] = c_sub(fout0, scratch3);
+                *out2 = c_sub(fout0, scratch3);
                 fout0 = c_add(fout0, scratch3);
 
                 let fout_m = KissFftCpx::new(scratch5.r + scratch4.i, scratch5.i - scratch4.r);
                 let fout_m3 = KissFftCpx::new(scratch5.r - scratch4.i, scratch5.i + scratch4.r);
 
-                fout[base + j] = fout0;
-                fout[base + j + m] = fout_m;
-                fout[base + j + m3] = fout_m3;
+                *out0 = fout0;
+                *out1 = fout_m;
+                *out3 = fout_m3;
                 #[cfg(test)]
                 if trace_enabled {
-                    let after = [
-                        fout[base + j],
-                        fout[base + j + m],
-                        fout[base + j + m2],
-                        fout[base + j + m3],
-                    ];
+                    let after = [*out0, *out1, *out2, *out3];
                     fft_stage_trace::dump_bfly(&before, &after);
                 }
             }
@@ -1209,16 +1211,29 @@ fn kf_bfly5(
     let yb = twiddles[fstride * 2 * m];
     for i in 0..n {
         let base = i * mm;
-        for u in 0..m {
+        let block = &mut fout[base..base + 5 * m];
+        let (arm0, tail) = block.split_at_mut(m);
+        let (arm1, tail) = tail.split_at_mut(m);
+        let (arm2, tail) = tail.split_at_mut(m);
+        let (arm3, tail) = tail.split_at_mut(m);
+        let arm4 = tail;
+        for (u, ((((out0, out1), out2), out3), out4)) in arm0
+            .iter_mut()
+            .zip(arm1)
+            .zip(arm2)
+            .zip(arm3)
+            .zip(arm4)
+            .enumerate()
+        {
             #[cfg(test)]
             let mut before = [KissFftCpx::new(0.0, 0.0); 5];
             #[cfg(test)]
             if trace_enabled {
-                before[0] = fout[base + u];
-                before[1] = fout[base + m + u];
-                before[2] = fout[base + 2 * m + u];
-                before[3] = fout[base + 3 * m + u];
-                before[4] = fout[base + 4 * m + u];
+                before[0] = *out0;
+                before[1] = *out1;
+                before[2] = *out2;
+                before[3] = *out3;
+                before[4] = *out4;
             }
             #[cfg(test)]
             let bfly_idx = if trace_enabled {
@@ -1243,15 +1258,15 @@ fn kf_bfly5(
                     fft_stage_trace::dump_bfly_bits(bfly_idx, "yb", yb);
                 }
             }
-            let scratch0 = fout[base + u];
+            let scratch0 = *out0;
             #[cfg(test)]
             if let Some(bfly_idx) = bfly_idx {
                 fft_stage_trace::dump_bfly_value(bfly_idx, "scratch0", scratch0);
             }
-            let scratch1 = c_mul(fout[base + m + u], twiddles[u * fstride]);
-            let scratch2 = c_mul(fout[base + 2 * m + u], twiddles[2 * u * fstride]);
-            let scratch3 = c_mul(fout[base + 3 * m + u], twiddles[3 * u * fstride]);
-            let scratch4 = c_mul(fout[base + 4 * m + u], twiddles[4 * u * fstride]);
+            let scratch1 = c_mul(*out1, twiddles[u * fstride]);
+            let scratch2 = c_mul(*out2, twiddles[2 * u * fstride]);
+            let scratch3 = c_mul(*out3, twiddles[3 * u * fstride]);
+            let scratch4 = c_mul(*out4, twiddles[4 * u * fstride]);
             #[cfg(test)]
             if let Some(bfly_idx) = bfly_idx {
                 let tw4_idx = 4 * u * fstride;
@@ -1324,8 +1339,8 @@ fn kf_bfly5(
                 fft_stage_trace::dump_bfly_bits(bfly_idx, "scratch6", scratch6);
             }
 
-            fout[base + m + u] = c_sub(scratch5, scratch6);
-            fout[base + 4 * m + u] = c_add(scratch5, scratch6);
+            *out1 = c_sub(scratch5, scratch6);
+            *out4 = c_add(scratch5, scratch6);
 
             let scratch11_r = mul_add_f32(scratch7.r, yb.r, scratch8.r * ya.r);
             let scratch11_i = mul_add_f32(scratch7.i, yb.r, scratch8.i * ya.r);
@@ -1342,18 +1357,12 @@ fn kf_bfly5(
                 fft_stage_trace::dump_bfly_bits(bfly_idx, "scratch12", scratch12);
             }
 
-            fout[base + 2 * m + u] = c_add(scratch11, scratch12);
-            fout[base + 3 * m + u] = c_sub(scratch11, scratch12);
-            fout[base + u] = fout0;
+            *out2 = c_add(scratch11, scratch12);
+            *out3 = c_sub(scratch11, scratch12);
+            *out0 = fout0;
             #[cfg(test)]
             if trace_enabled {
-                let after = [
-                    fout[base + u],
-                    fout[base + m + u],
-                    fout[base + 2 * m + u],
-                    fout[base + 3 * m + u],
-                    fout[base + 4 * m + u],
-                ];
+                let after = [*out0, *out1, *out2, *out3, *out4];
                 if let Some(bfly_idx) = bfly_idx {
                     if bfly_idx == fft_stage_trace::bfly_detail_index() {
                         fft_stage_trace::dump_bfly_bits(bfly_idx, "out0", after[0]);

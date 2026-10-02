@@ -46,9 +46,17 @@ sha2 = "0.10"
 opt-level = 2
 debug = 0
 
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
 [[bin]]
 name = "opus-rs-oracle"
 path = "rust/src/bin/opus_rs_oracle.rs"
+
+[[bin]]
+name = "opus-rs-bench"
+path = "rust/src/bin/opus_rs_bench.rs"
 
 [[test]]
 name = "codec_api"

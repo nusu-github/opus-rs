@@ -32,12 +32,19 @@ pub(crate) fn float2int(value: f32) -> i32 {
 /// canonical scaling and rounding behaviour.
 ///
 /// Mirrors the `FLOAT2INT16()` macro in `float_cast.h` by scaling the input,
-/// clamping it to the representable range, and delegating to [`float2int`] for
-/// the final rounding step.
+/// clamping it to the representable range, and rounding ties to even.
 #[must_use]
+#[inline]
 pub(crate) fn float2int16(value: f32) -> i16 {
     let scaled = (value * CELT_SIG_SCALE).clamp(-32_768.0, 32_767.0);
-    float2int(scaled) as i16
+    // Throughout this bounded range, adding 1.5 * 2^23 places the result in
+    // the binade whose f32 spacing is exactly one. The addition therefore
+    // rounds to the nearest even integer; subtracting the bias is exact.
+    // This also allows LLVM to vectorize PCM conversion without calling the
+    // general software rintf implementation for every sample. NaN still casts
+    // to zero, and infinities are clamped before the adjustment.
+    const BIAS: f32 = 12_582_912.0;
+    ((scaled + BIAS) - BIAS) as i16
 }
 
 #[cfg(test)]
@@ -62,5 +69,23 @@ mod tests {
         // In-range values follow the same rounding mode as float2int().
         assert_eq!(float2int16(0.500_1 / CELT_SIG_SCALE), 1);
         assert_eq!(float2int16(-0.500_1 / CELT_SIG_SCALE), -1);
+    }
+
+    #[test]
+    fn bounded_pcm_rounding_matches_general_rintf() {
+        for integer in -32768..=32767 {
+            for fraction in [-0.501f32, -0.5, -0.499, 0.0, 0.499, 0.5, 0.501] {
+                let value = (integer as f32 + fraction) / CELT_SIG_SCALE;
+                let expected = rintf((value * CELT_SIG_SCALE).clamp(-32768.0, 32767.0)) as i16;
+                assert_eq!(float2int16(value), expected, "{value:?}");
+            }
+        }
+        let mut bits = 1u32;
+        for _ in 0..100_000 {
+            bits = bits.wrapping_mul(1664525).wrapping_add(1013904223);
+            let value = f32::from_bits(bits);
+            let expected = rintf((value * CELT_SIG_SCALE).clamp(-32768.0, 32767.0)) as i16;
+            assert_eq!(float2int16(value), expected, "bits={bits:08x}");
+        }
     }
 }

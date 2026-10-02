@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "reference_revision": "503d81b138d76621aae4b12786e90de48aa8db3a",
+  "measured_utc": "2026-10-02T08:15:29.593158+00:00",
+  "rust_revision": "38f077cc6051e5020fcb21a353cccceca2127c81",
+  "candidate_revision": "38f077cc6051e5020fcb21a353cccceca2127c81",
+  "working_tree_source_sha256": null,
+  "working_tree_changes": [
+    " M Cargo.toml",
+    " M README.md",
+    " M rust/src/celt/bands.rs",
+    " M rust/src/celt/celt_decoder.rs",
+    " M rust/src/celt/cwrs.rs",
+    " M rust/src/celt/entenc.rs",
+    " M rust/src/celt/float_cast.rs",
+    " M rust/src/celt/kiss_fft.rs",
+    " M rust/src/celt/mdct.rs",
+    " M rust/src/celt/quant_bands.rs",
+    " M rust/src/celt/vq.rs",
+    "?? docs/PERFORMANCE.md",
+    "?? docs/performance-core.svg",
+    "?? rust/src/bin/opus_rs_bench.rs",
+    "?? tests/fixtures/performance/",
+    "?? tools/benchmark/"
+  ],
+  "profile": "qext",
+  "suite": "qext",
+  "loss_every": 0,
+  "cpu_affinity": 0,
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "gcc": "gcc (Debian 14.2.0-19) 14.2.0",
+  "reference_binary_sha256": "cd9fad45dad48014380ae931ed68e84cf5eec3439053448616f251cc86127bee",
+  "candidate_binary_sha256": "2dbd732d333345a450930a8a9f5b92703215277513017edb4a06f234dc865bde",
+  "timing": "In-process thread CPU time from /proc/thread-self/schedstat; monotonic wall time also retained; setup, corpus generation, and file I/O excluded;64 warmup frames;128-frame mixed-input corpus;alternating order;median per-frame cost.",
+  "threshold": "Rust elapsed time / C elapsed time >=1.10",
+  "repetitions": 9,
+  "minimum_c_duration_ms": 1000,
+  "time_source": "cpu",
+  "cases": [
+    {
+      "name": "qext-48000-2",
+      "operation": "encode",
+      "sample_rate": 48000,
+      "channels": 2,
+      "frame_samples": 960,
+      "mode": 1002,
+      "bitrate": 768000,
+      "complexity": 10,
+      "iterations": 2909,
+      "input_sha256": "47f0990c9e9570bec446e1726ec3d001dda6554b7b9dc0c73d4774a4da59cee9",
+      "verified_output_sha256": "2cf0423330c64255c7266f01c8f45e8d5edd5db931bf71cbb694f159d1bf6e79",
+      "c_ns_per_frame": 324518.32794774836,
+      "rust_ns_per_frame": 444111.2932279134,
+      "rust_over_c": 1.3685245330717377,
+      "slowdown_percent": 36.852453307173775,
+      "samples_ns_per_frame": {
+        "c": [
+          379976.1285665177,
+          324518.32794774836,
+          320390.0594706085,
+          328616.9106222069,
+          323135.8480577518,
+          376748.6180818151,
+          332783.0866277071,
+          316262.88243382605,
+          317705.56170505326
+        ],
+        "rust": [
+          537626.9102784462,
+          662928.3076658646,
+          444111.2932279134,
+          444139.09831557237,
+          435678.0281883809,
+          435887.9408731523,
+          436549.92677896185,
+          449630.7212100378,
+          426174.2041938811
+        ]
+      },
+      "wall_samples_ns_per_frame": {
+        "c": [
+          381582.7958061189,
+          324970.8429013407,
+          319780.5933310416,
+          328990.34719834995,
+          322187.0130629082,
+          377773.7555861121,
+          332690.7834307322,
+          316073.2461326916,
+          316903.97215537983
+        ],
+        "rust": [
+          537312.4238569955,
+          662431.1265039532,
+          443430.45342041936,
+          445032.8511515985,
+          435822.95909247163,
+          435315.75042970094,
+          436599.30285321415,
+          448819.9023719491,
+          425982.39016844274
+        ]
+      }
+    },
+    {
+      "name": "qext-48000-2",
+      "operation": "decode",
+      "sample_rate": 48000,
+      "channels": 2,
+      "frame_samples": 960,
+      "mode": 1002,
+      "bitrate": 768000,
+      "complexity": 10,
+      "iterations": 8000,
+      "input_sha256": "47f0990c9e9570bec446e1726ec3d001dda6554b7b9dc0c73d4774a4da59cee9",
+      "verified_output_sha256": "2cf0423330c64255c7266f01c8f45e8d5edd5db931bf71cbb694f159d1bf6e79",
+      "c_ns_per_frame": 144045.304125,
+      "rust_ns_per_frame": 201998.52625,
+      "rust_over_c": 1.4023263547328777,
+      "slowdown_percent": 40.23263547328777,
+      "samples_ns_per_frame": {
+        "c": [
+          140499.538375,
+          143120.24375,
+          144045.304125,
+          191950.725625,
+          162742.798125,
+          143999.403375,
+          150999.326375,
+          144903.991,
+          143480.625125
+        ],
+        "rust": [
+          201998.52625,
+          196998.2395,
+          193979.907375,
+          244130.009125,
+          203753.911125,
+          208498.166125,
+          200489.19225,
+          204447.433375,
+          197878.54925
+        ]
+      },
+      "wall_samples_ns_per_frame": {
+        "c": [
+          140509.205125,
+          143000.40275,
+          143773.656,
+          191936.00075,
+          162569.99725,
+          143877.6845,
+          150710.241625,
+          144981.321625,
+          143575.935625
+        ],
+        "rust": [
+          202309.095875,
+          196756.46875,
+          194090.175875,
+          244387.184125,
+          203825.786125,
+          208388.1845,
+          200272.302125,
+          204079.41875,
+          198299.590375
+        ]
+      }
+    }
+  ]
+}

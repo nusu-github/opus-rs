@@ -697,7 +697,7 @@ pub(crate) fn quant_coarse_energy(
         max_decay = 3.0;
     }
 
-    let start_snapshot = EcEncSnapshot::capture(enc);
+    let start_snapshot = EcEncSnapshot::capture_active(enc);
     #[cfg(test)]
     let trace_frame_idx = coarse_energy_trace::begin_frame();
     #[cfg(not(test))]
@@ -729,7 +729,7 @@ pub(crate) fn quant_coarse_energy(
             lfe,
             trace_frame_idx,
         );
-        intra_snapshot = Some(EcEncSnapshot::capture(enc));
+        intra_snapshot = Some(EcEncSnapshot::capture_active(enc));
         tell_intra = ec_tell_frac(enc.ctx());
     }
 
@@ -844,7 +844,7 @@ pub(crate) fn quant_coarse_energy_fixed(
         max_decay = gconst(3.0);
     }
 
-    let start_snapshot = EcEncSnapshot::capture(enc);
+    let start_snapshot = EcEncSnapshot::capture_active(enc);
     let mut old_intra = vec![0i32; old_e_bands.len()];
     let mut error_intra = vec![0i32; error.len()];
     let mut intra_snapshot = None;
@@ -871,7 +871,7 @@ pub(crate) fn quant_coarse_energy_fixed(
             max_decay,
             lfe,
         );
-        intra_snapshot = Some(EcEncSnapshot::capture(enc));
+        intra_snapshot = Some(EcEncSnapshot::capture_active(enc));
         tell_intra = ec_tell_frac(enc.ctx());
     }
 

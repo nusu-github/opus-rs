@@ -1,0 +1,111 @@
+{
+  "core": {
+    "float": {
+      "before": {
+        "cases": 12,
+        "geometric_mean_rust_over_c": 1.180829745680516,
+        "at_least_ten_percent_slower": 8,
+        "maximum_rust_over_c": 1.4119994570443886
+      },
+      "after": {
+        "cases": 12,
+        "geometric_mean_rust_over_c": 1.0497906846855836,
+        "at_least_ten_percent_slower": 4,
+        "maximum_rust_over_c": 1.3299341868482972
+      },
+      "relative_cost_reduction": 0.11097201901821507
+    },
+    "fixed": {
+      "before": {
+        "cases": 12,
+        "geometric_mean_rust_over_c": 1.216531898089026,
+        "at_least_ten_percent_slower": 11,
+        "maximum_rust_over_c": 1.4068694736313458
+      },
+      "after": {
+        "cases": 12,
+        "geometric_mean_rust_over_c": 1.0691419065292393,
+        "at_least_ten_percent_slower": 4,
+        "maximum_rust_over_c": 1.2933005353342608
+      },
+      "relative_cost_reduction": 0.12115587909475489
+    },
+    "fixed-res24": {
+      "before": {
+        "cases": 12,
+        "geometric_mean_rust_over_c": 1.1561986237141522,
+        "at_least_ten_percent_slower": 8,
+        "maximum_rust_over_c": 1.2812848688828737
+      },
+      "after": {
+        "cases": 12,
+        "geometric_mean_rust_over_c": 1.1080971303471259,
+        "at_least_ten_percent_slower": 7,
+        "maximum_rust_over_c": 1.3187352449107468
+      },
+      "relative_cost_reduction": 0.041603140135650696
+    }
+  },
+  "additional": {
+    "float-expanded": {
+      "before": {
+        "cases": 14,
+        "geometric_mean_rust_over_c": 1.2884068076941435,
+        "at_least_ten_percent_slower": 12,
+        "maximum_rust_over_c": 1.6161168375385335
+      },
+      "after": {
+        "cases": 14,
+        "geometric_mean_rust_over_c": 1.1342475598226296,
+        "at_least_ten_percent_slower": 8,
+        "maximum_rust_over_c": 1.424237195118094
+      },
+      "relative_cost_reduction": 0.11965106591404318
+    },
+    "float-plc": {
+      "before": {
+        "cases": 6,
+        "geometric_mean_rust_over_c": 1.1348930955646104,
+        "at_least_ten_percent_slower": 4,
+        "maximum_rust_over_c": 1.2586136738947942
+      },
+      "after": {
+        "cases": 6,
+        "geometric_mean_rust_over_c": 1.0223651103659084,
+        "at_least_ten_percent_slower": 1,
+        "maximum_rust_over_c": 1.129473832645484
+      },
+      "relative_cost_reduction": 0.09915293840317108
+    },
+    "pfa": {
+      "before": {
+        "cases": 4,
+        "geometric_mean_rust_over_c": 1.4750929847429182,
+        "at_least_ten_percent_slower": 4,
+        "maximum_rust_over_c": 1.6817913330766532
+      },
+      "after": {
+        "cases": 4,
+        "geometric_mean_rust_over_c": 1.2971610381764265,
+        "at_least_ten_percent_slower": 4,
+        "maximum_rust_over_c": 1.5029073209497383
+      },
+      "relative_cost_reduction": 0.1206242239688381
+    },
+    "qext": {
+      "before": {
+        "cases": 8,
+        "geometric_mean_rust_over_c": 1.3635418623552285,
+        "at_least_ten_percent_slower": 8,
+        "maximum_rust_over_c": 1.4029208061460186
+      },
+      "after": {
+        "cases": 8,
+        "geometric_mean_rust_over_c": 1.2631613728753843,
+        "at_least_ten_percent_slower": 8,
+        "maximum_rust_over_c": 1.5393494033449664
+      },
+      "relative_cost_reduction": 0.07361746071107655
+    }
+  }
+}

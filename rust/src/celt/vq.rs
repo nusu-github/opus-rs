@@ -8,6 +8,7 @@
 //! porting efforts.
 
 use alloc::vec;
+use alloc::vec::Vec;
 use core::convert::TryFrom;
 
 use crate::celt::cwrs::{decode_pulses, encode_pulses};
@@ -82,6 +83,19 @@ const EPSILON: OpusVal32 = 1e-15;
 // CELT mode construction rejects any band wider than 208 coefficients, which
 // lets the decoder mirror the C stack allocation here without heap traffic.
 const MAX_PVQ_BAND_SIZE: usize = 208;
+
+fn local_scratch<'a, T: Copy + Default, const N: usize>(
+    local: &'a mut [T; N],
+    heap: &'a mut Vec<T>,
+    length: usize,
+) -> &'a mut [T] {
+    if length <= N {
+        &mut local[..length]
+    } else {
+        heap.resize(length, T::default());
+        heap.as_mut_slice()
+    }
+}
 
 #[inline]
 fn select_pvq_candidate_float(
@@ -417,8 +431,12 @@ pub(crate) fn op_pvq_search(
     assert!(x.len() >= n, "coefficient buffer shorter than band size");
     assert!(pulses.len() >= n, "pulse buffer shorter than band size");
 
-    let mut y = vec![0.0f32; n];
-    let mut sign = vec![false; n];
+    let mut y_local = [0.0f32; MAX_PVQ_BAND_SIZE];
+    let mut y_heap = Vec::new();
+    let y = local_scratch(&mut y_local, &mut y_heap, n);
+    let mut sign_local = [false; MAX_PVQ_BAND_SIZE];
+    let mut sign_heap = Vec::new();
+    let sign = local_scratch(&mut sign_local, &mut sign_heap, n);
 
     for (idx, sample) in x.iter_mut().enumerate().take(n) {
         let value = *sample;
@@ -575,8 +593,12 @@ pub(crate) fn op_pvq_search_fixed(
 
     let shift = ((celt_ilog2(1 + celt_inner_prod_norm_shift(&x[..n], &x[..n])) + 1) / 2 - 4).max(0);
     norm_scaledown(&mut x[..n], shift as u32);
-    let mut y = vec![0i16; n];
-    let mut signx = vec![0i32; n];
+    let mut y_local = [0i16; MAX_PVQ_BAND_SIZE];
+    let mut y_heap = Vec::new();
+    let y = local_scratch(&mut y_local, &mut y_heap, n);
+    let mut signx_local = [0i32; MAX_PVQ_BAND_SIZE];
+    let mut signx_heap = Vec::new();
+    let signx = local_scratch(&mut signx_local, &mut signx_heap, n);
 
     for j in 0..n {
         let value = x[j];
@@ -742,11 +764,13 @@ pub(crate) fn alg_quant(
     assert!(n > 1, "alg_quant requires at least two dimensions");
     assert!(x.len() >= n, "input vector shorter than band size");
 
-    let mut pulses = vec![0i32; n + 3];
+    let mut pulses_local = [0i32; MAX_PVQ_BAND_SIZE + 3];
+    let mut pulses_heap = Vec::new();
+    let pulses = local_scratch(&mut pulses_local, &mut pulses_heap, n + 3);
 
     exp_rotation(x, n, 1, b, k, spread);
 
-    let yy = op_pvq_search(x, &mut pulses, n, k, arch);
+    let yy = op_pvq_search(x, pulses, n, k, arch);
 
     let total_pulses = usize::try_from(k).expect("pulse count must fit in usize");
     encode_pulses(&pulses[..n], n, total_pulses, enc);
@@ -776,11 +800,13 @@ pub(crate) fn alg_quant_fixed(
     assert!(n > 1, "alg_quant requires at least two dimensions");
     assert!(x.len() >= n, "input vector shorter than band size");
 
-    let mut pulses = vec![0i32; n + 3];
+    let mut pulses_local = [0i32; MAX_PVQ_BAND_SIZE + 3];
+    let mut pulses_heap = Vec::new();
+    let pulses = local_scratch(&mut pulses_local, &mut pulses_heap, n + 3);
 
     exp_rotation_fixed(x, n, 1, b, k, spread);
 
-    let yy = op_pvq_search_fixed(x, &mut pulses, n, k, arch);
+    let yy = op_pvq_search_fixed(x, pulses, n, k, arch);
 
     let total_pulses = usize::try_from(k).expect("pulse count must fit in usize");
     encode_pulses(&pulses[..n], n, total_pulses, enc);
