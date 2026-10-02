@@ -86,11 +86,16 @@ def main():
             axis.set_xlabel("Thread CPU time / C thread CPU time")
             axis.grid(axis="x", alpha=0.18)
             axis.set_axisbelow(True)
-        axes[0].legend(loc="lower right", fontsize=8)
+        handles, labels = axes[0].get_legend_handles_labels()
+        figure.legend(handles, labels, loc="lower center", ncol=4, fontsize=9)
         figure.suptitle("Opus scalar codec: equal outputs, before and after optimization", fontsize=13)
-        figure.tight_layout()
+        figure.tight_layout(rect=(0, 0.055, 1, 1))
         args.plot.parent.mkdir(parents=True, exist_ok=True)
         figure.savefig(args.plot, metadata={"Date": None})
+        if args.plot.suffix.lower() == ".svg":
+            # Matplotlib inserts spaces before newlines inside path attributes.
+            # Newlines already separate SVG tokens; normalize repository output.
+            args.plot.write_text("\n".join(line.rstrip() for line in args.plot.read_text().splitlines()) + "\n")
         plt.close(figure)
 
 
